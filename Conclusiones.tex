@@ -1,0 +1,57 @@
+\label{ch:conclusiones}
+
+El desarrollo de este proyecto permitió diseñar, fabricar y validar una 
+impresora 3D tipo FDM de arquitectura abierta, cumpliendo satisfactoriamente 
+con el objetivo general planteado. A partir del análisis de los resultados 
+experimentales, se presentan las siguientes conclusiones:
+
+\begin{itemize}
+    \item \textbf{Diseño y fabricación:} Se construyó un equipo funcional y 
+    modular, utilizando componentes de código abierto y manufactura aditiva. 
+    La integración de una estructura de perfiles de aluminio y el uso de 
+    firmware Marlin permitieron obtener una plataforma robusta, cuya 
+    calibración y mantenimiento están al alcance de un estudiante.
+
+    \item \textbf{Rediseño del sistema de extrusión y enfriamiento:} La 
+    sustitución de los componentes originales por un sistema de accionamiento 
+    directo (\textit{direct drive}) con una base estructural de aluminio 
+    resolvió los problemas de incompatibilidad térmica. Se logró una reducción 
+    del 24.2\% en la masa del módulo, lo que disminuyó la inercia sobre el 
+    eje \(X\). Asimismo, la incorporación de la base de aluminio y el 
+    ventilador redujo la temperatura del disipador en un 42.25\%, mitigando 
+    el riesgo de \textit{heat creep} y garantizando la continuidad del flujo 
+    de filamento.
+
+    \item \textbf{Calidad y precisión dimensional:} El sistema demostró ser 
+    capaz de fabricar piezas con errores dimensionales inferiores al 0.3\%, 
+    situándose dentro de los estándares de tolerancia para impresoras FDM de 
+    escritorio. La implementación de mejoras estructurales, como las escuadras 
+    de refuerzo y los tensores ajustables, permitió mitigar defectos como el 
+    \textit{ghosting}.
+
+    \item \textbf{Diagnóstico de fallas y materiales:} Se comprobó que el 
+    sistema es altamente sensible a las condiciones del filamento. A través 
+    de un proceso de diagnóstico experimental, se identificó la humedad 
+    ambiental como la causa de la fragilidad y el acabado irregular en las 
+    piezas, validando un método de secado por cama calefactada como una 
+    solución provisional efectiva. Asimismo, la torre de temperatura permitió 
+    establecer que la ventana térmica óptima para el PLA utilizado se sitúa 
+    en \qty{205}{\celsius}.
+
+    \item \textbf{Viabilidad económica y didáctica:} El costo total de 
+    fabricación (\$4189 MXN) resultó menor que el de impresoras comerciales 
+    de gama baja. Si bien el equipo carece de automatizaciones (como 
+    nivelación automática), esta característica se convierte en una ventaja 
+    pedagógica, ya que obliga al usuario a comprender y ajustar manualmente 
+    cada subsistema. La modularidad y capacidad de autorreparación confirman 
+    la vigencia de la filosofía RepRap en entornos académicos con recursos 
+    limitados.
+\end{itemize}
+
+En términos generales, el proyecto demuestra que es posible construir una 
+herramienta de manufactura digital funcional y precisa mediante la 
+investigación aplicada, el diseño iterativo y el aprovechamiento de 
+tecnologías abiertas. Las limitaciones identificadas, como la velocidad de 
+impresión o la falta de ciertos sensores, no demeritan el desempeño del 
+equipo, sino que establecen una hoja de ruta clara para futuras generaciones 
+de estudiantes que deseen continuar con el desarrollo de esta plataforma.

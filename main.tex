@@ -1,0 +1,174 @@
+\documentclass[12pt]{report}
+
+% ---------------- PACKAGES ----------------
+\usepackage[spanish]{babel}
+\usepackage{csquotes}
+\usepackage[T1]{fontenc}
+\usepackage{setspace}
+\usepackage[
+top=0.5cm,
+bottom=2.5cm,
+left=3cm,
+right=2.5cm
+]{geometry}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, linkcolor=black]{hyperref}
+\usepackage{longtable}
+\usepackage{parskip} % Elimina la sangría y añade un espaciado automático y limpio entre párrafos
+\setlength{\parindent}{0pt} % Asegura que la sangría sea cero en todo el documento si prefieres el estilo de bloque
+\usepackage{siunitx}
+\usepackage{ragged2e}
+\usepackage{amsmath}
+\usepackage{comment}
+\usepackage{ragged2e}   % Para alineaciones fluidas sin guionizado extraño (\RaggedRight)
+\usepackage{verbatim} %Permite hacer comentario de varios bloques de texto
+\usepackage{booktabs} %Ayuda a hacer tablas bonitas
+\usepackage{array} % Ayuda a las tablas bonitas
+\usepackage{tabularx}
+\usepackage{tikz} %Diagramas
+\usetikzlibrary{shapes.geometric, arrows, positioning}
+\usepackage{float}
+\usepackage{xcolor}
+\usetikzlibrary{calc}
+\usepackage{multirow}
+\usepackage{pifont}
+\usepackage{amssymb}
+\usepackage{adjustbox}
+\usepackage{enumitem}
+\usepackage{subcaption}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X} %Es para las tablas, para evitar el error de overfull hbox, y que el texto se ajuste a la celda de la tabla
+
+\addto\captionsspanish{
+  \renewcommand{\contentsname}{Contenido}
+}
+% Definición de estilos para el diagrama
+\tikzset{
+    block/.style={rectangle, draw, fill=white, text width=3cm, text centered, rounded corners, minimum height=1.2cm},
+    cloud/.style={ellipse, draw, fill=gray!10, text width=2.5cm, text centered, minimum height=0.8cm},
+    decision/.style={diamond, draw, fill=white, text width=2cm, text centered, aspect=2},
+    detail/.style={rectangle, draw, fill=white, text width=3.5cm, font=\footnotesize, text centered, dashed},
+    myarrow/.style={thick, ->, >=stealth}
+}
+% ---------------- PAGE SETUP ----------------
+\setlength{\emergencystretch}{3em} %Margen de ajuste
+\overfullrule=5pt
+
+\usepackage[backend=biber, style=ieee]{biblatex}
+\addbibresource{Referencias.bib}
+\usepackage{hyperref} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    pdftitle={Tesis - Tu Nombre},
+}
+
+
+\usepackage{titlesec}
+
+\titleformat{\chapter}[hang]
+{\normalfont\Huge\bfseries}
+{Capítulo \thechapter.}
+{0.2em}
+{}
+
+\begin{document}
+\input{Portada.tex}
+\newpage
+
+\restoregeometry
+
+\chapter*{Resumen}
+\input{Resumen.tex}
+\addcontentsline{toc}{chapter}{Resumen} 
+
+
+\chapter*{Abstract}
+\input{Abstract.tex}
+\addcontentsline{toc}{chapter}{Abstract} 
+
+\tableofcontents
+\onehalfspacing
+
+\listoffigures
+\listoftables
+
+\section*{Lista de Abreviaturas}
+\addcontentsline{toc}{section}{Lista de Abreviaturas}
+
+\begin{description}[font=\bfseries]
+    \item[ABS:] Acrilonitrilo Butadieno Estireno
+    \item[AM:] Additive Manufacturing (Manufactura Aditiva)
+    \item[ASTM:] American Society for Testing and Materials
+    \item[CAD:] Computer-Aided Design (Diseño Asistido por Computadora)
+    \item[CNC:] Control Numérico Computarizado
+    \item[FDM:] Fused Deposition Modeling (Modelado por Deposición Fundida)
+    \item[G-Code:] Código de control numérico para impresoras 3D
+    \item[GT2:] Tipo de correa dentada y polea
+    \item[ISO:] International Organization for Standardization
+    \item[NEMA:] National Electrical Manufacturers Association (estándar para motores paso a paso)
+    \item[PETG:] Tereftalato de Polietileno Glicol
+    \item[PID:] Proporcional-Integral-Derivativo
+    \item[PLA:] Ácido Poliláctico
+    \item[PTFE:] Politetrafluoroetileno (Teflón)
+    \item[PWM:] Pulse Width Modulation (Modulación por Ancho de Pulso)
+    \item[RAMPS:] RepRap Arduino Mega Pololu Shield (placa de control)
+    \item[RepRap:] Replicating Rapid Prototyper (Proyecto de impresora 3D autorreplicable)
+    \item[SLA:] Estereolitografía
+    \item[SLS:] Sinterizado Selectivo por Láser
+    \item[STL:] Standard Tessellation Language (Formato de archivo para impresión 3D)
+\end{description}
+
+\section*{Glosario}
+\begin{itemize}
+\item \textbf{Adhesión interlaminar}: Unión entre capas en una impresión 3D.
+\item \textbf{Altura de capa}: Espesor de cada capa depositada en el proceso FDM.
+\end{itemize}
+
+
+\chapter{Introducción}
+\input{Introduccion.tex}
+
+
+\chapter{Planteamiento del problema}
+ \input{Planteamiento del problema.tex}
+
+
+\chapter{Antecedentes y justificación}
+\input{Antecedentes_y_justificacion.tex}
+
+
+\chapter{Objetivos y metas}
+\input{Objetivos_y_metas.tex}
+
+
+\chapter{Marco Teórico}
+\input{Marco_teorico.tex}
+
+
+
+\chapter{Metodología}
+\vspace{-30pt}
+\input{Metodologia.tex}
+
+
+
+\chapter{Resultados}
+\input{Resultados.tex}
+
+\chapter{Discusión}
+\input{Discusion.tex}
+
+\chapter{Conclusiones}
+\input{Conclusiones.tex}
+
+\chapter{Referencias bibliográficas}
+\printbibliography[heading=none] 
+
+
+
+
+
+\end{document}

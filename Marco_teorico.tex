@@ -1,0 +1,325 @@
+% =========================================================================
+% 2.1 FUNDAMENTOS DE LA MANUFACTURA ADITIVA
+% =========================================================================
+\section{Fundamentos Básicos de la Tecnología FDM}
+De acuerdo con la norma ISO/ASTM 52900:2021, la manufactura aditiva se define formalmente como la unión secuencial de materiales para fabricar objetos físicos tridimensionales a partir de datos digitales \cite{ISO52900}. A diferencia de los procesos sustractivos tradicionales, donde el material es removido de un bloque sólido mediante herramientas de corte, esta tecnología construye la geometría capa por capa. Aunque existen distintos métodos de manufactura aditiva, como la estereolitografía (SLA) y el sinterizado selectivo por láser (SLS), el Modelado por Deposición Fundida (FDM) es uno de los métodos más utilizados debido a su viabilidad económica, seguridad operacional, facilidad de mantenimiento y la amplia disponibilidad de plataformas de código abierto derivadas del proyecto RepRap \cite{jones2011reprap}, entre las cuales destaca la arquitectura Prusa i3 por su adopción global \cite{salazar2024}.
+
+El proceso FDM utiliza filamento termoplástico continuo, el cual es introducido a un sistema de extrusión térmica denominado hotend. En este sistema, el material es calentado hasta alcanzar un estado semifundido y posteriormente depositado de manera controlada sobre una superficie de impresión siguiendo trayectorias definidas por código numérico (G-Code). Una vez depositado, el polímero se enfría y solidifica, formando capas sucesivas hasta completar la geometría deseada. Entre las principales ventajas de esta tecnología destacan la facilidad de fabricación de prototipos funcionales directamente desde modelos CAD, la accesibilidad económica de sus componentes y la amplia disponibilidad de materiales termoplásticos como PLA, ABS y PETG.
+
+Sin embargo, el proceso presenta limitaciones inherentes a la fabricación por capas. La resistencia mecánica en el eje $Z$ suele ser inferior a la del plano horizontal ($X$-$Y$) debido a la unión interlaminar por difusión térmica parcial. Asimismo, la precisión dimensional y el acabado superficial pueden verse afectados por fenómenos de contracción térmica, vibraciones estructurales y variaciones en el flujo de extrusión.
+
+Debido a estas limitaciones, el diseño del sistema de extrusión, la disipación térmica del hotend y el enfriamiento de capa representan factores críticos para mejorar la estabilidad del proceso y la calidad final de impresión en sistemas FDM de arquitectura abierta.
+
+% =========================================================================
+% 2.2 MATERIALES: EL ÁCIDO POLILÁCTICO
+% =========================================================================
+\section{Materiales: Ácido Poliláctico (PLA)}
+% Esta sección es crítica para justificar el fallo térmico del primer intento.
+
+El Ácido Poliláctico (PLA) es un poliéster termoplástico lineal derivado de la fermentación de fuentes de carbohidratos renovables, como el almidón de maíz o la caña de azúcar. En el ámbito de la manufactura aditiva por FDM, el PLA representa el material de mayor adopción debido a sus propiedades reológicas favorables, las cuales incluyen una baja tasa de contracción térmica y una excelente estabilidad dimensional durante el proceso de deposición. No obstante, sus propiedades térmicas intrínsecas imponen restricciones severas cuando se emplea en componentes estructurales expuestos a esfuerzos mecánicos y gradientes de temperatura moderados.
+
+
+
+\subsection{Propiedades térmicas y mecánicas}
+% Detallar los puntos de fusión y la temperatura de transición vítrea (Tg ~ 60°C).
+
+
+A diferencia de los materiales cristalinos puramente definidos, los polímeros amorfos o semicristalinos como el PLA no poseen un punto de fusión térmico discreto, sino que exhiben transiciones de fase complejas en función de la temperatura \cite[Cap.~15]{callister2020}. Para el diseño de elementos mecánicos y estructurales, el parámetro termodinámico más crítico es la \textbf{Temperatura de Transición Vítrea ($T_g$)}.
+
+\begin{itemize}
+    \item \textbf{Temperatura de transición vítrea ($T_g$):} Para el PLA estándar, este valor se sitúa típicamente entre 55°C y 60°C \cite{chanda2006}. Al superar este umbral, el material pierde rigidez estructural y transita de un estado vítreo a un comportamiento viscoelástico, aumentando su susceptibilidad a deformaciones mecánicas.
+    \item \textbf{Temperatura de Fusión ($T_m$):} Se localiza típicamente entre los \textbf{145°C y 160°C} \cite{chanda2006}. En esta región de transición de primer orden, los dominios cristalinos se desorganizan por completo, permitiendo que el polímero fluya con la viscosidad adecuada para ser forzado a través de una boquilla.
+\end{itemize}
+
+En lo que respecta a su comportamiento mecánico a temperatura ambiente, el PLA es un material rígido con buena estabilidad estructural y resistencia mecánica \cite{chanda2006}. Sin embargo, su principal desventaja es su fragilidad, ya que posee una baja capacidad de deformación antes de fracturarse (elongación a la rotura menor al 5\%)\cite{callister2020}. Físicamente, esto significa que ante un esfuerzo excesivo el material no se doblará de forma gradual, sino que se quebrará de manera repentina. Por esta razón, el diseño geométrico de las piezas de la impresora requirió consideraciones estructurales robustas, tales como esquinas redondeadas (filetes) y refuerzos en las zonas que soportan la mayor parte de las tensiones mecánicas para evitar rupturas prematuras.
+
+
+\begin{comment}
+
+La manufactura aditiva comprende un conjunto de tecnologías de fabricación capaces de producir objetos tridimensionales mediante la adición sucesiva de material a partir de información digital. A diferencia de los procesos de manufactura sustractiva, donde el material es removido de una pieza sólida mediante herramientas de corte, la manufactura aditiva construye la geometría capa por capa, permitiendo fabricar componentes complejos con menor desperdicio de material y mayor flexibilidad de diseño.
+
+De acuerdo con la norma ISO/ASTM 52900:2021 \cite{ISO52900}, este proceso se define formalmente como la unión de materiales para fabricar objetos físicos tridimensionales a partir de datos digitales. Dentro de esta clasificación existen diversas tecnologías, tales como la estereolitografía (SLA), el sinterizado selectivo por láser (SLS) y el Modelado por Deposición Fundida (FDM), siendo esta última una de las más utilizadas debido a su bajo costo de implementación y facilidad de mantenimiento.
+
+
+
+\subsection{Tecnología FDM}
+El Modelado por Deposición Fundida (FDM, por sus siglas en inglés) utiliza materiales termoplásticos en forma de filamento continuo, los cuales son introducidos a un sistema de extrusión térmica denominado \textit{hotend}. En este sistema, el filamento es calentado hasta alcanzar un estado semifundido y posteriormente depositado de manera controlada sobre una superficie de impresión, siguiendo trayectorias definidas por código numérico (G-Code). Una vez depositado, el material se enfría y solidifica, formando capas sucesivas hasta completar la geometría deseada.
+
+La tecnología FDM ha adquirido gran relevancia en entornos educativos y de prototipado rápido debido a la disponibilidad de plataformas abiertas como RepRap y Prusa i3, las cuales permiten al usuario modificar tanto la estructura mecánica como el firmware de control \cite{reprapWiki,prusaHistory}. Esta característica ha favorecido el desarrollo de sistemas de bajo costo orientados a la experimentación académica y al aprendizaje de tecnologías de control numérico computarizado.
+
+% =========================================================================
+% 5.1.1. FUNCIONAMIENTO DEL PROCESO FDM
+% =========================================================================
+
+
+\subsection{Funcionamiento del proceso FDM}
+% Explicar el ciclo de extrusión, deposición y enfriamiento.
+El funcionamiento de una impresora FDM puede dividirse en tres etapas fundamentales: alimentación del material, fusión térmica y solidificación controlada.
+\begin{enumerate}
+    \item\textbf{Alimentación del filamento:} Un motor de pasos acoplado a un sistema de engranajes ejerce una fuerza de empuje constante sobre el filamento termoplástico, guiándolo hacia la zona de calentamiento.
+    \item \textbf{Fusión y extrusión:} El filamento atraviesa el \textit{hotend}, donde es calentado. El polímero alcanza un estado viscoelástico y es forzado a salir a través de una boquilla de diámetro reducido, generalmente de 0.4 mm.
+    \item \textbf{Deposición y solidificación:} El material fundido es depositado sobre la superficie de impresión o sobre capas previamente solidificadas. Durante el enfriamiento ocurre la unión interlaminar entre filamentos adyacentes, fenómeno indispensable para garantizar la resistencia mecánica y estabilidad geométrica de la pieza final.
+\end{enumerate}
+
+
+\subsubsection{Ventajas y limitaciones tecnológicas}
+% Breve análisis de costo/velocidad vs anisotropía (debilidad en eje Z).
+
+La tecnología FDM presenta ventajas importantes en aplicaciones de prototipado y manufactura de bajo volumen; sin embargo, también posee limitaciones inherentes al proceso de deposición por capas.
+
+\begin{description}
+    \item[Ventajas:] Destaca principalmente por su accesibilidad económica y la facilidad de implementación. Permite fabricar prototipos funcionales directamente a partir de modelos CAD sin necesidad de herramientas especializadas o moldes de manufactura. Asimismo, la amplia disponibilidad de materiales termoplásticos como PLA, ABS, PETG y TPU permite adaptar las propiedades mecánicas y térmicas de las piezas a distintas aplicaciones.
+    
+    \item[Limitaciones:] La principal limitación del proceso es la anisotropía mecánirca generada por la fabricación capa por capa. Debido a que la unión entre filamentos depende de la difusión térmica parcial del polímero, la resistencia mecánica en el eje vertical ($Z$) suele ser inferior a la resistencia en el plano horizontal ($X-Y$). Además, la precisión dimensional puede verse afectada por fenómenos de contracción térmica, vibraciones estructurales y variaciones en el flujo de extrusión. Finalmente, el acabado superficial presenta una rugosidad escalonada característica (\textit{staircase effect}) determinada principalmente por la altura de capa seleccionada.
+\end{description}
+
+Debido a estas limitaciones, la estabilidad estructural, el control térmico y la correcta calibración de los parámetros de impresión representan factores críticos para mejorar la precisión dimensional y la repetibilidad en sistemas FDM de arquitectura abierta.
+
+\end{comment}
+
+%=========================================================================
+% 5.3 ARQUITECTURA Y CINEMÁTICA DE IMPRESORAS FDM 
+% ========================================================================
+\section{Arquitectura Prusa i3 y Limitaciones Mecánicas}
+La arquitectura mecánica de una impresora FDM determina la forma en que el sistema posiciona el cabezal de extrusión dentro del volumen de trabajo. En las impresoras de tipo cartesiano, el movimiento se realiza mediante tres ejes lineales ortogonales ($X$, $Y$ y $Z$), cada uno controlado de forma independiente mediante motores paso a paso y sistemas de guiado lineal \cite{groover2015}.
+
+En la arquitectura Prusa i3, la distribución de componentes móviles se realiza de la siguiente manera: la cama calefactada se desplaza a lo largo del eje $Y$, el carro del extrusor se mueve a lo largo del eje $X$ sobre un puente vertical, y dicho puente se eleva en el eje $Z$ mediante dos husillos sincronizados que determinan la resolución de altura de capa.
+
+Esta configuración introduce una limitación mecánica relevante: la cama es un elemento de masa considerable que cambia de dirección constantemente durante el proceso de impresión. Las fuerzas de inercia generadas producen vibraciones y momentos de flexión que se transmiten al marco estructural. Si la estructura carece de rigidez torsional suficiente, los microdesplazamientos resultantes se manifiestan en las piezas como ondulación superficial (\textit{ghosting}) y pérdida de precisión dimensional.
+
+El diseño original de la Prusa i3 emplea un marco monolítico fabricado mediante corte de placa. No obstante, este tipo de estructura presenta limitaciones relacionadas con la dificultad de manufactura, menor modularidad y restricciones para implementar modificaciones mecánicas posteriores. 
+
+Por esta razón, el diseño adoptado se baso en perfiles de aluminio tipo V-Slot de $20 \times 20$ mm, con el objetivo de incrementar la rigidez estructural, facilitar el ensamblaje modular y mejorar la estabilidad dinámica del sistema, así como la integración del módulo de extrusión rediseñado.
+
+
+
+
+\begin{comment}
+\section{Arquitectura y Cinemática de Impresoras FDM}
+
+La fabricación de un objeto tridimensional en la tecnología FDM depende directamente de la capacidad del sistema mecánico para posicionar la boquilla de extrusión de forma precisa en un espacio tridimensional. La disposición de los actuadores, guías lineales y la estructura soporte determinan la estabilidad dinámica de la máquina durante el proceso de fabricación.
+
+% =========================================================================
+% 5.3.1 CINEMÁTICA CARTESIANA (TU SUBSECCIÓN)
+% =========================================================================
+\subsection{Cinemática Cartesiana y el modelo Prusa i3}
+
+La mayoría de las impresoras 3D de escritorio de código abierto emplean un sistema de \textbf{cinemática cartesiana}. Este principio se fundamenta en la teoría de control numérico computarizado (CNC), donde la posición de cualquier punto en el espacio de trabajo se define mediante tres ejes lineales mutuamente perpendiculares entre sí ($X$, $Y$ y $Z$) \cite{groover2020}. Mecánicamente, esto implica que la máquina cuenta con actuadores independientes encargados de controlar el movimiento de forma dedicada en cada dirección dimensional.
+
+Dentro de las configuraciones cartesianas, la arquitectura \textbf{Prusa i3} (perteneciente al proyecto RepRap) implementa un diseño específico donde los componentes móviles se dividen de la siguiente manera:
+
+\begin{itemize}
+    \item \textbf{Eje Y (Movimiento de la plataforma):} La superficie de impresión (cama calefactada) se desplaza longitudinalmente hacia adelante y hacia atrás sobre un par de guías lineales fijas a la base. En esta configuración, los motores deben desplazar constantemente el peso conjunto de la cama, el sistema de soporte y la pieza que se está fabricando.
+    \item \textbf{Eje X (Movimiento del cabezal):} El carro del extrusor se desplaza de forma transversal de izquierda a derecha a lo largo de un eje montado sobre un puente vertical.
+    \item \textbf{Eje Z (Movimiento vertical de elevación):} El puente completo que sostiene al eje X se desplaza de manera vertical mediante un sistema sincronizado de dos tornillos de avance (husillos) accionados por motores independientes. Este eje determina la resolución de la altura de capa.
+\end{itemize}
+
+
+
+Esta distribución de los componentes móviles introduce retos mecánicos críticos debido a las fuerzas de inercia generadas en el eje Y. Al ser la cama un elemento con un peso considerable que cambia de dirección constantemente a altas aceleraciones para depositar el material, se producen momentos de flexión y vibraciones que son transmitidos directamente hacia el marco vertical de la impresora.
+
+Si el marco estructural original carece de la rigidez torsional suficiente, estas fuerzas provocan micro-desplazamientos y vibraciones en el puente del eje X. En la pieza final, esto se manifiesta visualmente como defectos geométricos de ondulación superficial (\textit{ghosting}) y una pérdida severa en la precisión dimensional. Por lo tanto, la sustitución del marco estructural por perfiles de aluminio V-Slot de alta rigidez estructural representa una solución de ingeniería orientada a mitigar las deficiencias dinámicas inherentes al constante movimiento del peso de la cama en la arquitectura Prusa i3.
+
+
+\section{Sistema de movimimiento CNC}
+- - - - - - UNA BREVE DESCRIPCION DEL FUNCIONAMIENTO BASICO DEL CONTROL NUMERICO COMPUTARIZADO Y LOS MOTORES A PASOS JUNTO CON LA CALIBRACION 
+NECESARIA DE LOS DRIVERS UTILIZAOS $($ UN ESQUMATICO Y LA FOMRULA NECESARIA PARA OBTENER EL VOLTAJE DE REFERENCIA$)$ - - - - - - 
+\end{comment}
+% =========================================================================
+% 5.4 SISTEMAS TÉRMICOS 
+% =========================================================================
+\section{Sistemas de extrusión y transferencia térmica}
+
+El control de los cambios de temperatura en una impresora FDM es un factor determinante para garantizar la continuidad de la extrusión y la precisión dimensional de la pieza fabricada. El sistema térmico del cabezal de impresión se divide en dos regiones con requerimientos opuestos que coexisten en un espacio muy reducido: la zona de fusión y la zona de transición.
+
+\subsection{Anatomía y dinámica del Hotend}
+
+El hotend es el conjunto mecánico encargado de transferir energía térmica al filamento para derretirlo. Sus componentes principales operan bajo la siguiente dinámica:
+
+\begin{itemize}
+    \item \textbf{\textit{Heater block} (Bloque calefactor):} Bloque de aluminio o cobre que aloja un cartucho de resistencia eléctrica controlado mediante un lazo cerrado PID a través del firmware de la impresora. Este componente concentra el calor necesario para alcanzar la temperatura de fusión ($T_m$) del material.
+    \item \textbf{\textit{Nozzle} (Boquilla):} Elemento roscado al \textit{heater block} que restringe el flujo del plástico fundido para depositarlo con un diámetro específico.
+    \item \textbf{\textit{Heatbreak} (Garganta térmica):} Es el componente estructural más crítico del sistema. Funciona como un aislante térmico que separa el \textit{heater block} (zona caliente) del disipador de calor del \textit{coldend} (zona fría) \cite{salazar2024}. Su objetivo es generar un corte térmico abrupto en una distancia de apenas unos milímetros, evitando que el calor se propague hacia arriba a través del filamento sólido.
+\end{itemize}
+
+Si el \textit{heatbreak} falla y no disipa el calor remanente, el filamento de PLA alcanza su temperatura de transición vítrea ($T_g$) antes de entrar al bloque de fusión. Esto provoca que el filamento se ablande prematuramente dentro de la zona de guía y se expanda por la fuerza de empuje mecánica. Este fenómeno, conocido comúnmente como taponamiento térmico (\textit{heat creep}), incrementa drásticamente la fricción interna y bloquea por completo la impresión.
+
+La temperatura del bloque calefactor es regulada mediante un lazo cerrado de control PID implementado en el firmware Marlin, cuya sintonización se describe en detalle en la sección de metodología.
+
+\subsubsection{Control PID}
+
+El control de la temperatura en el bloque calefactor se realiza mediante un 
+lazo cerrado de control Proporcional-Integral-Derivativo (PID). Este sistema 
+utiliza la lectura de un termistor para calcular el error entre la temperatura 
+deseada y la real, ajustando dinámicamente la potencia suministrada al 
+cartucho calefactor para mantener la temperatura lo más estable posible. La 
+correcta sintonización de las constantes PID evita fluctuaciones térmicas que 
+podrían afectar la viscosidad del polímero y la calidad de la extrusión. 
+Marlin, el firmware utilizado, incorpora una función de autotuning que permite 
+calcular estos valores de manera automática, como se detallará en la 
+metodología.
+
+
+\subsection{Ventilador de capa y enfriamiento del polímero}
+
+Inmediatamente después de que el material fundido sale por el \textit{nozzle}, requiere un proceso de enfriamiento rápido dirigido por el \textbf{ventilador de capa}. Dado que el PLA retiene el calor de forma prolongada, es indispensable un flujo de aire forzado constante enfocado justo por debajo de la punta de la boquilla. 
+
+Este enfriamiento continuo es necesario para acelerar la solidificación de la capa recién depositada, permitiendo que conserve su forma frente a la gravedad, especialmente al fabricar secciones en el aire (\textit{overhangs}) o puentes estructurales. Un flujo de aire insuficiente mantiene el PLA en un estado pastoso, resultando en deformaciones por contracción térmica y pérdida de calidad superficial.
+
+
+\begin{comment}
+\subsection{Disipación térmica en actuadores (Motores NEMA 17)}
+
+Las restricciones térmicas de la impresora no se limitan exclusivamente al bloque de extrusión. Los motores de pasos encargados de empujar el filamento (específicamente el motor NEMA 17 instalado en el \textit{coldend}) disipan calor durante su operación continua.
+
+
+Bajo condiciones de trabajo normales, la superficie metálica de un motor NEMA 17 puede alcanzar temperaturas estables de entre \textbf{45°C y 55°C}. Si el soporte estructural que une este motor con el extrusor se fabrica en PLA sin un aislamiento o disipador térmico intermedio, el material base operará de forma crítica justo en los límites de su $T_g$ ($55^\circ\text{C}$). 
+
+Bajo estas condiciones, el esfuerzo y la tensión constante ejercidos por los resortes del mecanismo de empuje provocarán que el soporte de PLA comience a doblarse y deformarse lentamente. Esta deformación altera la alineación del mecanismo de empuje, provocando pérdida de pasos, desgaste irregular del filamento y fallas en la alimentación del sistema.
+
+
+\end{comment}
+
+\begin{comment}
+    
+% =================================================================
+% 2.4 FLUJO DE TRABAJO DIGITAL
+%==================================================================
+\section{Flujo de Trabajo Digital: Del Modelado al Control}
+
+El paso de una idea geométrica a un elemento físico funcional requiere de una cadena de procesamiento de software orientada al control numérico computarizado. Este flujo de trabajo digital actúa como el puente traductor entre el diseño abstracto en tres dimensiones y las señales eléctricas que los controladores envían a los actuadores mecánicos de la impresora FDM.
+
+
+\begin{figure}[H]
+\centering
+
+\begin{tikzpicture}[
+    node distance=1.5cm,
+    block/.style={
+        rectangle,
+        draw=black,
+        rounded corners,
+        minimum width=6.5cm,
+        minimum height=1.1cm,
+        align=center
+    }
+]
+
+\node (cad) [block] {
+\textbf{Modelado CAD}\\
+SolidWorks (.SLDPRT / .SLDASM)
+};
+
+\node (stl) [block, below=of cad] {
+\textbf{Exportación de geometría}\\
+Malla de triángulos (.STL / .3MF)
+};
+
+\node (cura) [block, below=of stl] {
+\textbf{Laminado (\textit{Slicing})}\\
+Software Ultimaker Cura
+};
+
+\node (gcode) [block, below=of cura] {
+\textbf{Generación de trayectorias}\\
+Código numérico (G-Code)
+};
+
+\node (marlin) [block, below=of gcode] {
+\textbf{Control electrónico}\\
+Firmware Marlin
+};
+
+\node (motion) [block, below=of marlin] {
+\textbf{Movimiento y manufactura}\\
+Deposición física de material
+};
+
+% Aquí usamos 'myarrow' que es tu estilo global
+\draw [myarrow] (cad) -- (stl);
+\draw [myarrow] (stl) -- (cura);
+\draw [myarrow] (cura) -- (gcode);
+\draw [myarrow] (gcode) -- (marlin);
+\draw [myarrow] (marlin) -- (motion);
+
+\end{tikzpicture}
+
+\caption{Flujo de trabajo digital en impresión FDM.}
+\label{fig:flujo_digital}
+\end{figure}
+
+
+Como se ilustra en la Figura \ref{fig:flujo_digital}, el proceso se compone de las siguientes etapas consecutivas:
+
+\begin{enumerate}
+    \item \textbf{Modelado Geométrico (CAD):} Consiste en la generación matemática de los volúmenes en un entorno de diseño asistido por computadora. Para las modificaciones estructurales de este proyecto, esta etapa permitió simular el acoplamiento mecánico entre los perfiles de aluminio y las nuevas piezas del extrusor antes de su manufactura.
+    \item \textbf{Discretización de la Malla (STL):} La geometría continua del CAD se exporta a un formato de malla poligonal, típicamente STL (\textit{Stereolithography}). Este formato aproxima la superficie externa del modelo mediante una red tridimensional de triángulos interconectados, perdiendo la información de operaciones paramétricas pero conservando la fidelidad de la forma exterior.
+    \item \textbf{Procesamiento de Laminado (\textit{Slicing}):} El archivo de malla es procesado por un software laminador (en este caso, Ultimaker Cura). El programa rebana virtualmente el objeto en capas horizontales de altura constante y calcula los parámetros de manufactura esenciales: velocidad de desplazamiento, porcentaje de relleno (\textit{infill}), estructuras de soporte y multiplicadores de extrusión.
+    \item \textbf{Generación de G-Code:} Como resultado del laminado, el software exporta un archivo de texto plano con instrucciones en código estándar ISO G-Code. Este archivo contiene comandos secuenciales de coordenadas lineales ($G1 \, X_x \, Y_y \, Z_z \, E_e$) que dictan la posición espacial del cabezal y el volumen exacto de filamento que debe ser extruido.
+    \item \textbf{Interpretación del Firmware (Marlin):} El archivo G-Code es transferido a la tarjeta de control de la impresora. El firmware (Marlin) actúa como el núcleo del sistema embebido; procesa el código línea por línea, ejecuta los algoritmos de aceleración y planeación de movimientos (\textit{look-ahead}), y traduce las coordenadas espaciales en trenes de pulsos coordinados para los controladores de los motores de pasos.
+\end{enumerate}
+
+Por esta razón, el control preciso del flujo digital desde el modelado CAD hasta la ejecución del firmware representa un elemento crítico para asegurar la precisión dimensional y la estabilidad mecánica del sistema desarrollado.
+
+\end{comment}
+\begin{comment}
+    \subsection{Modelado paramétrico (CAD) y laminado (\textit{Slicing})}
+
+La primera etapa del proceso consiste en diseñar la pieza en un software CAD paramétrico, como SolidWorks. A diferencia de un dibujo digital común, el modelado paramétrico permite definir las dimensiones de las piezas mediante relaciones matemáticas y restricciones mecánicas. Para este proyecto, esta herramienta fue indispensable para diseñar el nuevo sistema de extrusión, ya que permitió verificar de forma virtual que el eje del motor de pasos, el engranaje de empuje y la entrada del \textit{heatbreak} estuvieran perfectamente alineados antes de fabricar los componentes reales.
+
+Una vez que el diseño del ensamble es correcto, la geometría se exporta al formato estándar STL. Este formato traduce las superficies sólidas del diseño en una malla compuesta por miles de triángulos interconectados. Como la tarjeta electrónica de la impresora no puede leer este archivo de tres dimensiones directamente, se requiere un software intermedio llamado laminador (o \textit{slicer}), utilizando para este trabajo el programa Ultimaker Cura \cite{gillespie2015}.
+
+El laminador se encarga de rebanar el modelo 3D en capas horizontales delgadas según la altura de capa seleccionada. Al mismo tiempo, el software calcula las trayectorias de movimiento que debe seguir el cabezal, las velocidades de traslado y la cantidad exacta de plástico que se debe inyectar. Finalmente, toda esta información se traduce y se guarda en un archivo de texto plano con instrucciones secuenciales en formato G-Code, listo para ser ejecutado por la máquina.
+
+\end{comment}
+
+
+
+
+% =========================================================================
+% 2.5 PARÁMETROS DE CALIDAD Y PRECISIÓN
+% =========================================================================
+
+\section{Calidad de Impresión y Precisión Dimensional}
+
+La evaluación del desempeño de una impresora FDM no depende únicamente del funcionamiento mecánico de sus componentes, sino también de la calidad dimensional y superficial de las piezas fabricadas. Factores como la estabilidad estructural, el control térmico del hotend y el enfriamiento del material influyen directamente en la precisión geométrica obtenida durante el proceso de impresión.
+
+En materiales termoplásticos como el PLA, la deposición y solidificación sucesiva del polímero generan fenómenos de contracción térmica que producen variaciones dimensionales respecto al modelo CAD original \cite{gibson2021}. Debido a ello, el diseño de componentes funcionales requiere considerar tolerancias mecánicas adecuadas, especialmente en piezas destinadas al montaje de elementos rígidos como rodamientos lineales, motores o sistemas de guiado.
+
+Adicionalmente, las condiciones térmicas y dinámicas del sistema pueden provocar defectos característicos del proceso FDM. Entre los más relevantes para este trabajo se encuentran:
+
+\begin{itemize}
+    \item \textbf{Deformación térmica (\textit{Warping}):} causada por contracciones diferenciales durante el enfriamiento de la pieza.
+    
+    \item \textbf{Hilado (\textit{Stringing}):} generado por un control inadecuado de retracción o exceso de temperatura en el sistema de extrusión\cite{creality_stringing_guide}.
+    
+    \item \textbf{Ondulación superficial (\textit{Ghosting}):} asociada a vibraciones mecánicas y falta de rigidez estructural durante cambios bruscos de dirección.
+\end{itemize}
+
+Estos defectos funcionan como indicadores experimentales del comportamiento térmico y mecánico de la impresora, permitiendo evaluar la efectividad del rediseño estructural y del sistema de extrusión desarrollado en el presente trabajo.
+
+
+\begin{comment}
+\section{Parámetros de Calidad y Precisión Dimensional}
+
+La evaluación del éxito en una modificación estructural o en el rediseño de un sistema de extrusión no se limita al funcionamiento mecánico de los componentes, sino que se mide de forma cuantitativa en la calidad de las piezas manufacturadas. En la tecnología FDM, la fidelidad con la que una impresora replica el modelo CAD original está sujeta a variables térmicas y dinámicas propias del proceso.
+
+\subsection{Resolución geométrica y tolerancias en FDM}
+
+La precisión dimensional en FDM se ve afectada principalmente por fenómenos térmicos. Cuando el polímero es extruido a su temperatura de fusión ($T_m$) y se deposita sobre la superficie, experimenta un proceso de enfriamiento rápido hasta alcanzar la temperatura ambiente. Durante esta transición térmica, el material experimenta una contracción térmica durante el enfriamiento \cite{gibson2021}. 
+
+Físicamente, esto significa que las dimensiones de la pieza final siempre serán ligeramente menores que las especificadas en el diseño CAD original. En el caso del PLA, aunque su tasa de contracción es baja (típicamente entre el 0.2\% y el 0.5\%), esta variación exige que el diseñador considere tolerancias mecánicas de ajuste (holguras de entre 0.1 mm y 0.3 mm) en el modelado paramétrico. Esto es especialmente crítico en piezas funcionales que deben albergar componentes rígidos, tales como los rodamientos lineales o el cuerpo metálico de los motores NEMA 17 del extrusor.
+
+\subsection{Defectos volumétricos comunes}
+
+El comportamiento dinámico del marco estructural y el control del sistema térmico impactan directamente en la aparición de defectos que degradan las propiedades de la pieza. Los tres defectos más comunes relevantes para este proyecto son:
+
+\begin{itemize}
+    \item \textbf{Deformación térmica (\textit{Warping}):} Defecto geométrico causado por la contracción térmica diferencial entre las primeras capas de la pieza y las capas superiores en enfriamiento \cite{gibson2021}. Las tensiones internas acumuladas provocan que las esquinas de la base se desprendan de la cama caliente y se curven hacia arriba, arruinando la planeidad de la pieza.
+    \item \textbf{Hilado (\textit{Stringing}):} Aparición de filamentos delgados, similares a telarañas, en las zonas donde el cabezal de impresión realiza movimientos de traslado sin extruir material. Este defecto ocurre por un control deficiente en la retracción del filamento dentro del \textit{coldend} o por una temperatura excesiva en el \textit{hotend} que hace que el plástico fluya por gravedad (goteo o \textit{oozing}).
+    \item \textbf{Ondulación superficial (\textit{Ghosting} o \textit{Ringing}):} Defecto visual y geométrico que se manifiesta como un patrón de ondas eco en las paredes verticales de la pieza, usualmente cerca de esquinas pronunciadas o perforaciones. Este problema es puramente mecánico y es causado por las vibraciones y la falta de rigidez torsional del marco estructural ante los cambios bruscos de dirección del peso de la cama móvil.
+\end{itemize}
+
+
+Estos defectos no solo afectan la apariencia visual de la pieza final, sino que también funcionan como indicadores experimentales del comportamiento térmico, dinámico y estructural de la impresora durante el proceso de manufactura.
+\end{comment}

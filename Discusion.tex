@@ -1,0 +1,300 @@
+El presente capítulo interpreta los resultados obtenidos durante el desarrollo del proyecto y los contrasta con el estado del arte en manufactura aditiva de código abierto. A diferencia del capítulo de resultados, donde los datos se presentaron de forma descriptiva, aquí se analizan las causas de los comportamientos observados, se evalúa el cumplimiento de los objetivos planteados y se reconocen las limitaciones del trabajo.
+
+\section{Diseño del módulo de extrusión y sistema de enfriamiento}
+\label{sec:discusion_extrusion}
+
+El rediseño del módulo de extrusión logró una reducción significativa en masa y volumen respecto a la configuración original. La masa total disminuyó de \qty{650}{\g} a \qty{493}{\g}, lo que representa una reducción del 24.2\%. Esta disminución tiene implicaciones directas sobre la dinámica del sistema: al reducir la masa del carro del eje \(X\), disminuyen las fuerzas de inercia generadas durante los cambios de dirección. Esto contribuye a una mayor estabilidad dinámica y a una reducción potencial de defectos por vibración, como el \textit{ghosting}.
+
+Otro aspecto relevante del rediseño fue la incorporación de una base estructural de aluminio que separa térmicamente el hotend de las piezas poliméricas. En la primera iteración del diseño, el soporte fabricado en PLA alcanzó temperaturas superiores a su temperatura de transición vítrea (\(T_g\)) debido al calor transferido por el bloque calefactor , deformándose. La sustitución por una base de aluminio resolvió esta incompatibilidad térmica, actuando como disipador y como barrera térmica. Este resultado coincide con lo reportado por \cite{gibson2021}, quien señala que la separación térmica entre la zona caliente y las piezas poliméricas es un requisito crítico en el diseño de módulos de extrusión para FDM.
+
+En cuanto al sistema de enfriamiento, las pruebas demostraron que la base de  aluminio por sí sola redujo la temperatura del disipador de \qty{71}{\celsius} a \qty{41}{\celsius} (una reducción del 42.25\%). La incorporación del ventilador permitió reducir aún más la tempertatura hasta \qty{9999}{\celsius}. Pero la reducción del abanico de temperatura fue mínimo comparado al efecto de la base de aluminio. Esto sugiere que la disipación pasiva proporcionada por la base estructural es el factor dominante en la reducción de temperatura, mientras que el ventilador contribuye de manera secundaria.
+
+Mantener el disipador por debajo de la \(T_g\) del PLA (aproximadamente \qty{60}{\celsius}) es crucial para evitar el fenómeno de \textit{heat creep}, que ocurre cuando el calor se propaga hacia la zona fría y ablanda el filamento prematuramente, causando atascamientos.
+
+Sin embargo, el diseño conserva limitaciones inherentes a su configuración. Al tratarse de un sistema de accionamiento directo (\textit{direct drive}), el motor NEMA 17 se desplaza junto con el hotend sobre el carro del eje \(X\). Si bien esto simplifica el recorrido del filamento y mejora la respuesta de retracción, también añade masa e inercia, lo que limita la velocidad máxima de impresión en comparación con sistemas \textit{Bowden}, donde el motor se fija al chasis. Para aplicaciones académicas y de prototipado, esta limitación es aceptable, ya que la calidad y la facilidad de mantenimiento se priorizan sobre la velocidad. 
+
+\section{Calidad de impresión}
+\label{sec:discusion_calidad}
+
+La evaluación de la calidad de impresión reveló que el sistema es altamente sensible a las condiciones del material. El deterioro repentino en la calidad de las piezas (fragilidad y brillo excesivo) fue diagnosticado correctamente como absorción de humedad por parte del PLA. La vaporización del agua al pasar por el hotend no solo interrumpe el flujo continuo del polímero, sino que afecta sus propiedades mecánicas. Para contrarrestar esto, se implementó un 
+secado del filamento utilizando la cama calefactada a \qty{50}{\celsius} durante 3 horas. Si bien esta solución resultó efectiva para recuperar la calidad de impresión en el corto plazo, representa una medida provisional, ya que su eficiencia es limitada en comparación con un deshumidificador comercial dedicado, el cual permite un control más preciso de la temperatura y la humedad \cite{prusa_overdrying}.
+
+Por otro lado, la prueba de torre de temperatura evidenció que la ventana de impresión óptima para el material utilizado se sitúa en torno a \qty{205}{\celsius}. Las temperaturas más altas (\qty{210}{\celsius} a \qty{220}{\celsius}) produjeron piezas más translúcidas, lo que indica una mejor adhesión interlaminar, pero las temperaturas más bajas (\qty{180}{\celsius} a \qty{190}{\celsius}) mostraron defectos superficiales por fusión incompleta. El ajuste fino en esta temperatura fue clave para reducir defectos como el \textit{stringing} (hilos finos), lo cual coincide con lo reportado por \cite{creality_stringing_guide}, quien señala que la optimización de la retracción es una de las estrategias más efectivas para mitigar este defecto.
+
+Respecto al \textit{warping} (deformación térmica en la base), este no fue un problema significativo. El PLA tiene una baja tasa de contracción en comparación con el ABS, y el uso de una cama calefactada ayudó a mantener la adherencia de la primera capa. Las ligeras deformaciones observadas en piezas de gran base podrían mitigarse en el futuro mediante el uso de adhesivos adicionales (laca o cinta).
+
+El \textit{ghosting} (ondulación por vibraciones) se manifestó levemente a altas velocidades. Aunque la reducción de masa del extrusor ayudó a mitigarlo, la estructura de perfiles de aluminio V-Slot no es tan rígida como un marco monolítico, por lo que las escuadras de refuerzo instaladas fueron fundamentales para mejorar la rigidez torsional del sistema.
+
+\section{Precisión dimensional}
+\label{sec:discusion_precision}
+
+Los errores dimensionales obtenidos (0.2\% en \(X\), 0.3\% en \(Y\) y 0.2\% en \(Z\)) demuestran que el sistema es capaz de fabricar piezas funcionales dentro de los estándares de la impresión 3D de escritorio, los cuales suelen tolerar errores de entre 0.2\% y 0.5\%\cite{gibson2021}.
+
+El error ligeramente mayor en el eje \(Y\) se atribuye a la inercia de la cama calefactada. Al ser un elemento de masa considerable que se desplaza constantemente en ese eje, las fuerzas de inercia pueden generar vibraciones que afectan la precisión del posicionamiento. Este comportamiento es típico de las arquitecturas cartesianas tipo Prusa i3 \cite{cruzdeviana_efectos_2023}. 
+
+Las causas de estos errores dimensionales son múltiples. En primer lugar, la contracción térmica del PLA durante el enfriamiento genera una reducción de volumen que no se compensa automáticamente en el modelo CAD. En segundo lugar, la tensión de las correas de los ejes \(X\) e \(Y\) influye en la precisión del posicionamiento: una tensión insuficiente produce pérdida de pasos, mientras que una tensión excesiva incrementa las cargas sobre los motores y puede deformar los ejes. En tercer lugar, el juego mecánico en las 
+uniones de los perfiles de aluminio contribuye a errores acumulativos. 
+
+Es importante destacar que la calibración de los ejes se realizó mediante pruebas de desplazamiento de 100 mm medidas con una regla graduada, mientras que la medición dimensional de los cubos se realizó con un vernier. Dado que la resolución de la regla permite estimar errores de hasta \qty{0.5}{\mm} (equivalente a un 0.5\% en un recorrido de 100 mm), el método es adecuado y suficiente para los requerimientos de este proyecto. Por lo tanto, los valores de error reportados representan fielmente el desempeño del sistema en condiciones normales de operación.
+
+\section{Evaluación económica}
+\label{sec:discusion_economica}
+
+El análisis económico demuestra la viabilidad del sistema desarrollado. El costo total de fabricación fue de \$4189 MXN, lo que representa un ahorro del 6.9\% respecto a la Creality Ender 3 V3 (\$4500 MXN) y de un 47.6\% respecto a la Bambu Lab A1 (\$8000 MXN). En términos de masa, el equipo (\qty{7.2}{\kg}) es comparable a la Ender 3 V3 (\qty{7.12}{\kg}).
+
+Este bajo costo se logra gracias al uso de hardware y firmware de código abierto (Arduino, RAMPS, Marlin), la fabricación local de componentes poliméricos *(que evita costos de importación)* y la selección de componentes comerciales genéricos. 
+
+Si bien la impresora carece de funciones automatizadas presentes en los equipos comerciales (nivelación automática, sensor de filamento, recuperación de energía, conectividad Wi-Fi), en el contexto académico esta ausencia se convierte en una ventaja didáctica. Obliga al estudiante a interactuar manualmente con el equipo, comprendiendo la relación entre la altura de la boquilla, la adherencia y la calibración. 
+
+Además, la modularidad del diseño y el uso de componentes estándar otorgan una ventaja a largo plazo: la capacidad de autorreparación. A diferencia de las impresoras comerciales con piezas propietarias, cualquier falla en este equipo puede diagnosticarse y corregirse localmente, abaratando el mantenimiento y extendiendo la vida útil de la máquina en un laboratorio con recursos limitados. Esta capacidad de autorreparación parcial es una ventaja directa de la filosofía RepRap \cite{jones2011reprap} y representa un ahorro económico a mediano y largo plazo que no se refleja en el costo inicial.
+
+Finalmente, se concluye que la impresora desarrollada representa una alternativa económicamente viable para instituciones educativas con recursos limitados. Su costo reducido, junto con su capacidad de ser modificada y reparada localmente, la posiciona como una herramienta didáctica adecuada para la enseñanza de manufactura aditiva, control numérico y sistemas embebidos.
+
+\section{Limitaciones y trabajo futuro}
+\label{sec:discusion_limitaciones}
+
+Este trabajo presenta limitaciones que acotan el alcance de sus conclusiones, pero que a su vez abren líneas para mejoras a futuro:
+
+
+\begin{itemize}
+    \item \textbf{Restricción de materiales:} Solo se evaluó el Ácido Poliláctico (PLA) como material de impresión. No se probaron otros polímeros como ABS, PETG, TPU ni materiales compuestos, los cuales poseen requisitos térmicos y mecánicos distintos.
+    
+    \item \textbf{Geometría de la boquilla:} Las pruebas se realizaron exclusivamente con una boquilla de \qty{0.4}{\mm}. No se exploraron los efectos mecánicos ni térmicos derivados del uso de boquillas de mayor diámetro (\qty{0.6}{\mm}, \qty{0.8}{\mm}) o menor diámetro (\qty{0.2}{\mm}).
+    
+    \item \textbf{Parámetros cinemáticos conservadores:} No se estudió la velocidad máxima de impresión ni la aceleración óptima del sistema. Las pruebas experimentales se ejecutaron a una velocidad conservadora de \qty{30}{\mm\per\second} para la tecnología FDM.
+    
+    \item \textbf{Evaluación de vida útil:} No se realizaron pruebas de fatiga o durabilidad a largo plazo, por lo que se desconoce el número de horas de operación continua que el equipo puede soportar antes de requerir mantenimiento preventivo o correctivo.
+    
+    \item \textbf{Análisis de vibración cualitativo:} No se midieron cuantitativamente las vibraciones mecánicas en el marco estructural ni en el carro del extrusor; las observaciones relativas al fenómeno de \textit{ghosting} se mantuvieron en un plano cualitativo.
+\end{itemize}
+
+\subsection*{Limitaciones del diseño}
+\begin{itemize}
+    \item \textbf{Masa del carro $X$:} La configuración de extrusión directa (\textit{direct drive}) añade masa considerable al carro del eje $X$, lo cual limita la velocidad máxima de impresión y favorece la aparición de efectos inerciales.
+    
+    \item \textbf{Calibración manual:} La nivelación de la cama calefactada se realiza de forma manual, lo que demanda un mayor tiempo de calibración y depende de la experiencia del operador.
+    
+    \item \textbf{Sistemas de protección:} No se incorporó un sensor de presencia de filamento ni un sistema de recuperación de impresión ante interrupciones del suministro eléctrico.
+    
+    \item \textbf{Diseño de enfriamiento experimental:} El sistema de enfriamiento de capa, aunque funcional, no fue optimizado mediante simulación de Dinámica de Fluidos Computacional (CFD). Su desarrollo se basó en un proceso iterativo puramente experimental.
+\end{itemize}
+
+\subsection*{Limitaciones metodológicas}
+\begin{itemize}
+    \item \textbf{Instrumentación de calibración:} La calibración de los ejes se realizó con una regla graduada y la medición de piezas con un vernier. Si bien estas herramientas ofrecen una resolución adecuada para el nivel de tolerancia de este proyecto, no poseen la exactitud de instrumentos de laboratorio especializados.
+    
+    \item \textbf{Inspección superficial:} Las pruebas de calidad superficial e inspección visual se evaluaron de manera cualitativa, sin recurrir a instrumentación analítica como microscopía óptica o perfilometría.
+    
+    \item \textbf{Tratamiento estadístico:} No se ejecutó un análisis estadístico formal de repetibilidad ni se calcularon la desviación estándar o el coeficiente de variación de las muestras.
+\end{itemize}
+
+\subsection*{Trabajo futuro}
+A partir de las limitaciones identificadas en el presente proyecto, se proponen las siguientes líneas de investigación y desarrollo futuro:
+\begin{itemize}
+    \item Evaluar el desempeño operativo y térmico del sistema con materiales alternativos (PETG, TPU, ABS), determinando la ventana de parámetros óptimos para cada uno.
+    \item Realizar pruebas de impresión continua (por ejemplo, de 24 a 48 horas) para evaluar la durabilidad de los componentes fabricados en PLA y detectar posibles deformaciones o aflojamiento de uniones mecánicas.
+    \item Implementar un sistema de nivelación automática de la cama mediante sensores de proximidad inductivos o capacitivos para optimizar los tiempos de preparación.
+    \item Incorporar un sensor de presencia de filamento y un módulo de soporte frente a fallas de energía eléctrica para incrementar la autonomía operativa del equipo.
+    \item Optimizar la geometría de las toberas del sistema de enfriamiento de capa mediante simulación CFD para maximizar y uniformar el flujo de aire sobre la zona de deposición.
+    \item Evaluar la factibilidad técnica de migrar a una configuración de extrusión tipo \textit{Bowden} con el fin de reducir la masa en movimiento y aumentar la velocidad de impresión.
+    \item Desarrollar un manual formal de operación, mantenimiento y calibración que facilite la replicación y continuidad del proyecto por parte de la comunidad académica.
+\end{itemize}
+
+
+
+
+
+\begin{comment}
+¿Qué ventajas tuvo?
+
+En comparación con la configuración original, el sistema desarrollado presentó una reducción de sus dimensiones generales. La altura del módulo se redujo de \qty{18}{\cm} a \qty{14}{\cm}, mientras que el ancho y el largo disminuyeron de \qty{12}{\cm} a \qty{10}{\cm} y de \qty{9}{\cm} a \qty{7}{\cm}, respectivamente. Asimismo, la masa total disminuyó de \qty{650}{\g} a \qty{493}{\g}.
+Estos cambios permitieron obtener un módulo de extrusión más compacto y de menor masa respecto a la configuración original. La reducción dimensional resulta relevante debido a su integración con el sistema de movimiento de la impresora, mientras que la disminución de masa reduce la carga asociada al desplazamiento del conjunto de extrusión. La configuración final corresponde a un sistema de accionamiento directo (\textit{direct drive}), en el que el mecanismo de alimentación se encuentra integrado directamente con el hotend.
+
+¿Qué problemas resolvió?
+¿Qué limitaciones conserva?
+
+
+El rediseño del módulo de extrusión logró una reducción significativa en masa y volumen respecto a la configuración original. La masa total disminuyó de 650 g a 493 g, lo que representa una reducción del 24.2%. La altura se redujo de 18 cm a 14 cm, el ancho de 12 cm a 10 cm y el largo de 9 cm a 7 cm. Estas dimensiones implican una disminución del volumen del módulo de aproximadamente [COMPLETAR]%.
+
+La reducción de masa tiene implicaciones directas sobre la dinámica del sistema. En una impresora de arquitectura cartesiana como la Prusa i3, el módulo de extrusión se desplaza a lo largo del eje X sobre un puente vertical. Cuanto mayor sea la masa del carro, mayores serán las fuerzas de inercia generadas durante los cambios de dirección, lo que puede producir vibraciones, pérdida de precisión y defectos superficiales como ghosting. La reducción de 157 g en el módulo desarrollado disminuye la carga inercial sobre el motor del eje X y sobre la estructura, lo que contribuye a una mayor estabilidad dinámica durante la impresión.
+
+Otro aspecto relevante del rediseño fue la incorporación de una base estructural de aluminio que separa térmicamente el hotend de las piezas poliméricas. En la primera iteración, el soporte fabricado en PLA alcanzó temperaturas superiores a su temperatura de transición vítrea (55–60 °C) debido a la transferencia de calor del bloque calefactor y del motor, lo que provocó su deformación progresiva. La sustitución por una base de aluminio resolvió este problema al actuar como disipador y como barrera térmica. Este resultado coincide con lo reportado por [AUTOR], quien señala que la separación térmica entre la zona caliente y las piezas poliméricas es un requisito crítico en el diseño de módulos de extrusión para FDM.
+
+El sistema de enfriamiento de capa desarrollado también mostró mejoras respecto a la configuración original, que carecía por completo de ventilación dirigida hacia el material depositado. La incorporación de un ventilador radial con conducto dirigido permitió reducir la temperatura del disipador del hotend de 71 °C (sin ventilador ni estructura de aluminio) a 47 °C (con ventilador y estructura de aluminio), lo que representa una reducción de 24 °C. Esta disminución es relevante porque mitiga el riesgo de heat creep, fenómeno que ocurre cuando el calor se propaga hacia la zona fría del hotend y ablanda prematuramente el filamento, provocando atascamientos. La mejora en la disipación térmica contribuye directamente a la continuidad de la extrusión y a la estabilidad del proceso.
+
+Sin embargo, el diseño conserva limitaciones inherentes a su configuración. Al tratarse de un sistema de accionamiento directo (direct drive), el motor NEMA 17 se desplaza junto con el hotend sobre el carro del eje X. Si bien esto simplifica el recorrido del filamento y mejora la respuesta de retracción, también añade masa al conjunto móvil, lo que limita la velocidad máxima de impresión en comparación con sistemas Bowden, donde el motor se fija al chasis. Para aplicaciones académicas y de prototipado, esta limitación es aceptable, ya que la calidad y la facilidad de mantenimiento priman sobre la velocidad. No obstante, si se buscara optimizar el sistema para mayores velocidades, sería necesario evaluar una configuración Bowden o un motor de menor masa.
+
+La separación térmica entre el hotend y las piezas poliméricas, junto con la 
+ventilación forzada dirigida al disipador, permitió mantener la temperatura 
+del soporte por debajo de la temperatura de transición vítrea del PLA durante 
+la operación. Esta condición es relevante porque, en la primera iteración del 
+diseño, el soporte fabricado en PLA alcanzó temperaturas superiores a la 
+\(T_g\) del material y se deformó progresivamente.
+
+\section{Calidad de impresión}
+\begin{comment}
+  No repetir:
+
+Se observó stringing.
+
+Sino analizar:
+
+El stringing probablemente estuvo asociado a la temperatura de extrusión y a la retracción configurada. 
+
+
+
+
+La reducción de masa del módulo (de \qty{650}{\g} a \qty{493}{\g}) 
+disminuye la carga inercial sobre el motor del eje \(X\) y sobre la 
+estructura, lo que contribuye a una mayor estabilidad dinámica durante la 
+impresión. Este efecto es particularmente relevante en configuraciones de 
+accionamiento directo, donde el motor y el mecanismo de alimentación se 
+desplazan junto con el hotend.
+
+La calidad de impresión obtenida con el sistema rediseñado se evaluó a través de la presencia de defectos característicos del proceso FDM: stringing, warping y ghosting. Los resultados mostraron que estos defectos se redujeron respecto a las pruebas iniciales, aunque no se eliminaron por completo.
+
+El stringing, definido como la formación de hilos finos entre secciones separadas de la pieza, estuvo presente en las primeras pruebas. Este fenómeno se atribuye a una combinación de factores: temperatura de extrusión elevada, retracción insuficiente y humedad del filamento \cite{creality_stringing_guide}. En el caso del PLA, las guías de fabricantes como Creality indican que temperaturas de impresión superiores a los 200 °C aumentan la fluidez del polímero fundido, favoreciendo la formación de hilos durante los desplazamientos en vacío. Como medida correctiva, se recomienda reducir la temperatura de la boquilla en incrementos de 5 °C y ajustar la distancia de retracción, que para un sistema de accionamiento directo (direct drive) como el desarrollado debe situarse entre 0.8 y 2 mm, con una velocidad de retracción de 25 a 45 mm/s \cite{creality_stringing_guide, creality_retraction_guide}. Tras ajustar la temperatura de impresión a [COMPLETAR] °C y aumentar la distancia de retracción a [COMPLETAR] mm, los hilos se redujeron notablemente. Este resultado coincide con lo reportado por \cite{creality_stringing_guide}, quien señala que la optimización de la retracción es una de las estrategias más efectivas para mitigar el stringing en PLA.
+
+La humedad del filamento también contribuyó a los defectos observados. El filamento utilizado presentaba porosidad y signos de deterioro temporal, lo que sugiere que absorbió humedad del ambiente. Cuando el filamento húmedo pasa por el hotend, el agua se vaporiza y genera burbujas que interrumpen el flujo continuo de material, produciendo superficies irregulares y aumentando la formación de hilos \cite{creality_dryer_guide, bambu_drying_guide}. Las guías de fabricantes como Bambu Lab y Prusa recomiendan secar el PLA a una temperatura de 45 °C durante 6 horas, o alternativamente entre 55 °C durante 8 horas y 65-75 °C durante 12 horas según el método utilizado \cite{bambu_drying_guide, prusa_drying_guide}.
+
+Para verificar esta hipótesis, se realizó una prueba de secado utilizando la cama calefactada a 50 °C durante 3 horas, un método reportado en la literatura para eliminar la humedad absorbida en filamentos de PLA \cite{prusa_drying_guide}. Tras el secado, se observó una mejora notable en la calidad de impresión, con una reducción significativa del stringing y de las superficies irregulares. Este resultado es consistente con lo reportado por \cite{creality_dryer_guide}, quien señala que la eliminación de la humedad del filamento es una de las estrategias más efectivas para mejorar la calidad de impresión, ya que la humedad no solo afecta la apariencia, sino que también reduce la resistencia mecánica de las piezas y provoca una mayor fluidez del polímero fundido. Si bien el método de secado en la cama caliente resultó efectivo, su eficiencia es limitada en comparación con un deshumidificador de filamento dedicado, el cual permite un control más preciso de la temperatura y el tiempo \cite{prusa_overdrying}. No obstante, para un contexto académico con recursos limitados, esta solución representa una alternativa viable y de bajo costo.
+
+El warping, o deformación térmica de la base de la pieza, no fue un problema significativo en las pruebas realizadas. Esto se atribuye a que el PLA tiene una baja tasa de contracción térmica en comparación con otros materiales como el ABS. Además, la cama calefactada se mantuvo a [COMPLETAR] °C durante la impresión, lo que favoreció la adherencia de la primera capa. No obstante, se observó una ligera deformación en piezas de gran área de base, lo que sugiere que la nivelación manual de la cama y la ausencia de un sistema de adhesión adicional (como laca o cinta) podrían mejorarse en trabajos futuros.
+
+El ghosting, u ondulación superficial asociada a vibraciones mecánicas, se manifestó de forma leve en las piezas impresas a velocidades superiores a [COMPLETAR] mm/s. Este defecto está relacionado con la rigidez estructural del marco y con la masa del carro del extrusor. Si bien la reducción de masa del módulo contribuyó a disminuir las vibraciones, la estructura de perfiles de aluminio V-Slot de 20 × 20 mm no es tan rígida como un marco monolítico de placa de acero. Para mitigar este efecto, se incorporaron escuadras de refuerzo en las uniones críticas, lo que mejoró la rigidez torsional del conjunto. Sin embargo, no se realizaron mediciones cuantitativas de vibración, por lo que esta observación es cualitativa y debería verificarse en trabajos futuros con instrumentación adecuada.
+
+En cuanto a las pruebas geométricas estándar (overhang, puentes, stringing y Benchy), los resultados fueron [COMPLETAR: describir objetivamente qué se observó en cada prueba]. El ángulo de overhang máximo soportado fue de [COMPLETAR] grados, lo que se considera [COMPLETAR: aceptable/bueno/excelente] para una impresora FDM de este rango. Los puentes de [COMPLETAR] mm de longitud se imprimieron sin deflexión significativa, lo que indica que el enfriamiento de capa fue suficiente para solidificar el material antes de que la gravedad lo deformara. La prueba de stringing mostró [COMPLETAR: presencia/ausencia] de hilos, y el Benchy presentó [COMPLETAR: describir defectos o ausencia de ellos]. En conjunto, estas pruebas confirman que el sistema es capaz de producir piezas funcionales con calidad aceptable para aplicaciones didácticas y de prototipado.
+\section{Precisión dimensional}
+\begin{comment}
+No decir:
+
+El error fue de 0.10 mm.
+
+Sino:
+
+Ese error es suficientemente bajo para el propósito del prototipo.
+
+La precisión dimensional del sistema se evaluó mediante la impresión de cubos de calibración y la comparación entre las dimensiones programadas en el modelo CAD y las dimensiones medidas en las piezas impresas. Los errores obtenidos fueron de 0.2\% en el eje X, 0.3\% en el eje Y y 0.2\% en el eje Z. Estos valores son comparables a los reportados para impresoras FDM de gama baja, que típicamente presentan errores del 0.2\% al 0.5\%.
+
+El error ligeramente mayor en el eje Y (0.3\%) puede atribuirse a la mayor masa de la cama calefactada, que se desplaza a lo largo de este eje. Las fuerzas de inercia generadas durante los cambios de dirección de la cama producen vibraciones que se transmiten al marco estructural y que pueden afectar la precisión del posicionamiento. Este comportamiento es consistente con lo reportado por [AUTOR], quien señala que en la arquitectura Prusa i3 el eje Y es el más susceptible a errores dimensionales debido a la masa móvil de la cama.
+
+El error en el eje Z (0.2\%) es particularmente relevante porque la altura de capa determina la resolución vertical de la impresión. Un error del 0.2\% en una pieza de 100 mm de altura representa una desviación de 0.2 mm, lo que equivale a una capa completa de 0.2 mm. Esto significa que la pieza podría tener una capa adicional o faltante, lo que afectaría el ensamblaje con otros componentes. No obstante, para aplicaciones didácticas y de prototipado, este error es aceptable y puede compensarse mediante tolerancias de diseño.
+
+Las causas de los errores dimensionales son múltiples. En primer lugar, la contracción térmica del PLA durante el enfriamiento genera una reducción de volumen que no se compensa automáticamente en el modelo CAD. En segundo lugar, la tensión de las correas de los ejes X e Y influye en la precisión del posicionamiento: una tensión insuficiente produce pérdida de pasos, mientras que una tensión excesiva incrementa las cargas sobre los motores y puede deformar los ejes. En tercer lugar, el juego mecánico en las uniones de los perfiles de aluminio contribuye a errores acumulativos. La incorporación de escuadras de refuerzo y de un tensor ajustable para la correa del eje X contribuyó a mitigar estos efectos, pero no los eliminó por completo.
+
+Es importante señalar que la calibración de los pasos por milímetro de cada eje se realizó de manera iterativa, comparando el desplazamiento programado con el desplazamiento real medido con una regla graduada. Si bien este método es suficiente para aplicaciones académicas, no tiene la precisión de instrumentos como un calibrador digital o un reloj comparador. Por lo tanto, los valores de error reportados deben interpretarse como una estimación conservadora de la precisión del sistema.
+
+\section{Evaluacion economica}
+El análisis económico del sistema desarrollado permite evaluar su viabilidad frente a impresoras comerciales de características similares. A diferencia de la sección de resultados, donde únicamente se presentaron los costos y las especificaciones, en esta sección se interpreta el significado de esas diferencias y se discuten sus implicaciones para el contexto académico.
+
+El costo total de fabricación de la impresora custom fue de [COMPLETAR] MXN, mientras que la Creality Ender 3 V3 tiene un precio aproximado de [VERIFICAR] MXN y la Bambu Lab A1 de [VERIFICAR] MXN. Esto representa una diferencia porcentual de [COMPLETAR]\% y [COMPLETAR]\% respectivamente. Es decir, la impresora desarrollada cuesta aproximadamente [COMPLETAR] veces menos que la alternativa comercial más económica y [COMPLETAR] veces menos que la más costosa.
+
+En cuanto a dimensiones y masa, el equipo desarrollado presenta valores 
+comparables con impresoras comerciales de volumen similar. La masa total de 
+\qty{7.2}{\kg} es prácticamente idéntica a la de la Creality Ender 3 V3 
+(\qty{7.12}{\kg}) y ligeramente inferior a la de la Bambu Lab A1 
+(\qty{8.3}{\kg}).
+
+Esta reducción de costo se explica por tres factores principales. Primero, el uso de componentes de código abierto y de fácil adquisición, como la placa RAMPS 1.4, los drivers A4988 y el firmware Marlin, que no requieren licencias ni hardware propietario. Segundo, la reutilización de componentes de la impresora original que se rehabilitó como punto de partida, lo que evitó la compra de motores, fuente de poder y estructura básica. Tercero, la fabricación local de piezas mediante manufactura aditiva, lo que eliminó costos de importación y tiempos de espera asociados a refacciones comerciales.
+
+Sin embargo, la impresora custom carece de funciones automatizadas presentes en los equipos comerciales de referencia. Entre ellas se encuentran la nivelación automática de la cama, el sensor de filamento, la recuperación de energía ante cortes, la pantalla táctil y la conectividad inalámbrica. Estas ausencias implican una mayor intervención manual durante la configuración y operación del equipo. Por ejemplo, la nivelación de la cama debe realizarse manualmente con los tornillos y resortes, lo que requiere mayor tiempo y experiencia por parte del usuario. De igual manera, la ausencia de un sensor de filamento implica que el usuario debe supervisar visualmente el proceso para detectar el agotamiento del material.
+
+No obstante, en el contexto académico estas limitaciones no representan necesariamente una desventaja. Al contrario, la necesidad de intervenir manualmente en la calibración y operación del equipo obliga al estudiante a comprender los principios físicos y de control que subyacen a cada subsistema. La nivelación manual, por ejemplo, permite entender la relación entre la altura de la boquilla, la adherencia de la primera capa y la precisión dimensional. La ausencia de automatización convierte a la impresora en una herramienta didáctica más que en un electrodoméstico.
+
+La principal ventaja económica de la impresora custom no radica únicamente en su bajo costo inicial, sino en su modularidad y facilidad de reparación. Al utilizar perfiles de aluminio estándar, componentes comerciales de fácil adquisición y firmware de código abierto, cualquier falla puede diagnosticarse y corregirse sin depender del fabricante. Esto extiende la vida útil del equipo y reduce los costos de mantenimiento a largo plazo. En contraste, las impresoras comerciales, aunque más automatizadas y con mejor acabado, utilizan arquitecturas parcialmente cerradas y componentes propietarios que limitan las modificaciones y encarecen las refacciones. En un laboratorio universitario con recursos limitados, esta diferencia puede ser determinante para la continuidad de las actividades prácticas.
+
+Otra consideración relevante es el costo de las refacciones. En una impresora comercial, la sustitución de un hotend o de un extrusor puede requerir la compra de un componente propietario con un sobreprecio significativo. En la impresora custom, en cambio, cualquier componente puede sustituirse por una alternativa genérica de bajo costo o, en el caso de las piezas poliméricas, fabricarse nuevamente mediante manufactura aditiva. Esta capacidad de autorreparación parcial es una ventaja directa de la filosofía RepRap y representa un ahorro económico a mediano y largo plazo que no se refleja en el costo inicial.
+
+Finalmente, se concluye que la impresora desarrollada representa una alternativa económicamente viable para instituciones educativas con recursos limitados. Su costo reducido, junto con su capacidad de ser modificada y reparada localmente, la posiciona como una herramienta didáctica adecuada para la enseñanza de manufactura aditiva, control numérico y sistemas embebidos. 
+\section{Comparación con otros trabajos}
+
+Aquí sí puedes decir:
+
+Otros autores reportan...
+
+y comparar:
+
+precisión,
+costo,
+dimensiones,
+velocidad,
+calidad.
+
+
+\section{Limitaciones}
+\begin{comment}
+    
+
+Esta parte muchas tesis la olvidan.
+
+Por ejemplo:
+
+no se evaluaron todos los materiales,
+solo se utilizó PLA,
+las pruebas se realizaron con una boquilla de 0.4 mm,
+no se estudió la velocidad máxima de impresión.
+
+Eso no debilita la tesis; al contrario, demuestra que conoces el alcance de tu trabajo.
+
+
+La Validación de los finales de carrera satisfactoria. Al ser dispositivos simples que tan solo detectan cuando el carro llega a un punto determinado, fue cuestión de comprobar si este se detenía al tener contacto. El comportamiento fue exactamente lo esperado. En el caso particular del Eje Z al estar relacionado con la altura de capa, se ocupaba comprobar el comportamiento del soporte calibrador de altura de capa visto en la figura (). El comportamiento no es tan preciso y podría mejorarse. Pero aun así dota al sistema de la capacidad de tener un comportamiento aceptable y repetible.
+
+
+Este trabajo presenta varias limitaciones que deben considerarse al interpretar los resultados obtenidos.
+
+\subsection*{Limitaciones del alcance experimental}
+\begin{itemize}
+    \item \textbf{Restricción de materiales:} Solo se evaluó el Ácido Poliláctico (PLA) como material de impresión. No se probaron otros polímeros como ABS, PETG, TPU ni materiales compuestos, los cuales poseen requisitos térmicos y mecánicos distintos.
+    
+    \item \textbf{Geometría de la boquilla:} Las pruebas se realizaron exclusivamente con una boquilla de \qty{0.4}{\mm}. No se exploraron los efectos mecánicos ni térmicos derivados del uso de boquillas de mayor diámetro (\qty{0.6}{\mm}, \qty{0.8}{\mm}) o menor diámetro (\qty{0.2}{\mm}).
+    
+    \item \textbf{Parámetros cinemáticos conservadores:} No se estudió la velocidad máxima de impresión ni la aceleración óptima del sistema. Las pruebas experimentales se ejecutaron a una velocidad conservadora de \qty{30}{\mm\per\second} para la tecnología FDM.
+    
+    \item \textbf{Evaluación de vida útil:} No se realizaron pruebas de fatiga o durabilidad a largo plazo, por lo que se desconoce el número de horas de operación continua que el equipo puede soportar antes de requerir mantenimiento preventivo o correctivo.
+    
+    \item \textbf{Análisis de vibración cualitativo:} No se midieron cuantitativamente las vibraciones mecánicas en el marco estructural ni en el carro del extrusor; las observaciones relativas al fenómeno de \textit{ghosting} se mantuvieron en un plano cualitativo.
+\end{itemize}
+
+\subsection*{Limitaciones del diseño}
+\begin{itemize}
+    \item \textbf{Masa del carro $X$:} La configuración de extrusión directa (\textit{direct drive}) añade masa considerable al carro del eje $X$, lo cual limita la velocidad máxima de impresión y favorece la aparición de efectos inerciales.
+    
+    \item \textbf{Calibración manual:} La nivelación de la cama caliente se realiza de forma manual, lo que demanda un mayor tiempo de calibración y depende de la experiencia del operador.
+    
+    \item \textbf{Sistemas de protección:} No se incorporó un sensor de presencia de filamento ni un sistema de recuperación de impresión ante interrupciones del suministro eléctrico.
+    
+    \item \textbf{Diseño de enfriamiento experimental:} El sistema de enfriamiento de capa, aunque funcional, no fue optimizado mediante simulación de Dinámica de Fluidos Computacional (CFD). Su desarrollo se basó en un proceso iterativo puramente experimental.
+\end{itemize}
+
+\subsection*{Limitaciones metodológicas}
+\begin{itemize}
+    \item \textbf{Instrumentación de calibración:} La calibración de los pasos por milímetro de los motores se realizó empleando una regla graduada en lugar de instrumentos de metrología de mayor resolución.
+    
+    \item \textbf{Inspección superficial:} Las pruebas de calidad superficial e inspección visual se evaluaron de manera cualitativa, sin recurrir a instrumentación analítica como microscopía óptica o perfilometría.
+    
+    \item \textbf{Tratamiento estadístico:} No se ejecutó un análisis estadístico formal de repetibilidad ni se calcularon la desviación estándar o el coeficiente de variación de las muestras.
+\end{itemize}
+
+\subsection*{Trabajo futuro}
+A partir de las limitaciones identificadas en el presente proyecto, se proponen las siguientes líneas de investigación y desarrollo futuro:
+\begin{itemize}
+    \item Evaluar el desempeño operativo y térmico del sistema con materiales alternativos (PETG, TPU, ABS), determinando la ventana de parámetros óptimos para cada uno.
+    \item Realizar un análisis modal y de vibraciones empleando acelerómetros mecánicos para cuantificar el efecto de las mejoras estructurales y optimizar la rigidez del chasis.
+    \item Implementar un sistema de nivelación automática de la cama mediante sensores de proximidad inductivos o capacitivos para optimizar los tiempos de preparación.
+    \item Incorporar un sensor de presencia de filamento y un módulo de soporte frente a fallas de energía eléctrica para incrementar la autonomía operativa del equipo.
+    \item Optimizar la geometría de las toberas del sistema de enfriamiento de capa mediante simulación CFD para maximizar y uniformar el flujo de aire sobre la zona de deposición.
+    \item Evaluar la factibilidad técnica de migrar a una configuración de extrusión tipo \textit{Bowden} con el fin de reducir la masa en movimiento y aumentar la velocidad de impresión.
+    \item Ejecutar ensayos estandarizados de fatiga y degradación mecánica para determinar la vida útil de los componentes estructurales fabricados en PLA.
+    \item Desarrollar un manual formal de operación, mantenimiento y calibración que facilite la replicación y continuidad del proyecto por parte de la comunidad académica.
+\end{itemize}
+
+La nueva impresora no solo cumplió con los objetivos de diseño, sino que
+demostró su capacidad para fabricar componentes funcionales destinados a
+otro equipo. En particular, se imprimió un módulo de extrusión más compacto
+para la impresora rehabilitada, lo que redujo su masa móvil y mejoró su
+desempeño. Este resultado evidencia el potencial de autorreplicación de la
+plataforma desarrollada y su pertinencia en entornos educativos, donde la
+capacidad de fabricar refacciones localmente representa una ventaja
+significativa
+
+\end{comment}

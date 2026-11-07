@@ -1,0 +1,33 @@
+\begin{comment}
+Este proyecto se enfoca en diseñar y fabricar un sistema de fabricación aditiva tipo
+FDM con enfoque académico. 
+
+El control numérico computarizado ha estado en constante desarrollo en la industria manufacturera. Actualmente se ha popularizado en equipos FDM como
+lo son las impresoras 3D, que han tenido adopción en el uso domestico. 
+La industria manufacturera se centra en la automatización total y fabricación flexible, y estos equipos FDM han fomentado el crecimiento de esta 
+tecnología en entornos educativos.
+
+El objetivo es proporcionar a estudiantes una herramienta educativa, practica y asequible para poner en practica conocimientos adquiridos en el 
+transcurso de su estadía en la licenciatura. Estos equipos FDM son totalmente modificables por el usuario, lo cual convierte a este proyecto en uno con alta
+oportunidad de mejora constante respecto a equipos comerciales, que son sistemas mas cerrados. Este trabajo consta de objetivos
+específicos como el diseño y armado, las piezas serán impresas con otro equipo FDM siguiendo la filosofía Reprap [1].
+Se usó software libre "Marlin", el cual es un firmware dedicado a equipos de impresión 3D. Se realizó
+calibración de los módulos que conforman el equipo, ajuste final y verificación del comportamiento. Asi también, se diseñó 
+el sistema de enfriamiento del extrusor y fue comparado con uno comercial, tanto en eficiencia de enfriamiento y calidad de impresión final.
+Se obtuvieron resultados superiores en ciertos aspectos a equipos comerciales, tanto en calidad como velocidad de impresión.
+En conclusión, se logró un diseño que tiene mejoras con un equipo comercial, que tiene ventajas como ser completamente modificable y ser un sistema mas abierto,
+lo que permite la integración en un entorno académico.
+\end{comment}
+
+Este proyecto presenta el diseño y fabricación de una impresora 3D basada en tecnología de Modelado por Deposición Fundida (FDM) orientada a aplicaciones académicas y de prototipado. El desarrollo del sistema se fundamentó en una arquitectura de hardware abierto inspirada en la filosofía RepRap, permitiendo la fabricación de múltiples componentes mediante manufactura aditiva y facilitando la modificación mecánica, electrónica y de firmware.
+
+El diseño mecánico fue desarrollado mediante modelado CAD paramétrico en SolidWorks, mientras que el control electrónico se implementó utilizando una plataforma basada en Arduino Mega 2560, electrónica RAMPS 1.4 y firmware Marlin. Como parte del proyecto, se rediseñó el sistema de extrusión, logrando una reducción del 24.2\% en su masa, y se desarrolló un sistema de enfriamiento de capa que permitió reducir la temperatura del disipador del hotend en un 42.25\%. Posteriormente, se realizaron procesos de ensamblaje, calibración y ajuste experimental de parámetros de impresión, incluyendo la sintonización del controlador térmico PID del hotend. 
+
+El desempeño del sistema se evaluó mediante pruebas de precisión dimensional 
+(obteniendo errores inferiores al 0.3\%), pruebas de torre de temperatura para 
+determinar la ventana térmica óptima (205~$^\circ$C), y el diagnóstico 
+experimental de absorción de humedad en el filamento. Finalmente, se concluye 
+que el sistema representa una plataforma funcional, modular y de bajo costo 
+(\$4189 MXN), con alto potencial como herramienta didáctica para la enseñanza 
+de manufactura aditiva, control numérico y sistemas embebidos.
+

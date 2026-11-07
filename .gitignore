@@ -1,0 +1,28 @@
+# Archivos auxiliares de LaTeX
+*.aux
+*.log
+*.toc
+*.out
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex
+*.synctex.gz
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+*.nav
+*.snm
+*.vrb
+
+# Archivos temporales
+*.tmp
+*.bak
+
+# PDF generado por LaTeX
+main.pdf
+
+# Carpeta de compilacion
+/build/

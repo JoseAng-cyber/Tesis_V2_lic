@@ -1,0 +1,31 @@
+\begin{comment}
+Las maquinas comúnmente llamadas CNC no son más que un tipo de control utilizado para que una herramienta haga las operaciones que se le ordenen, puede ser adaptada a una gran variedad de herramientas, viene de las siglas en ingles “Computarized Numerical Control” o “Control Numérico Computarizado”.
+
+
+
+Hacia los años 60 se podría decir que nace el control numérico computarizado gracias al avance y miniaturización de los componentes que utilizaba. Se pueden hablar de tres generaciones de control numérico de acuerdo con el avance que fue teniendo la electrónica: Válvulas electrónicas y relees (1950), Transistores (1960), Circuitos integrados (1965), Microprocesadores (1975) y actualmente se puede hacer con cualquier computadora ya sea de sobremesa o portátil. Ya que esta tan avanzado y estandarizado su uso que existe mucho software, incluso software libre para poder hacer una de estas máquinas casera. 
+
+Las tendencias actuales en la industria manufacturera se centran en la automatización total y la fabricación flexible, utilizando máquinas CNC conectadas a un ordenador central para la programación y ejecución de tareas. El objetivo es eliminar la intervención humana en los procesos de producción, lo que mejora la eficiencia, calidad y reduce costos.
+Al ser actualmente una forma de control muy utilizado en la industria manufacturera existen variados artículos que tocan este tema en particular. Un pequeño repaso a algunos artículos encontrados nos sirve para identificar que podemos hacer para mejorar la máquina que se quiere fabricar.
+
+\end{comment}
+\begin{comment}
+Aunque la impresión 3D parece una tecnología reciente, sus bases se establecieron en la década de 1980. En 1984, Chuck Hull inventó la estereolitografía (SLA), fundando posteriormente 3D Systems. Años después, en 1989, se patentó el modelado por deposición fundida (FDM), tecnología que hoy domina el mercado de bajo costo. Durante décadas, estas ventajas estuvieron reservadas exclusivamente a la gran industria debido a costos que superaban los 30,000 dólares por equipo.
+
+Esta exclusividad terminó en febrero de 2004, cuando Adrian Bowyer publicó el proyecto RepRap en la Universidad de Bath. La esencia de RepRap es la creación de una máquina de bajo costo capaz de replicarse a sí misma bajo la licencia GNU (General Public License). Este movimiento permitió que la tecnología se distribuyera globalmente, derivando en diseños emblemáticos como la Prusa i3, creada por Josef Prusa en 2012.
+
+El presente proyecto se justifica en la necesidad de evolucionar estos diseños abiertos. Tomando como base la arquitectura de la Prusa i3, se ha implementado un rediseño del módulo de extrusión y el sistema de enfriamiento. Esta modificación busca no solo mantener la filosofía de bajo costo y reparabilidad del proyecto RepRap, sino también optimizar la calidad de impresión y la estabilidad térmica, adaptando el equipo a las exigencias del entorno académico actual.
+\end{comment}
+
+
+
+A pesar de su reciente popularización, las bases de la impresión 3D se establecieron durante la década de 1980 \cite{gibson2021,salazar2024}. En 1984, Chuck Hull desarrolló la estereolitografía (SLA), fundando posteriormente la empresa 3D Systems \cite{gibson2021}. Años más tarde, en 1989, se patentó el modelado por deposición fundida (FDM), tecnología que actualmente constituye una de las principales arquitecturas de impresión 3D de escritorio de bajo costo \cite{salazar2024}. Durante varios años, estas tecnologías permanecieron restringidas principalmente al sector industrial debido al elevado costo de los equipos y materiales especializados.
+
+Esta limitación comenzó a reducirse en febrero de 2004, cuando Adrian Bowyer presentó el proyecto RepRap en la Universidad de Bath \cite{bowyer2004reprap}. La esencia de este proyecto consiste en desarrollar una impresora 3D de bajo costo capaz de fabricar parte de sus propios componentes, distribuyendo sus diseños y firmware bajo licencias abiertas. Este movimiento impulsó la expansión global de la manufactura aditiva de código abierto, dando origen a arquitecturas ampliamente adoptadas como la Prusa i3, desarrollada por Josef Prusa en 2012 \cite{prusa2012}.
+
+Este recorrido histórico es relevante para el presente proyecto porque evidencia que la accesibilidad de la manufactura aditiva ha dependido históricamente de la apertura de sus diseños y de la capacidad de los usuarios para modificar y mejorar los sistemas existentes. Bajo esa misma filosofía, el presente trabajo toma como base la configuración mecánica cartesiana de la Prusa i3 y la adapta a las condiciones y criterios específicos del contexto académico en que fue desarrollado, incluyendo el rediseño del módulo de extrusión y del sistema de enfriamiento de capa.
+
+En la actualidad, el ecosistema de hardware abierto derivado del proyecto RepRap continúa evolucionando. Arquitecturas como la Prusa MK4 han incorporado sistemas de extrusión directa, sensores de nivelación automática y marcos de aluminio extruido como respuesta a las limitaciones dinámicas y térmicas identificadas en generaciones anteriores \cite{prusaMK4}. Paralelamente, impresoras comerciales de gama media como la Bambu Lab A1 \cite{bambu_a1} o la Creality Ender 3 V3 \cite{creality_ender3v3} han popularizado sistemas de enfriamiento de capa con ventilación radial de múltiples salidas, mejorando la calidad en voladizos y puentes. Sin embargo, estos equipos mantienen arquitecturas parcial o totalmente cerradas, limitando su aplicabilidad como plataformas de experimentación académica. El presente proyecto se inserta en esta tendencia de evolución abierta, adoptando soluciones de diseño similares y adaptándolas a las condiciones y recursos de un entorno universitario.
+
+Esta adaptación mantiene la filosofía de bajo costo, modularidad y reparabilidad propuesta por el proyecto RepRap, además de optimizar el desempeño del sistema y fortalecer su aplicación como herramienta didáctica para el aprendizaje de manufactura aditiva, control numérico computarizado y diseño mecánico.
+

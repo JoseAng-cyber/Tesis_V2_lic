@@ -1,0 +1,530 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{gibson2021}{book}{}{}
+      \name{author}{4}{}{%
+        {{hash=a9e4731121cfd89ba3bd5b9c190daa5b}{%
+           family={Gibson},
+           familyi={G\bibinitperiod},
+           given={Ian},
+           giveni={I\bibinitperiod}}}%
+        {{hash=9cedb9c453280858d6819d02e2aac5a0}{%
+           family={Rosen},
+           familyi={R\bibinitperiod},
+           given={David},
+           giveni={D\bibinitperiod}}}%
+        {{hash=7e206a35e7f7da4edc47d5b929e37137}{%
+           family={Stucker},
+           familyi={S\bibinitperiod},
+           given={Brent},
+           giveni={B\bibinitperiod}}}%
+        {{hash=236014bc744476b44620a07832c0355e}{%
+           family={Khorasani},
+           familyi={K\bibinitperiod},
+           given={Mahdi},
+           giveni={M\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {Springer}%
+      }
+      \strng{namehash}{eb4b43b02ae06cccfc07cdceae6e7c25}
+      \strng{fullhash}{197742be9bf2e05057eef4cbd10aebb9}
+      \strng{fullhashraw}{197742be9bf2e05057eef4cbd10aebb9}
+      \strng{bibnamehash}{197742be9bf2e05057eef4cbd10aebb9}
+      \strng{authorbibnamehash}{197742be9bf2e05057eef4cbd10aebb9}
+      \strng{authornamehash}{eb4b43b02ae06cccfc07cdceae6e7c25}
+      \strng{authorfullhash}{197742be9bf2e05057eef4cbd10aebb9}
+      \strng{authorfullhashraw}{197742be9bf2e05057eef4cbd10aebb9}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{3rd}
+      \field{title}{Additive Manufacturing Technologies}
+      \field{year}{2021}
+    \endentry
+    \entry{salazar2024}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=6b893da40a97d517ce7109824115903d}{%
+           family={Guilcamaigua},
+           familyi={G\bibinitperiod},
+           given={Maxwell\bibnamedelimb Arbey\bibnamedelima Salazar},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim S\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Editorial EXCED}%
+      }
+      \strng{namehash}{6b893da40a97d517ce7109824115903d}
+      \strng{fullhash}{6b893da40a97d517ce7109824115903d}
+      \strng{fullhashraw}{6b893da40a97d517ce7109824115903d}
+      \strng{bibnamehash}{6b893da40a97d517ce7109824115903d}
+      \strng{authorbibnamehash}{6b893da40a97d517ce7109824115903d}
+      \strng{authornamehash}{6b893da40a97d517ce7109824115903d}
+      \strng{authorfullhash}{6b893da40a97d517ce7109824115903d}
+      \strng{authorfullhashraw}{6b893da40a97d517ce7109824115903d}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-9942-7189-5-2}
+      \field{title}{Impresión 3D: desde el diseño hasta la realidad}
+      \field{year}{2024}
+    \endentry
+    \entry{bowyer2004reprap}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=e9c7e3fb70451530412bef30ab5c4cd5}{%
+           family={Bowyer},
+           familyi={B\bibinitperiod},
+           given={Adrian},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{e9c7e3fb70451530412bef30ab5c4cd5}
+      \strng{fullhash}{e9c7e3fb70451530412bef30ab5c4cd5}
+      \strng{fullhashraw}{e9c7e3fb70451530412bef30ab5c4cd5}
+      \strng{bibnamehash}{e9c7e3fb70451530412bef30ab5c4cd5}
+      \strng{authorbibnamehash}{e9c7e3fb70451530412bef30ab5c4cd5}
+      \strng{authornamehash}{e9c7e3fb70451530412bef30ab5c4cd5}
+      \strng{authorfullhash}{e9c7e3fb70451530412bef30ab5c4cd5}
+      \strng{authorfullhashraw}{e9c7e3fb70451530412bef30ab5c4cd5}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2026-05-12}
+      \field{title}{RepRap Project}
+      \field{year}{2004}
+      \verb{urlraw}
+      \verb https://reprap.org/
+      \endverb
+      \verb{url}
+      \verb https://reprap.org/
+      \endverb
+    \endentry
+    \entry{prusa2012}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=b440c4ebb7266ee19f22de1de63b6a27}{%
+           family={Prusa},
+           familyi={P\bibinitperiod},
+           given={Josef},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{b440c4ebb7266ee19f22de1de63b6a27}
+      \strng{fullhash}{b440c4ebb7266ee19f22de1de63b6a27}
+      \strng{fullhashraw}{b440c4ebb7266ee19f22de1de63b6a27}
+      \strng{bibnamehash}{b440c4ebb7266ee19f22de1de63b6a27}
+      \strng{authorbibnamehash}{b440c4ebb7266ee19f22de1de63b6a27}
+      \strng{authornamehash}{b440c4ebb7266ee19f22de1de63b6a27}
+      \strng{authorfullhash}{b440c4ebb7266ee19f22de1de63b6a27}
+      \strng{authorfullhashraw}{b440c4ebb7266ee19f22de1de63b6a27}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Consultado el 12 de mayo de 2026}
+      \field{title}{Prusa i3}
+      \field{year}{2012}
+      \verb{urlraw}
+      \verb https://www.prusa3d.com/
+      \endverb
+      \verb{url}
+      \verb https://www.prusa3d.com/
+      \endverb
+    \endentry
+    \entry{prusaMK4}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=8427008c4d15f8e6252d40e242b7210f}{%
+           family={{Prusa Research}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{8427008c4d15f8e6252d40e242b7210f}
+      \strng{fullhash}{8427008c4d15f8e6252d40e242b7210f}
+      \strng{fullhashraw}{8427008c4d15f8e6252d40e242b7210f}
+      \strng{bibnamehash}{8427008c4d15f8e6252d40e242b7210f}
+      \strng{authorbibnamehash}{8427008c4d15f8e6252d40e242b7210f}
+      \strng{authornamehash}{8427008c4d15f8e6252d40e242b7210f}
+      \strng{authorfullhash}{8427008c4d15f8e6252d40e242b7210f}
+      \strng{authorfullhashraw}{8427008c4d15f8e6252d40e242b7210f}
+      \field{sortinit}{6}
+      \field{sortinithash}{b33bc299efb3c36abec520a4c896a66d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Consultado: junio 2025}
+      \field{title}{Original Prusa MK4 --- Technical Documentation}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://www.prusa3d.com/product/original-prusa-mk4-kit/
+      \endverb
+      \verb{url}
+      \verb https://www.prusa3d.com/product/original-prusa-mk4-kit/
+      \endverb
+    \endentry
+    \entry{ISO52900}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=7058e4bd76f877c52b621c942b30613c}{%
+           family={{International Organization for Standardization}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \strng{namehash}{7058e4bd76f877c52b621c942b30613c}
+      \strng{fullhash}{7058e4bd76f877c52b621c942b30613c}
+      \strng{fullhashraw}{7058e4bd76f877c52b621c942b30613c}
+      \strng{bibnamehash}{7058e4bd76f877c52b621c942b30613c}
+      \strng{authorbibnamehash}{7058e4bd76f877c52b621c942b30613c}
+      \strng{authornamehash}{7058e4bd76f877c52b621c942b30613c}
+      \strng{authorfullhash}{7058e4bd76f877c52b621c942b30613c}
+      \strng{authorfullhashraw}{7058e4bd76f877c52b621c942b30613c}
+      \field{sortinit}{7}
+      \field{sortinithash}{108d0be1b1bee9773a1173443802c0a3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{ISO/ASTM 52900:2021 Additive manufacturing — General principles — Fundamentals and vocabulary}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://www.iso.org/standard/74514.html
+      \endverb
+      \verb{url}
+      \verb https://www.iso.org/standard/74514.html
+      \endverb
+    \endentry
+    \entry{jones2011reprap}{article}{}{}
+      \name{author}{7}{}{%
+        {{hash=61b89d9c207002a2a2f71218f639960e}{%
+           family={Jones},
+           familyi={J\bibinitperiod},
+           given={Rhys},
+           giveni={R\bibinitperiod}}}%
+        {{hash=576cd8463c85a825511cfb2c39d1ba97}{%
+           family={Haufe},
+           familyi={H\bibinitperiod},
+           given={Patrick},
+           giveni={P\bibinitperiod}}}%
+        {{hash=6852c375d3e03fd2320aec1e5d33b488}{%
+           family={Sells},
+           familyi={S\bibinitperiod},
+           given={Edward},
+           giveni={E\bibinitperiod}}}%
+        {{hash=20212299c9d08e3937c954414373b037}{%
+           family={Iravani},
+           familyi={I\bibinitperiod},
+           given={Pejman},
+           giveni={P\bibinitperiod}}}%
+        {{hash=46ba112b36babc5f08546301aac5294d}{%
+           family={Olliver},
+           familyi={O\bibinitperiod},
+           given={Vik},
+           giveni={V\bibinitperiod}}}%
+        {{hash=37065c09972c0f0584b789e2210f07b9}{%
+           family={Palmer},
+           familyi={P\bibinitperiod},
+           given={Chris},
+           giveni={C\bibinitperiod}}}%
+        {{hash=e9c7e3fb70451530412bef30ab5c4cd5}{%
+           family={Bowyer},
+           familyi={B\bibinitperiod},
+           given={Adrian},
+           giveni={A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Cambridge University Press}%
+      }
+      \strng{namehash}{08290d00d6b1f4c048fac76d4526ebc5}
+      \strng{fullhash}{a4b1116ad53ddbc949976aa45626f506}
+      \strng{fullhashraw}{a4b1116ad53ddbc949976aa45626f506}
+      \strng{bibnamehash}{08290d00d6b1f4c048fac76d4526ebc5}
+      \strng{authorbibnamehash}{08290d00d6b1f4c048fac76d4526ebc5}
+      \strng{authornamehash}{08290d00d6b1f4c048fac76d4526ebc5}
+      \strng{authorfullhash}{a4b1116ad53ddbc949976aa45626f506}
+      \strng{authorfullhashraw}{a4b1116ad53ddbc949976aa45626f506}
+      \field{sortinit}{8}
+      \field{sortinithash}{a231b008ebf0ecbe0b4d96dcc159445f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Robotica}
+      \field{number}{1}
+      \field{title}{RepRap - the replicating rapid prototyper}
+      \field{volume}{29}
+      \field{year}{2011}
+      \field{pages}{177\bibrangedash 191}
+      \range{pages}{15}
+    \endentry
+    \entry{callister2020}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=de98d4fe0566e26d10e550cc37f89128}{%
+           family={Callister},
+           familyi={C\bibinitperiod},
+           given={William\bibnamedelima D.},
+           giveni={W\bibinitperiod\bibinitdelim D\bibinitperiod}}}%
+        {{hash=f2f399342efa41befbf57e862686fb39}{%
+           family={Rethwisch},
+           familyi={R\bibinitperiod},
+           given={David\bibnamedelima G.},
+           giveni={D\bibinitperiod\bibinitdelim G\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {New York}%
+      }
+      \list{publisher}{1}{%
+        {John Wiley \& Sons}%
+      }
+      \strng{namehash}{a30b295a25393c822a105f2d7f9b0bbe}
+      \strng{fullhash}{a30b295a25393c822a105f2d7f9b0bbe}
+      \strng{fullhashraw}{a30b295a25393c822a105f2d7f9b0bbe}
+      \strng{bibnamehash}{a30b295a25393c822a105f2d7f9b0bbe}
+      \strng{authorbibnamehash}{a30b295a25393c822a105f2d7f9b0bbe}
+      \strng{authornamehash}{a30b295a25393c822a105f2d7f9b0bbe}
+      \strng{authorfullhash}{a30b295a25393c822a105f2d7f9b0bbe}
+      \strng{authorfullhashraw}{a30b295a25393c822a105f2d7f9b0bbe}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{10th}
+      \field{title}{Materials Science and Engineering: An Introduction}
+      \field{year}{2020}
+    \endentry
+    \entry{chanda2006}{book}{}{}
+      \name{author}{2}{}{%
+        {{hash=59f817bc51709069ca5e8458e45d1bba}{%
+           family={Chanda},
+           familyi={C\bibinitperiod},
+           given={Manas},
+           giveni={M\bibinitperiod}}}%
+        {{hash=f24e415c5d1b83b1b192e54e7bf6de08}{%
+           family={Roy},
+           familyi={R\bibinitperiod},
+           given={Salil\bibnamedelima K.},
+           giveni={S\bibinitperiod\bibinitdelim K\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Boca Raton}%
+      }
+      \list{publisher}{1}{%
+        {CRC Press}%
+      }
+      \strng{namehash}{cfa0dccf3616531f8808b6520ee45bde}
+      \strng{fullhash}{cfa0dccf3616531f8808b6520ee45bde}
+      \strng{fullhashraw}{cfa0dccf3616531f8808b6520ee45bde}
+      \strng{bibnamehash}{cfa0dccf3616531f8808b6520ee45bde}
+      \strng{authorbibnamehash}{cfa0dccf3616531f8808b6520ee45bde}
+      \strng{authornamehash}{cfa0dccf3616531f8808b6520ee45bde}
+      \strng{authorfullhash}{cfa0dccf3616531f8808b6520ee45bde}
+      \strng{authorfullhashraw}{cfa0dccf3616531f8808b6520ee45bde}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{4th}
+      \field{title}{Plastics Technology Handbook}
+      \field{year}{2006}
+    \endentry
+    \entry{groover2015}{book}{}{}
+      \name{author}{1}{}{%
+        {{hash=0da293604535d9ff67a5487df981f6f1}{%
+           family={Groover},
+           familyi={G\bibinitperiod},
+           given={Mikell\bibnamedelima P.},
+           giveni={M\bibinitperiod\bibinitdelim P\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {Boston}%
+      }
+      \list{publisher}{1}{%
+        {Pearson}%
+      }
+      \strng{namehash}{0da293604535d9ff67a5487df981f6f1}
+      \strng{fullhash}{0da293604535d9ff67a5487df981f6f1}
+      \strng{fullhashraw}{0da293604535d9ff67a5487df981f6f1}
+      \strng{bibnamehash}{0da293604535d9ff67a5487df981f6f1}
+      \strng{authorbibnamehash}{0da293604535d9ff67a5487df981f6f1}
+      \strng{authornamehash}{0da293604535d9ff67a5487df981f6f1}
+      \strng{authorfullhash}{0da293604535d9ff67a5487df981f6f1}
+      \strng{authorfullhashraw}{0da293604535d9ff67a5487df981f6f1}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{4th}
+      \field{title}{Automation, Production Systems, and Computer-Integrated Manufacturing}
+      \field{year}{2015}
+    \endentry
+    \entry{stevenson2015}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=8a28b5d29104a39fc2ff8e9429d0ad12}{%
+           family={Stevenson},
+           familyi={S\bibinitperiod},
+           given={Kerry},
+           giveni={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{8a28b5d29104a39fc2ff8e9429d0ad12}
+      \strng{fullhash}{8a28b5d29104a39fc2ff8e9429d0ad12}
+      \strng{fullhashraw}{8a28b5d29104a39fc2ff8e9429d0ad12}
+      \strng{bibnamehash}{8a28b5d29104a39fc2ff8e9429d0ad12}
+      \strng{authorbibnamehash}{8a28b5d29104a39fc2ff8e9429d0ad12}
+      \strng{authornamehash}{8a28b5d29104a39fc2ff8e9429d0ad12}
+      \strng{authorfullhash}{8a28b5d29104a39fc2ff8e9429d0ad12}
+      \strng{authorfullhashraw}{8a28b5d29104a39fc2ff8e9429d0ad12}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Fabbaloo}
+      \field{note}{Consultado: 2026}
+      \field{title}{A Curious Thing About 3.00 vs 1.75mm 3D Printer Filament}
+      \field{year}{2015}
+      \verb{urlraw}
+      \verb https://www.fabbaloo.com/2015/07/a-curious-thing-about-300-vs-175mm-3d-printer-filament
+      \endverb
+      \verb{url}
+      \verb https://www.fabbaloo.com/2015/07/a-curious-thing-about-300-vs-175mm-3d-printer-filament
+      \endverb
+    \endentry
+    \entry{hackaday2015}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=684dc0186c249637dc4c11ed31afafb0}{%
+           family={{Hackaday}},
+           familyi={H\bibinitperiod}}}%
+      }
+      \strng{namehash}{684dc0186c249637dc4c11ed31afafb0}
+      \strng{fullhash}{684dc0186c249637dc4c11ed31afafb0}
+      \strng{fullhashraw}{684dc0186c249637dc4c11ed31afafb0}
+      \strng{bibnamehash}{684dc0186c249637dc4c11ed31afafb0}
+      \strng{authorbibnamehash}{684dc0186c249637dc4c11ed31afafb0}
+      \strng{authornamehash}{684dc0186c249637dc4c11ed31afafb0}
+      \strng{authorfullhash}{684dc0186c249637dc4c11ed31afafb0}
+      \strng{authorfullhashraw}{684dc0186c249637dc4c11ed31afafb0}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{Hackaday}
+      \field{note}{Consultado: 2026}
+      \field{title}{3D Printing Has Evolved Two Filament Standards}
+      \field{year}{2015}
+      \verb{urlraw}
+      \verb https://hackaday.com/2015/09/29/3d-printing-has-evolved-two-filament-standards/
+      \endverb
+      \verb{url}
+      \verb https://hackaday.com/2015/09/29/3d-printing-has-evolved-two-filament-standards/
+      \endverb
+    \endentry
+    \entry{placeholder_proyecto_open_source}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=4f15184873b982eedc99d0f99ea9e1ba}{%
+           family={{AUTOR O COMUNIDAD}},
+           familyi={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{4f15184873b982eedc99d0f99ea9e1ba}
+      \strng{fullhash}{4f15184873b982eedc99d0f99ea9e1ba}
+      \strng{fullhashraw}{4f15184873b982eedc99d0f99ea9e1ba}
+      \strng{bibnamehash}{4f15184873b982eedc99d0f99ea9e1ba}
+      \strng{authorbibnamehash}{4f15184873b982eedc99d0f99ea9e1ba}
+      \strng{authornamehash}{4f15184873b982eedc99d0f99ea9e1ba}
+      \strng{authorfullhash}{4f15184873b982eedc99d0f99ea9e1ba}
+      \strng{authorfullhashraw}{4f15184873b982eedc99d0f99ea9e1ba}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{URL_DEL_PROYECTO}}
+      \field{note}{Consultado: MES AÑO}
+      \field{title}{TÍTULO DEL PROYECTO}
+      \field{year}{AÑO}
+    \endentry
+    \entry{marlinfw}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=e511be8270c16908dd42c640fa2d0c0f}{%
+           family={{Marlin Firmware}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{e511be8270c16908dd42c640fa2d0c0f}
+      \strng{fullhash}{e511be8270c16908dd42c640fa2d0c0f}
+      \strng{fullhashraw}{e511be8270c16908dd42c640fa2d0c0f}
+      \strng{bibnamehash}{e511be8270c16908dd42c640fa2d0c0f}
+      \strng{authorbibnamehash}{e511be8270c16908dd42c640fa2d0c0f}
+      \strng{authornamehash}{e511be8270c16908dd42c640fa2d0c0f}
+      \strng{authorfullhash}{e511be8270c16908dd42c640fa2d0c0f}
+      \strng{authorfullhashraw}{e511be8270c16908dd42c640fa2d0c0f}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accedido en mayo de 2026}
+      \field{title}{Marlin Firmware Documentation}
+      \field{year}{2026}
+      \verb{urlraw}
+      \verb https://marlinfw.org
+      \endverb
+      \verb{url}
+      \verb https://marlinfw.org
+      \endverb
+    \endentry
+    \entry{creality_ender3v3}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=fca5a00ed9c383b744c199d08fa5fa59}{%
+           family={{Creality}},
+           familyi={C\bibinitperiod}}}%
+      }
+      \strng{namehash}{fca5a00ed9c383b744c199d08fa5fa59}
+      \strng{fullhash}{fca5a00ed9c383b744c199d08fa5fa59}
+      \strng{fullhashraw}{fca5a00ed9c383b744c199d08fa5fa59}
+      \strng{bibnamehash}{fca5a00ed9c383b744c199d08fa5fa59}
+      \strng{authorbibnamehash}{fca5a00ed9c383b744c199d08fa5fa59}
+      \strng{authornamehash}{fca5a00ed9c383b744c199d08fa5fa59}
+      \strng{authorfullhash}{fca5a00ed9c383b744c199d08fa5fa59}
+      \strng{authorfullhashraw}{fca5a00ed9c383b744c199d08fa5fa59}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://www.creality.com/products/creality-ender-3-v3}}
+      \field{note}{Consultado: 2026}
+      \field{title}{Ender-3 V3}
+      \field{year}{2026}
+    \endentry
+    \entry{bambu_a1}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=f471deb2fd4dd91c54f0fbcbf0d75442}{%
+           family={{Bambu Lab}},
+           familyi={B\bibinitperiod}}}%
+      }
+      \strng{namehash}{f471deb2fd4dd91c54f0fbcbf0d75442}
+      \strng{fullhash}{f471deb2fd4dd91c54f0fbcbf0d75442}
+      \strng{fullhashraw}{f471deb2fd4dd91c54f0fbcbf0d75442}
+      \strng{bibnamehash}{f471deb2fd4dd91c54f0fbcbf0d75442}
+      \strng{authorbibnamehash}{f471deb2fd4dd91c54f0fbcbf0d75442}
+      \strng{authornamehash}{f471deb2fd4dd91c54f0fbcbf0d75442}
+      \strng{authorfullhash}{f471deb2fd4dd91c54f0fbcbf0d75442}
+      \strng{authorfullhashraw}{f471deb2fd4dd91c54f0fbcbf0d75442}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://bambulab.com/en/a1}}
+      \field{note}{Consultado: 2026}
+      \field{title}{Bambu Lab A1}
+      \field{year}{2026}
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

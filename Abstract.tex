@@ -1,0 +1,35 @@
+\begin{comment}
+This project focuses on the design and fabrication of an FDM (Fused Deposition Modeling) additive manufacturing system with an academic approach.
+
+Computer numerical control (CNC) has undergone continuous development in the manufacturing industry and has recently become widespread in FDM equipment such as 3D printers, which have seen adoption in domestic environments. The manufacturing industry is increasingly focused on full automation and flexible manufacturing, and these FDM systems have contributed to the growth of this technology in educational settings.
+
+The objective of this work is to provide students with an educational, practical, and affordable tool to apply the knowledge acquired throughout their undergraduate studies. These FDM systems are fully modifiable by the user, which makes this project one with a high potential for continuous improvement compared to commercial equipment, which typically consists of more closed systems. This work includes specific objectives such as the design and assembly of the system, with components manufactured using another FDM system following the RepRap philosophy [1].
+
+Open-source software, specifically the Marlin firmware, was used for system control. Calibration of the system modules, final adjustments, and performance verification were carried out. Additionally, a custom extruder cooling system was designed and compared with a commercial counterpart in terms of cooling efficiency and final print quality.
+
+The results obtained were superior in certain aspects compared to commercial equipment, particularly in print quality and printing speed. In conclusion, the developed system demonstrates improvements over commercial alternatives and offers advantages such as full modifiability and an open architecture, facilitating its integration into academic environments.
+\end{comment}
+
+This project presents the design and fabrication of a 3D printer based on 
+Fused Deposition Modeling (FDM) technology oriented towards academic and 
+prototyping applications. The system's development was based on an open-source 
+hardware architecture inspired by the RepRap philosophy, allowing the 
+manufacturing of multiple components through additive manufacturing and 
+facilitating mechanical, electronic, and firmware modifications.
+
+The mechanical design was developed using parametric CAD modeling in 
+SolidWorks, while the electronic control was implemented using a platform 
+based on an Arduino Mega 2560, RAMPS 1.4 electronics, and Marlin firmware. 
+As part of the project, the extrusion system was redesigned, achieving a 
+24.2\% reduction in its mass, and a layer cooling system was developed that 
+reduced the hotend heatsink temperature by 42.25\%. Subsequently, assembly, 
+calibration, and experimental tuning of printing parameters were carried out, 
+including the tuning of the hotend's PID thermal controller.
+
+System performance was evaluated through dimensional accuracy tests 
+(obtaining errors below 0.3\%), temperature tower tests to determine the 
+optimal thermal window (205~$^\circ$C), and the experimental diagnosis of 
+moisture absorption in the filament. Finally, it is concluded that the system 
+represents a functional, modular, and low-cost platform (\$4189 MXN) with 
+high potential as an educational tool for teaching additive manufacturing, 
+computer numerical control (CNC), and embedded systems.
