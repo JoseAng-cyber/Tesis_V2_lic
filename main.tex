@@ -63,6 +63,7 @@ right=2.5cm
     filecolor=magenta,      
     urlcolor=cyan,
     pdftitle={Tesis - Tu Nombre},
+    citecolor=cyan,
 }
 
 
@@ -79,25 +80,27 @@ right=2.5cm
 \newpage
 
 \restoregeometry
+\pagenumbering{roman}
 
 \chapter*{Resumen}
 \input{Resumen.tex}
 \addcontentsline{toc}{chapter}{Resumen} 
 
-
+\begin{comment}
 \chapter*{Abstract}
 \input{Abstract.tex}
 \addcontentsline{toc}{chapter}{Abstract} 
+\end{comment}
+
 
 \tableofcontents
 \onehalfspacing
 
 \listoffigures
 \listoftables
-
+ \newpage 
 \section*{Lista de Abreviaturas}
-\addcontentsline{toc}{section}{Lista de Abreviaturas}
-
+\addcontentsline{toc}{chapter}{Lista de abreviaturas} 
 \begin{description}[font=\bfseries]
     \item[ABS:] Acrilonitrilo Butadieno Estireno
     \item[AM:] Additive Manufacturing (Manufactura Aditiva)
@@ -129,24 +132,12 @@ right=2.5cm
 
 
 \chapter{Introducción}
+\pagenumbering{arabic}
 \input{Introduccion.tex}
 
 
-\chapter{Planteamiento del problema}
+\chapter{Planteamiento del problema y fundamentos}
  \input{Planteamiento del problema.tex}
-
-
-\chapter{Antecedentes y justificación}
-\input{Antecedentes_y_justificacion.tex}
-
-
-\chapter{Objetivos y metas}
-\input{Objetivos_y_metas.tex}
-
-
-\chapter{Marco Teórico}
-\input{Marco_teorico.tex}
-
 
 
 \chapter{Metodología}
@@ -158,11 +149,8 @@ right=2.5cm
 \chapter{Resultados}
 \input{Resultados.tex}
 
-\chapter{Discusión}
+\chapter{Discusión y conclusiones}
 \input{Discusion.tex}
-
-\chapter{Conclusiones}
-\input{Conclusiones.tex}
 
 \chapter{Referencias bibliográficas}
 \printbibliography[heading=none] 
