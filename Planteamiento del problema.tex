@@ -1,7 +1,7 @@
 \section{Planteamiento del problema}
-La manufactura aditiva comprende procesos de fabricación en los que se construyen objetos tridimensionales mediante la adición sucesiva de material. Entre ellos se encuentra la fabricación mediante filamento fundido, conocida comúnmente como Modelado por Deposición Fundida (FDM, Fused Deposition Modeling). Esta tecnología se emplea en actividades de prototipado y formación técnica, y puede implementarse mediante equipos de arquitectura abierta [1].
+La manufactura aditiva comprende procesos de fabricación en los que se construyen objetos tridimensionales mediante la adición sucesiva de material. Entre ellos se encuentra la fabricación mediante filamento fundido, conocida comúnmente como Modelado por Deposición Fundida (FDM, Fused Deposition Modeling). Esta tecnología se emplea en actividades de prototipado y formación técnica, y puede implementarse mediante equipos de arquitectura abierta \cite{ISO52900}.
 
-Cuando una impresora 3D se utiliza como plataforma de experimentación y aprendizaje, no basta con que produzca piezas; también es importante que permita estudiar y modificar los subsistemas que intervienen en su operación. La experiencia documentada con impresoras abiertas en entornos educativos muestra que su construcción y uso pueden favorecer el aprendizaje práctico y la participación directa de estudiantes y docentes [3]. En cambio, las restricciones de acceso a componentes, documentación o firmware que puedan presentar determinados equipos dificultarían este tipo de intervención; el alcance de tales restricciones debe evaluarse para cada modelo y no puede generalizarse a todas las impresoras comerciales.
+Cuando una impresora 3D se utiliza como plataforma de experimentación y aprendizaje, no basta con que produzca piezas; también es importante que permita estudiar y modificar los subsistemas que intervienen en su operación. La experiencia documentada con impresoras abiertas en entornos educativos muestra que su construcción y uso pueden favorecer el aprendizaje práctico y la participación directa de estudiantes y docentes [3]. En cambio, gran parte de las impresoras 3D comerciales adoptan un enfoque mas cerrado gracias a que están destinadas a usuarios menos especializados. Dicho enfoque dificulta el acceso a componentes, documentación o firmware de estos equipos, lo que obstaculiza su intervención; el alcance de tales restricciones debe evaluarse para cada modelo y no puede generalizarse a todas las impresoras comerciales.
 
 En el ámbito académico, una plataforma de impresión FDM puede servir para estudiar la interacción entre mecanismos de posicionamiento, alimentación de filamento, extrusión, sensores de temperatura, elementos calefactores, controladores de motores y firmware. Por ello, resulta pertinente disponer de una arquitectura que permita examinar sus componentes, ajustar parámetros de funcionamiento y realizar modificaciones con fines de aprendizaje y experimentación.
 
@@ -9,17 +9,22 @@ Además de la accesibilidad de la arquitectura, el funcionamiento de una impreso
 
 Las plataformas abiertas permiten intervenir en componentes mecánicos, electrónicos y de software, pero esta posibilidad no garantiza por sí sola un funcionamiento adecuado. Es necesario integrar los subsistemas, establecer parámetros de operación, calibrar el equipo y evaluar su comportamiento mediante pruebas de impresión. En particular, el módulo de extrusión y el sistema de enfriamiento de capa deben considerarse de manera conjunta, debido a su participación en las condiciones bajo las cuales el material es depositado y posteriormente solidificado [2], [4].
 
-En este contexto, el problema que aborda el presente trabajo consiste en desarrollar e integrar una impresora 3D tipo FDM de arquitectura abierta, modificable y mantenible, orientada a aplicaciones académicas y de prototipado. Como parte de este desarrollo, se plantea modificar elementos del sistema de extrusión y del enfriamiento de capa, integrar los componentes mecánicos, electrónicos y de control, y realizar procedimientos de calibración y pruebas experimentales que permitan caracterizar su funcionamiento.
+En este contexto, el problema que aborda el presente trabajo consiste en desarrollar e integrar una impresora 3D tipo FDM de arquitectura abierta, modificable y de mantenimiento accesible, orientada a aplicaciones académicas y de prototipado. Como parte de este desarrollo, se plantea diseñar elementos del sistema de extrusión y del enfriamiento de capa, integrar los componentes mecánicos, electrónicos y de control, y realizar procedimientos de calibración y pruebas experimentales que permitan caracterizar su funcionamiento.
 
-De esta manera, el trabajo no se limita al ensamblaje de una impresora 3D, sino que comprende la integración de una plataforma de manufactura aditiva, la modificación de subsistemas vinculados con el comportamiento térmico y el enfriamiento, y la evaluación de su desempeño mediante pruebas de impresión. Los resultados de estas pruebas permitirán valorar las características de operación del sistema y su utilidad como plataforma abierta para actividades académicas y de prototipado.
+De esta manera, el trabajo no se limita al ensamblaje de una impresora 3D, sino que comprende la integración de una plataforma de manufactura aditiva, el diseño, implementación y modificación de subsistemas vinculados con el comportamiento térmico y el enfriamiento, y la evaluación de su desempeño mediante pruebas de impresión. Los resultados de estas pruebas permitirán valorar las características de operación del sistema y su utilidad como plataforma abierta para actividades académicas y de prototipado.
 
 
 \section{Antecedentes}
 
-El desarrollo de la manufactura aditiva ha permitido establecer diferentes métodos para fabricar componentes directamente a partir de modelos digitales. Dentro de estas tecnologías, FDM se caracteriza por utilizar un material termoplástico en forma de filamento, el cual es conducido hacia un sistema de extrusión, calentado y depositado de manera sucesiva para formar la geometría de la pieza [1]. Tal vez agregar una o dos más referencias.
 El desarrollo de plataformas de arquitectura abierta amplió las posibilidades de construcción y modificación de impresoras 3D. En particular, proyectos como RepRap promovieron sistemas cuyos componentes mecánicos, electrónicos y de software podían ser estudiados, reproducidos y modificados por los propios usuarios. Este enfoque favoreció posteriormente el desarrollo de diferentes configuraciones de impresoras FDM utilizadas tanto para prototipado como para actividades educativas.
 En el ámbito académico, las tecnologías abiertas de impresión 3D han sido utilizadas como herramientas de enseñanza y experimentación. Schelly et al. [3] documentaron la implementación de impresoras 3D de código abierto en entornos educativos y señalaron su potencial para involucrar directamente a estudiantes y docentes en actividades relacionadas con diseño, fabricación y utilización de estos sistemas.
+
 La posibilidad de modificar una plataforma abierta resulta particularmente importante para el presente proyecto, ya que permite intervenir en elementos específicos de la impresora, como el sistema de extrusión y el enfriamiento de capa, sin limitar el desarrollo a la configuración establecida originalmente por un fabricante.
+
+
+El desarrollo de plataformas de arquitectura abierta amplió las posibilidades tanto de construcción como de modificación de impresoras 3D. Desde sus bases décadas atrás hasta a principios del siglo con el proyecto RepRap en la Universidad e Bath (referencia), cuya esencia es promover el desarrollo de sistemas de bajo costo de los cuales sus componentes mecánicos, electrónicos y de programación podían ser ampliamente estudiados, reproducidos y modificados por cualquiera. Este movimiento
+impulsó la expansión global de la manufactura aditiva de código abierto, dando origen a
+arquitecturas ampliamente adoptadas como la Prusa i3, desarrollada por Josef Prusa [4].
 
 \section{Justificacion}
 El desarrollo de una impresora FDM de arquitectura abierta permite disponer de una plataforma en la que sea posible acceder a sus diferentes subsistemas y modificar sus parámetros de operación. Esta característica resulta conveniente en un entorno académico, donde el equipo puede emplearse tanto para la fabricación de prototipos como para el estudio de los principios mecánicos, electrónicos y de control involucrados en su funcionamiento.
@@ -37,14 +42,15 @@ Integrar y evaluar una impresora 3D tipo FDM de arquitectura abierta para aplica
 
 \subsection{Objetivos específicos}
 \begin{itemize}
-  \item Diseñar la estructura mecánica y los componentes del sistema de impresión 3D mediante software CAD.
-  \item Fabricar las piezas estructurales y funcionales utilizando procesos de manufactura aditiva.
-  \item Integrar los sistemas mecánicos, electrónicos y térmicos de la impresora 3D.
-  \item Configurar y calibrar el firmware de control para garantizar el correcto funcionamiento del equipo.
-  \item Evaluar el comportamiento térmico del hotend y del sistema de enfriamiento de capa durante el proceso de impresión.
-  \item Analizar la precisión dimensional y calidad superficial de las piezas fabricadas.
-  \item Comparar el desempeño técnico y el costo del sistema desarrollado con impresoras comerciales de características similares.
-  \item Validar la aplicabilidad del equipo como herramienta didáctica para entornos educativos y de prototipado.
+  \item Seleccionar e integrar la estructura mecánica y los componentes necesarios para la operación de la impresora 3D tipo FDM.
+  \item Integrar los componentes electrónicos y de control requeridos para el accionamiento de los diferentes subsistemas de la impresora.
+  \item Implementar y configurar el firmware necesario para controlar el funcionamiento del sistema.
+  \item Diseñar y modificar componentes asociados con el módulo de extrusión y el sistema de enfriamiento de capa.
+  \item Realizar la calibración mecánica y térmica del sistema.
+  \item Evaluar el funcionamiento de la impresora mediante pruebas de fabricación.
+  \item Analizar características de las piezas obtenidas que permitan valorar el desempeño del sistema desarrollado.
+  \item Establecer una plataforma abierta que pueda ser utilizada para actividades académicas, experimentación y prototipado.
+ \item Comparar el desempeño técnico y el costo del sistema desarrollado con impresoras comerciales de características similares.
 \end{itemize}
 
 \subsection{Metas}
@@ -53,7 +59,7 @@ siguientes metas concretas y medibles
 
 \begin{enumerate}
 
-\item Obtener una impresora 3D funcional basada en arquitectura abierta y tecnología FDM, lista para la impresión de piezas de prueba.
+\item Rehabilitación de una impresora 3D  basada en arquitectura abierta y tecnología FDM.
 
 \item Lograr una reducción significativa en la masa del módulo de extrusión 
 para disminuir la inercia sobre el carro del eje \(X\) y mejorar la dinámica 
@@ -79,12 +85,14 @@ equivalentes de gama baja.
 \end{enumerate}
 
 \section{Fundamento Teórico}
-3.1 Manufactura aditiva y tecnología FDM
-La manufactura aditiva comprende un conjunto de procesos de fabricación en los cuales un objeto tridimensional se obtiene a partir de información digital mediante la incorporación sucesiva de material. De acuerdo con la norma ISO/ASTM 52900:2021, este principio de conformado permite construir geometrías físicas mediante la adición de material, generalmente capa por capa [1].
 
-Dentro de las tecnologías de manufactura aditiva, los procesos basados en extrusión de material se caracterizan por depositar selectivamente un material a través de una boquilla siguiendo trayectorias previamente establecidas. En las impresoras comúnmente identificadas como FDM (Fused Deposition Modeling) o FFF (Fused Filament Fabrication), el material se suministra generalmente en forma de filamento termoplástico, el cual es conducido hacia un cabezal de extrusión, calentado y depositado de manera controlada sobre una superficie de fabricación.
+\subsection{Manufactura aditiva y tecnología FDM}
 
-El proceso comienza con un modelo tridimensional generado mediante software de diseño asistido por computadora (CAD). Posteriormente, el modelo se exporta a un formato geométrico y se procesa mediante un programa de laminado o slicer, que divide virtualmente la pieza en capas y genera las trayectorias que seguirá el sistema de extrusión. Estas trayectorias se convierten en instrucciones de código G que contienen información de movimiento, velocidad, temperatura, extrusión y otras condiciones necesarias para fabricar la pieza.
+La manufactura aditiva comprende un conjunto de procesos de fabricación en los cuales un objeto tridimensional se obtiene a partir de información digital mediante la incorporación sucesiva de material. De acuerdo con la norma ISO/ASTM 52900:2021, este principio de conformado permite construir geometrías físicas mediante la adición de material, generalmente capa por capa. A diferencia de los procesos sustractivos tradicionales, donde el material es removido de un bloque sólido mediante herramientas de corte \cite{ISO52900}.
+
+Los procesos basados en extrusión de material se caracterizan por depositar selectivamente un material a través de una boquilla siguiendo trayectorias previamente establecidas. En las impresoras comúnmente identificadas como FDM (Fused Deposition Modeling) o FFF (Fused Filament Fabrication), el material se suministra generalmente en forma de filamento termoplástico, el cual es conducido hacia un cabezal de extrusión, calentado y depositado de manera controlada sobre una superficie de fabricación.
+
+El proceso comienza con un modelo tridimensional generado mediante software de diseño asistido por computadora (CAD). Posteriormente, el modelo se exporta a un formato geométrico y se procesa mediante un programa de laminado (Slicer), que divide virtualmente la pieza en capas y genera las trayectorias que seguirá el sistema de extrusión. Estas trayectorias se convierten en instrucciones de código numérico (G-CODE) que contienen información de movimiento, velocidad, temperatura, extrusión y otras condiciones necesarias para fabricar la pieza.
 
 Durante la impresión, el material experimenta ciclos sucesivos de calentamiento, extrusión, deposición, enfriamiento y solidificación. Por esta razón, la calidad final de la pieza depende de la interacción entre los subsistemas mecánicos, térmicos, electrónicos y de control, así como de la selección de los parámetros de fabricación. Entre las variables de mayor influencia se encuentran la temperatura de extrusión, la temperatura de la cama, la velocidad de impresión, la altura de capa, la alimentación del filamento y las condiciones de enfriamiento. La literatura reporta que estos parámetros afectan tanto la precisión dimensional como la calidad superficial de las piezas obtenidas mediante FFF/FDM [2].
 
@@ -94,8 +102,34 @@ Durante la impresión, el material experimenta ciclos sucesivos de calentamiento
     \caption{Perfil angular de aluminio}
     \label{fig:perfil_angular_aluminio}
 \end{figure}
+
+\subsection{Material de impresión}
+El Ácido Poliláctico (PLA) es un poliéster termoplástico lineal derivado de la fermentación
+de fuentes de carbohidratos renovables, como el almidón de maíz o la caña de azúcar. Es el material empleado principalmente para las pruebas de impresión realizadas en este proyecto. Al tratarse de un material termoplástico, debe alcanzar condiciones de temperatura adecuadas para ser extruido y posteriormente solidificarse después de su deposición.
+
+El comportamiento del material durante estas etapas hace necesario controlar tanto la temperatura de extrusión como las condiciones posteriores a la deposición. Estas variables están relacionadas con el comportamiento de las capas y, por lo tanto, deben considerarse durante la configuración y evaluación del sistema. No obstante, sus propiedades térmicas intrínsecas imponen restricciones
+severas cuando se emplea en componentes estructurales expuestos a esfuerzos mecánicos
+y gradientes de temperatura moderados  [2], [4].
+
+%\subsection{Propiedades térmicas y mecánicas}
+% Detallar los puntos de fusión y la temperatura de transición vítrea (Tg ~ 60°C).
+
+
+A diferencia de los materiales cristalinos puramente definidos, los polímeros amorfos o semicristalinos como el PLA no poseen un punto de fusión térmico discreto, sino que exhiben transiciones de fase complejas en función de la temperatura \cite[Cap.~15]{callister2020}. Para el diseño de elementos mecánicos y estructurales, el parámetro termodinámico más crítico es la \textbf{Temperatura de Transición Vítrea ($T_g$)}.
+
+\begin{itemize}
+    \item \textbf{Temperatura de transición vítrea ($T_g$):} Para el PLA estándar, este valor se sitúa típicamente entre 55°C y 60°C \cite{chanda2006}. Al superar este umbral, el material pierde rigidez estructural y transita de un estado vítreo a un comportamiento viscoelástico, aumentando su susceptibilidad a deformaciones mecánicas.
+    \item \textbf{Temperatura de Fusión ($T_m$):} Se localiza típicamente entre los \textbf{145°C y 160°C} \cite{chanda2006}. En esta región de transición de primer orden, los dominios cristalinos se desorganizan por completo, permitiendo que el polímero fluya con la viscosidad adecuada para ser forzado a través de una boquilla.
+\end{itemize}
+
+En lo que respecta a su comportamiento mecánico a temperatura ambiente, el PLA es un material rígido con buena estabilidad estructural y resistencia mecánica \cite{chanda2006}. Sin embargo, su principal desventaja es su fragilidad, ya que posee una baja capacidad de deformación antes de fracturarse (elongación a la rotura menor al 5\%)\cite{callister2020}. Físicamente, esto significa que ante un esfuerzo excesivo el material no se doblará de forma gradual, sino que se quebrará de manera repentina. Por esta razón, el diseño geométrico de las piezas de la impresora requirió consideraciones estructurales robustas, tales como esquinas redondeadas (filetes) y refuerzos en las zonas que soportan la mayor parte de las tensiones mecánicas para evitar rupturas prematuras.
+
+
+
+
+
 \begin{comment}
-   % =========================================================================
+% =========================================================================
 % 2.1 FUNDAMENTOS DE LA MANUFACTURA ADITIVA
 % =========================================================================
 \section{Fundamentos Básicos de la Tecnología FDM}
@@ -149,7 +183,6 @@ Por esta razón, el diseño adoptado se baso en perfiles de aluminio tipo V-Slot
 % 5.4 SISTEMAS TÉRMICOS 
 % =========================================================================
 \section{Sistemas de extrusión y transferencia térmica}
-
 El control de los cambios de temperatura en una impresora FDM es un factor determinante para garantizar la continuidad de la extrusión y la precisión dimensional de la pieza fabricada. El sistema térmico del cabezal de impresión se divide en dos regiones con requerimientos opuestos que coexisten en un espacio muy reducido: la zona de fusión y la zona de transición.
 
 \subsection{Anatomía y dinámica del Hotend}
@@ -193,7 +226,6 @@ Este enfriamiento continuo es necesario para acelerar la solidificación de la c
 % =========================================================================
 % 2.5 PARÁMETROS DE CALIDAD Y PRECISIÓN
 % =========================================================================
-
 \section{Calidad de Impresión y Precisión Dimensional}
 
 La evaluación del desempeño de una impresora FDM no depende únicamente del funcionamiento mecánico de sus componentes, sino también de la calidad dimensional y superficial de las piezas fabricadas. Factores como la estabilidad estructural, el control térmico del hotend y el enfriamiento del material influyen directamente en la precisión geométrica obtenida durante el proceso de impresión.
