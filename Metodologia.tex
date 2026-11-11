@@ -100,36 +100,28 @@ Durante el desarrollo se distinguieron tres iteraciones principales. En la prime
 Además de estas modificaciones estructurales se realizaron correcciones dimensionales, ajustes de relleno de las piezas impresas y cambios menores en la geometría de los conductos. Las iteraciones continuaron hasta obtener una configuración compatible con los requisitos de montaje, separación térmica, recorrido y enfriamiento.
 
 \subsection{Diseño final del módulo de extrusión}
+La configuración final se diseñó alrededor de una base estructural de aluminio, un motor NEMA 17, un mecanismo de alimentación tipo MK8, un hotend para filamento de 1.75 mm y dos sistemas de ventilación con funciones independientes.
 \subsubsection{Base estructural de aluminio}
 La base estructural se fabricó a partir de un perfil angular de aluminio. Su función es proporcionar una superficie rígida para el montaje del conjunto y mantener una separación física entre el hotend, el motor y las piezas poliméricas. La geometría utilizada se muestra en la Figura~\ref{fig:perfil_angular_aluminio}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{Angulo aluminio.JPG}
-    \caption{Perfil angular de aluminio}
+    \caption{Perfil angular de aluminio utilizado como base estructural del módulo.}
     \label{fig:perfil_angular_aluminio}
 \end{figure}
 
 
 \subsubsection{Soporte del motor}
-
-Para el accionamiento del mecanismo de alimentación se seleccionó un motor 
-paso a paso NEMA 17, que es el estándar para este tipo de impresoras. A partir 
-de sus dimensiones y de la geometría del extrusor MK8, se diseñó un soporte 
-que permite fijarlo a la base estructural de aluminio y garantizar la 
-alineación del recorrido del filamento.
-
-El extrusor MK8 es un componente comercial fabricado principalmente en aluminio. Su mecanismo transmite el movimiento del motor al filamento para introducirlo en el hotend. Debido a que el motor y el mecanismo de alimentación se encuentran instalados sobre el carro, la configuración corresponde a un sistema de extrusión directa o \textit{direct drive}. El soporte diseñado se muestra en la Figura~\ref{fig:soporte_extrusor}.
-
-Se conservó el motor NEMA 17 de la configuración original. A partir de sus dimensiones se diseñó un soporte para fijarlo a la base estructural y mantener su alineación con el extrusor MK8. Debido a que el motor y el mecanismo de alimentación se desplazan junto con el carro del eje X, la configuración corresponde a un sistema de extrusión directa. La interfaz diseñada se muestra en la Figura~\ref{fig:soporte_extrusor}.          
+Se conservó el motor NEMA 17 de la configuración original. A partir de sus dimensiones se diseñó un soporte para fijarlo a la base estructural y mantener su alineación con el extrusor MK8. Debido a que el motor y el mecanismo de alimentación se desplazan junto con el carro del eje X, la configuración corresponde a un sistema de extrusión directa. La interfaz diseñada se muestra en la Figura~\ref{fig:soporte_extrusor}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{Soporte ExtrusorV2.JPG}
-    \caption{Soporte e interfaz con el extrusor MK8}
+    \caption{Soporte e interfaz diseñados para el extrusor MK8}
     \label{fig:soporte_extrusor}
 \end{figure}
-
+ 
 \subsubsection{Enfriador de hotend}
 \label{subsec:enfriador_hotend}
 Para limitar la propagación de calor hacia la zona fría del hotend se diseñó un conducto que dirige aire forzado sobre el disipador. La geometría se definió de manera que el flujo alcanzara las superficies del disipador sin interferir con el desplazamiento de los ejes ni con el sistema independiente de enfriamiento de capa.
@@ -137,7 +129,7 @@ Para limitar la propagación de calor hacia la zona fría del hotend se diseñó
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{Enfriador _HotendV2.JPG}
-    \caption{Diseño del conducto de enfriamiento del hotend}
+    \caption{Conducto diseñado para el enfriamiento del disipador del hotend.}
     \label{fig:enfriador_hotend}
 \end{figure}
 
@@ -173,7 +165,7 @@ En algunas uniones de los perfiles de aluminio se observó juego mecánico. Se d
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{estabilizador.JPG}
-    \caption{Estabilizador}
+    \caption{Escuadra de refuerzo diseñada para la estructura.}
     \label{fig:estabilizador}
 \end{figure}
 
@@ -210,14 +202,6 @@ La implementación de este elemento contribuyó a mejorar la precisión del proc
 \section{Materiales y métodos de fabricación}
 \subsection{Componentes principales}
 Los componentes empleados para la integración de la plataforma se presentan en la Tabla~\ref{tab:materiales_componentes}. La selección del hotend y del sistema de alimentación respondió a su compatibilidad con filamento de \SI{1.75}{\milli\metre}, disponibilidad comercial y facilidad de reemplazo.
-
-\subsection{Materiales y componentes utilizados}
-Los materiales y componentes empleados en la fabricación e integración de las 
-modificaciones se presentan en la Tabla~\ref{tab:materiales_componentes}. La
-selección del hotend y del extrusor MK8 respondió a su compatibilidad con
-filamento de , su disponibilidad comercial y la facilidad
-para obtener componentes de reemplazo.
-
 \begin{table}[htbp]
     \centering
     \small % Disminuye un poco la fuente para evitar desbordamientos
@@ -250,63 +234,41 @@ para obtener componentes de reemplazo.
 \end{table}
 
 
+
+
+
 \subsection{Fabricación de piezas poliméricas}
 
 Las piezas de geometría específica se fabricaron mediante FDM utilizando la impresora rehabilitada. Los modelos CAD se exportaron en formato STL y se procesaron en Ultimaker Cura 5.12. Se utilizó filamento PLA de 1.75 mm y boquilla de 0.4 mm.
 
 La orientación de cada pieza se seleccionó considerando las superficies de apoyo, la geometría y la dirección principal de las cargas durante su funcionamiento. Cuando la geometría lo requirió se utilizaron estructuras de soporte. Después de la impresión se inspeccionaron las piezas para detectar deformaciones, separación entre capas o formación excesiva de hilos; posteriormente se retiraron soportes y se limpiaron las superficies y orificios destinados al montaje.
 
-Los valores definitivos de altura de capa, temperatura de extrusión, temperatura de cama y patrón de relleno deben registrarse a partir de los archivos de laminado empleados durante la fabricación. No se incorporan valores no documentados en los registros del proyecto. La densidad de relleno registrada para las piezas finales fue de 40 % y la velocidad de impresión de 50 mm/s.
+Los valores definitivos de altura de capa, temperatura de extrusión, temperatura de cama y patrón de relleno deben registrarse a partir de los archivos de laminado empleados durante la fabricación. No se incorporan valores no documentados en los registros del proyecto. La densidad de relleno registrada para las piezas finales fue de 40 $\%$ y la velocidad de impresión de 50 mm/s.
 
 \subsection{Fabricación de la base metalica}
 
-El componente metálico fabricado específicamente para el módulo de extrusión fue la base estructural de aluminio. Los perfiles de aluminio que conforman la estructura general de la impresora no se incluyen en este procedimiento, ya que fueron adquiridos como componentes comerciales y únicamente se cortaron a la longitud requerida.
-
-La base se fabricó a partir de un perfil angular de aluminio con un espesor de \SI{4}{\milli\metre}. El material se cortó a una longitud de \SI{100}{\milli\metre} mediante una sierra circular. Posteriormente, se trazaron los puntos de montaje y se realizaron las perforaciones con una broca para metal de \SI{3}{\milli\metre}, de acuerdo con la ubicación de los tornillos M3. Los tornillos se sujetaron con tuercas en el lado opuesto de la pieza.
-
-Después del corte y la perforación se eliminaron las rebabas y se ajustaron los bordes mediante esmerilado. Finalmente, se comprobó la correspondencia de los orificios con el motor, el hotend y los soportes antes de integrar la base al carro del eje \(X\).
-
-La base estructural del módulo se fabricó a partir de un perfil angular de aluminio de 4 mm de espesor. Se cortó una sección de \SI{100}{\milli\metre} y posteriormente se trazaron y perforaron los puntos de montaje correspondientes a tornillos M3. Después del corte y perforado se eliminaron rebabas y se ajustaron los bordes mediante esmerilado. Antes del montaje final se verificó la correspondencia de los orificios con el motor, el hotend y los soportes.
+La base estructural del módulo se fabricó a partir de un perfil angular de aluminio de 4 mm de espesor. Se cortó una sección de 100 mm y posteriormente se trazaron y perforaron los puntos de montaje correspondientes a tornillos M3. Después del corte y perforado se eliminaron rebabas y se ajustaron los bordes mediante esmerilado. Antes del montaje final se verificó la correspondencia de los orificios con el motor, el hotend y los soportes.
 
 \subsection{Integración del módulo de extrusión }
 
-Una vez fabricadas e inspeccionadas las piezas, la base de aluminio se instaló sobre el carro del eje \(X\). Sobre esta base se montaron el motor NEMA 17, el extrusor MK8 y el hotend, procurando conservar la alineación del recorrido del filamento.
+La base de aluminio se instaló sobre el carro del eje X. Sobre ella se montaron el motor NEMA 17, el mecanismo MK8 y el hotend, verificando la alineación del recorrido del filamento. Posteriormente se instalaron el ventilador axial destinado al disipador del hotend y el ventilador radial utilizado para el enfriamiento de capa, junto con sus respectivos conductos.
 
-Posteriormente, se instalaron el ventilador axial destinado al disipador del hotend y el ventilador radial utilizado para el enfriamiento de capa, junto con sus respectivos conductos, descritos en las secciones~\ref{subsec:enfriador_hotend} y~\ref{subsec:enfriamiento_capa}. También se incorporaron el cartucho calefactor, el termistor y los conductores eléctricos necesarios para su conexión con la tarjeta de control.
-
-Finalmente, se verificó manualmente que los componentes estuvieran sujetos, que el filamento pudiera avanzar a través del mecanismo de alimentación y que el desplazamiento del carro no produjera contacto con la estructura. La configuración y calibración eléctrica, térmica y de movimiento se realizaron después de concluir el ensamblaje.
- 
+También se incorporaron el cartucho calefactor, el termistor y los conductores eléctricos necesarios para la conexión con la tarjeta de control. Antes de energizar los calentadores se verificó manualmente el avance del filamento, la sujeción de los componentes y la ausencia de interferencias entre el módulo y la estructura durante el desplazamiento del carro.
 
 \section{Configuración y calibración}
 
-Una vez concluido el ensamblaje de la impresora, se realizó la configuración del sistema de control y la calibración de los mecanismos de movimiento, alimentación de filamento y control térmico. Estas actividades tuvieron como finalidad establecer los parámetros de operación de la máquina y reducir los errores de posicionamiento y extrusión antes de realizar las pruebas de impresión.
+Concluido el ensamblaje se configuró el sistema de control y se calibraron los mecanismos de movimiento, la alimentación de filamento y el control térmico. Estas actividades se realizaron antes de las pruebas de impresión con el propósito de establecer parámetros de operación reproducibles.
 
-\subsection{Configuración del firmware}
+\subsection{Configuración del firmware REVISAR}
+La electrónica utiliza un Arduino Mega con tarjeta RAMPS 1.4. Sobre esta plataforma se instaló Marlin 2.1.2.1 \cite{marlinfw} y se configuraron desde cero los parámetros correspondientes a los ejes X, Y y Z, el extrusor, los sensores de temperatura, los calentadores, los ventiladores y los interruptores de límite.
 
-La tarjeta de control de la impresora utiliza un Arduino Mega con una tarjeta RAMPS 1.4, sobre la cual se instaló y configuró el firmware Marlin 2.1.2.1 \cite{marlinfw}. La configuración se realizó desde cero, estableciendo los parámetros correspondientes a la arquitectura de la impresora, los motores paso a paso, los sensores de temperatura, los elementos calefactores y los interruptores de límite.
-
-Para el sistema de movimiento se configuraron los ejes \(X\), \(Y\) y \(Z\), considerando la disposición mecánica de la impresora y el sentido de desplazamiento requerido para cada eje. También se configuró el sistema de extrusión correspondiente al mecanismo de alimentación directa utilizado en el módulo de extrusión desarrollado.
-
-Los parámetros iniciales de pasos por unidad para los motores se calcularon a partir de las características mecánicas de cada mecanismo de transmisión. Estos valores se utilizaron como punto de partida y posteriormente fueron verificados experimentalmente mediante el procedimiento de calibración descrito en las siguientes subsecciones.
-
-También se configuraron los sensores de temperatura correspondientes al hotend y a la cama calefactada, así como los elementos de calentamiento y los ventiladores. Finalmente, se establecieron los parámetros asociados a los interruptores de límite para permitir la ejecución del procedimiento de referencia de los ejes (\textit{homing}).
-
-Antes de realizar las pruebas con los elementos calefactores, se verificó el funcionamiento de los sistemas de movimiento. Para ello, se realizaron desplazamientos individuales de los ejes \(X\), \(Y\) y \(Z\), comprobando que el sentido de movimiento correspondiera con el establecido en el firmware y que no existieran interferencias mecánicas durante el recorrido.
-
-Una vez configurado el firmware con los parámetros iniciales, se procedió a 
-la calibración experimental de cada subsistema. Los procedimientos se 
-describen a continuación.
+Los valores iniciales de pasos por unidad se calcularon a partir de las características de los motores y de los mecanismos de transmisión. Antes de activar los calentadores se comprobaron individualmente los movimientos de los ejes, verificando el sentido de desplazamiento, la actuación de los finales de carrera y la ausencia de interferencias mecánicas.
 
 \subsection{Calibración del sistema de movimiento}
 \label{sec:calibracion_del_sistema_de_movimiento}
 
-La calibración de los ejes \(X\), \(Y\) y \(Z\) se realizó con el propósito de verificar que la distancia recorrida por cada eje correspondiera con la distancia solicitada mediante el firmware. Inicialmente se calcularon los valores de pasos por milímetro a partir de las características de los motores y de los mecanismos de transmisión empleados.
-
-Posteriormente, se realizaron pruebas experimentales para determinar la diferencia entre el desplazamiento programado y el desplazamiento real de cada eje. Para cada prueba se ordenó un desplazamiento de \SI{10}{\milli\metre} y se repitió esta operación diez veces en el mismo sentido, obteniendo un desplazamiento total programado de \SI{100}{\milli\metre}.
-
-La repetición del desplazamiento permitió incrementar la magnitud del error acumulado y facilitar su medición con una regla graduada, ya que las diferencias correspondientes a un único desplazamiento de \SI{10}{\milli\metre} resultaban difíciles de distinguir con precisión. Al finalizar los diez desplazamientos se midió la distancia real recorrida por el eje y se comparó con la distancia programada.
-
-A partir de esta diferencia se recalculó el valor de pasos por milímetro mediante una relación proporcional entre el desplazamiento ordenado y el desplazamiento medido: 
+Para verificar la correspondencia entre desplazamiento programado y desplazamiento real se realizaron pruebas independientes en X, Y y Z. En cada eje se ordenaron diez desplazamientos consecutivos de 10 mm en el mismo sentido, equivalentes a 100 mm programados. La distancia total recorrida se midió y se comparó con la solicitada.
+Cuando se detectó una diferencia, el parámetro de pasos por milímetro se corrigió mediante la relación:
 
 \begin{equation}
 E_{\mathrm{nuevo}} = E_{\mathrm{actual}} \cdot 
@@ -314,282 +276,42 @@ E_{\mathrm{nuevo}} = E_{\mathrm{actual}} \cdot
 \label{eq:pasos_mm_movimiento}
 \end{equation}
 
+
+
 donde $E_{\mathrm{nuevo}}$ corresponde al nuevo valor de pasos por milímetro 
 del eje, $E_{\mathrm{actual}}$ al valor utilizado durante la prueba, 
 $L_{\mathrm{programada}}$ a la distancia solicitada y $L_{\mathrm{medida}}$ a 
-la distancia realmente recorrida.
-
-El nuevo valor se incorporó a la configuración del firmware y el procedimiento se repitió hasta obtener una correspondencia satisfactoria entre el desplazamiento programado y el desplazamiento real.
-
-Este procedimiento se realizó de manera independiente para los tres ejes de movimiento. Una vez ajustados los parámetros, se efectuaron nuevamente desplazamientos de prueba para verificar el funcionamiento de cada eje y comprobar que no se presentaran interferencias o bloqueos mecánicos durante el recorrido.
+la distancia realmente recorrida. Los valores finales y el
+error medido se presentan en el capítulo de resultados.
 
 \subsection{Calibración del extrusor}
 \label{sec:calibracion_extrusor}
+La calibración del extrusor se realizó para establecer la correspondencia entre la longitud de filamento solicitada y la longitud realmente suministrada. Para aislar la respuesta del mecanismo de alimentación se retiró el hotend durante esta prueba. Se marcó una referencia sobre el filamento y se ordenaron diez desplazamientos de 10 mm, equivalentes a una alimentación total programada de 100 mm.
 
-La calibración del extrusor se realizó para determinar la cantidad de filamento suministrada por el mecanismo de alimentación para una distancia de extrusión determinada. Antes de efectuar la prueba se retiró el hotend, con el propósito de eliminar la resistencia asociada a la conducción del filamento a través de la zona de fusión.
+La longitud desplazada se midió desde la referencia inicial y el valor de pasos por milímetro se corrigió mediante la ecuación~\ref{eq:pasos_mm_movimiento}, sustituyendo el desplazamiento del eje por la longitud de filamento. Después de incorporar el nuevo valor al firmware se realizó una prueba adicional de verificación.
 
-Se realizó una marca de referencia sobre el filamento para establecer la posición inicial. A partir de esta referencia se ordenó al extrusor realizar diez desplazamientos de \SI{10}{\milli\metre}, correspondientes a una longitud programada total de \SI{100}{\milli\metre}. Al finalizar la extrusión se midió la distancia real de filamento desplazada desde la marca inicial.
-
-El valor medido se comparó con la distancia programada y se recalculó el 
-valor de pasos por milímetro del extrusor mediante la misma relación 
-proporcional descrita en la ecuación~\ref{eq:pasos_mm_movimiento}, 
-sustituyendo la distancia recorrida por la longitud de filamento desplazada.
-
-El nuevo valor se incorporó al firmware y posteriormente se realizó una prueba de verificación para comprobar que la cantidad de filamento suministrada correspondiera con la distancia establecida.
-
-\subsection{Calibración térmica}
+\subsection{Ajuste del control térmico}
 \label{sec:calibracion_termica}
+La regulación térmica se ajustó para el hotend y la cama calefactada utilizando la función de autosintonización PID disponible en Marlin. El procedimiento se ejecutó de manera independiente para cada elemento a las temperaturas de operación utilizadas para PLA. Las constantes obtenidas se incorporaron a la configuración del firmware.
 
-La calibración térmica se realizó tanto para el hotend como para la cama 
-calefactada. El objetivo fue establecer los parámetros de control que 
-permitieran alcanzar y mantener las temperaturas de operación de manera 
-estable durante la impresión.
+Después de la sintonización se verificó el comportamiento térmico durante la operación de la impresora. Las constantes finales, las temperaturas alcanzadas, los tiempos de calentamiento y la variación en estado estable se presentan en el capítulo de resultados.
 
-Para determinar los parámetros del controlador PID se utilizó la función de 
-ajuste automático (\textit{PID autotune}) disponible en Marlin. El 
-procedimiento se realizó de forma independiente para el hotend y para la 
-cama calefactada, utilizando como referencia las temperaturas de operación 
-establecidas para la impresión de PLA.
+\section{Protocolo de evacuación experimental}
+Una vez configurada y calibrada la plataforma se estableció un conjunto de pruebas para evaluar el sistema final. Los resultados se reservan para el capítulo siguiente; en esta sección se definen únicamente las variables y procedimientos de medición.
 
-Los parámetros obtenidos mediante el ajuste automático se incorporaron a la 
-configuración del firmware. Posteriormente, se realizaron pruebas de 
-impresión para verificar el comportamiento térmico del sistema en 
-condiciones reales de operación. A partir de la observación de las piezas 
-obtenidas, se realizaron ajustes adicionales en los parámetros de impresión 
-y se efectuaron nuevas pruebas.
+\subsection{Evaluación del posicionamiento y la extrusión}
+La precisión de movimiento se evaluó comparando distancias programadas con distancias medidas en cada eje. Para el extrusor se comparó una longitud programada de filamento con la longitud efectivamente suministrada. En ambos casos se calculó el error absoluto y el error relativo porcentual respecto al valor programado. 
 
-El proceso de ajuste se repitió de manera iterativa, comparando visualmente 
-las piezas obtenidas en cada prueba. Se consideraron aspectos relacionados 
-con la estabilidad de la deposición, la formación de hilos, la adherencia 
-entre capas y la apariencia general de las superficies. El procedimiento 
-permitió seleccionar una configuración de impresión que presentara una 
-mejora visible respecto de las pruebas iniciales.
+\subsection{Evacuación térmica}
+Para el hotend y la cama se registraron la temperatura programada, la temperatura alcanzada, el tiempo necesario para alcanzar la condición de operación y la variación observada una vez alcanzado el régimen estable. Para evaluar el sistema de disipación del hotend se realizaron mediciones de temperatura en el disipador manteniendo constante la temperatura del bloque calefactor y modificando la configuración de ventilación. La posición del sensor se mantuvo fija entre pruebas para conservar condiciones comparables.
 
-Los parámetros finales de control obtenidos para el hotend y la cama 
-calefactada se presentan en el capítulo de resultados.
+\subsection{Evaluación dimensional y de calidad de impresión}
+La precisión dimensional se evaluó mediante piezas de geometría conocida. Las dimensiones obtenidas se midieron sobre los ejes X, Y y Z y se compararon con las dimensiones nominales del modelo. El análisis se complementó con una inspección visual de defectos de impresión, incluyendo presencia de hilos, deformación de la base y patrones asociados con vibración.
 
+También se contemplaron pruebas geométricas destinadas a observar el comportamiento en voladizos, puentes y movimientos con retracción. Las condiciones de laminado utilizadas en cada ensayo deben mantenerse registradas para permitir una comparación reproducible entre las piezas.
 
+\subsection{Evacuación económica}
+La evaluación económica se planteó a partir del costo de los componentes utilizados en la construcción e integración de la plataforma. Para la comparación con alternativas comerciales se considerarán equipos con volumen de impresión y aplicación general comparables. El costo de mano de obra no se incorpora al costo de fabricación, ya que el diseño, ensamblaje y calibración fueron realizados por el autor como parte del trabajo académico. Los precios, modelos comerciales y fecha de consulta se presentan en el capítulo de resultados.
 
-
-
-
-\section{Comment}
-
-\begin{comment}
-\section{Materiales y equipo}
-
-Electrónica y sistema térmico
-
-
-\begin{table}[htbp]
-\centering
-\small
-\caption{Especificaciones técnicas de componentes electrónicos y accesorios.}
-\label{tab:componentes_electronicos_v2}
-\begin{tabular}{l p{7.5cm} c}
-\toprule
-\textbf{Componente} & \textbf{Especificaciones Técnicas} & \textbf{Cantidad} \\ 
-\midrule
-Microcontrolador & Placa de desarrollo compatible con Arduino Mega 2560 & 1 pza. \\ 
-Placa de potencia & Escudo \textit{RAMPS} versión 1.4 & 1 pza. \\ 
-Motores paso a paso & NEMA 17, corriente nominal 1.7 A & 4 pzas. \\ 
-Cables para motor & Longitud de 1 m con conectores JST-XH/Dupont & 4 pzas. \\ 
-Hotend & Conjunto tipo CR-10; boquilla 0.4 mm, filamento 1.75 mm & 1 pza. \\ 
-\addlinespace
-Cama caliente & Superficie de 214$\times$214 mm; alimentación 12/24 VCC & 1 pza. \\ 
-Fuente de poder & Conmutada 12 V, 30 A (360 W) & 1 pza. \\ 
-Controlador de motor & A4988 con disipador térmico de aluminio & 4 pzas. \\ 
-Ventilador & Tipo \textit{blower} o axial, 12 V, 40$\times$40 mm & 2 pzas. \\ 
-Extrusor & Sistema de tracción tipo CR-10S & 1 pza. \\ 
-\addlinespace
-Resortes de nivelación & Acero al carbono; dim. 9.8$\times$25.3 mm (ext.$\times$alt.) & 4 pzas. \\ 
-Tubo de teflón & PTFE translúcido (ID 2 mm / OD 4 mm), long. 2 m & 1 pza. \\ 
-\textit{Endstop} & Microinterruptor mecánico con cableado de 24 V & 3 pzas. \\ 
-Banda dentada & Perfil GT2, ancho 6 mm, longitud 1000 mm & 2 pzas. \\ 
-Polea dentada & GT2 de 20 dientes, para eje de 5 mm y banda 6 mm & 2 pzas. \\ 
-Termistor & NTC 100K ohm con cableado de alta temperatura & 2 pzas. \\ 
-Tubo termocontráctil & Diámetros varios para aislamiento eléctrico & 1 lote \\ 
-\bottomrule
-\end{tabular}
-\end{table}
-\section{Metodología de diseño}
-\subsection{Rediseño del marco estructural}
-El diseño original de la Prusa i3 contempla un marco de aluminio de una sola pieza cortado con láser. Sin embargo, este componente representa una limitación práctica en entornos con recursos restringidos, debido a su costo de manufactura externa y a los tiempos de espera asociados a su fabricación especializada. Por estas razones, se optó por sustituirlo por perfiles de aluminio tipo V-Slot de 20×20 mm, solución seleccionada con base en los siguientes criterios:
-\begin{itemize}
-    \item \textbf{Ajustabilidad:}Permite realizar correcciones dimensionales durante y después del ensamblaje, compensando variaciones menores sin necesidad de reemplazar componentes.
-    \item \textbf{Modularidad:}Facilita la implementación de mejoras posteriores, como la integración de soportes para filamento o refuerzos estructurales, sin necesidad de modificar el marco base.
-    \item \textbf{Bajo costo:}Se encuentran disponibles en 
-    proveedores locales y plataformas de comercio electrónico, garantizando 
-    la replicabilidad del proyecto en entornos con recursos limitados.
-\end{itemize}
-
-
-\subsection{Desarrollo y optimización del modulo de extrusión}
-
-La modificación de la geometría estructural introdujo incompatibilidades 
-mecánicas con el sistema de extrusión original. Adicionalmente, dicho modelo  requería componentes de difícil adquisición en el mercado local. Por estas razones, se desarrolló un módulo de extrusión propio basado en una configuración de mayor disponibilidad comercial.
-
-El proceso de diseño en SolidWorks comprendió tres etapas iterativas:
-
-\begin{description}
-    \item[\textbf{Primera iteración (incompatibilidad térmica):}] Se desarrolló un soporte inicial para el hotend basado en geometría de referencia diseñada para fabricación en ABS. Al ser manufacturado en PLA, la disipación térmica combinada del motor y del bloque calefactor superó la temperatura de transición vítrea del material, provocando deformación progresiva del soporte y pérdida de calidad dimensional en las piezas impresas.
-
-    \item[\textbf{Segunda iteración (incompatibilidad dimensional):}] Como solución al problema térmico se incorporó una pieza intermedia de aluminio para mejorar la disipación de calor. Sin embargo, las dimensiones del conjunto resultante generaban interferencia con el marco estructural, reduciendo el área útil de impresión.
-
-    \item[\textbf{Diseño final (solución optimizada):}] Se desarrolló un diseño compacto que establece una separación geométrica entre las fuentes de calor del motor y del hotend, e integra un sistema de ventilación forzada que mantiene la temperatura del soporte por debajo de la $T_g$ del PLA sin interferir con el recorrido de los ejes. La versión final fue manufacturada con una densidad de relleno del 40\% para garantizar la rigidez estructural requerida durante la operación continua.
-\end{description}
-
-
-\subsection{Manufactura de piezas mediante impresión 3D}
-
-Una vez finalizado el diseño detallado en SolidWorks, se procedió a la fabricación de los componentes plásticos utilizando un equipo de soporte (impresora 3D de referencia). Dado que el material seleccionado fue \textbf{PLA} (Ácido Poliláctico), se debieron configurar los parámetros de impresión para garantizar un equilibrio entre precisión dimensional y resistencia mecánica.
-
-El proceso de manufactura se dividió en las siguientes etapas:
-
-\begin{enumerate}
-    \item \textbf{Preparación de archivos (Slicing):} Los modelos exportados en formato .STL se procesaron en el software Ultimaker Cura. Se aplicó una configuración de \textbf{[Dato: ej. 3 o 4]} perímetros de pared para aumentar la rigidez de las piezas estructurales.
-    
-    \item \textbf{Configuración de impresión:} Se utilizaron los siguientes parámetros técnicos de fabricación:
-    \begin{itemize}
-        \item \textbf{Temperatura de extrusión:} [Dato: ej. 200°C - 210°C].
-        \item \textbf{Temperatura de cama:} [Dato: ej. 60°C].
-        \item \textbf{Altura de capa:} [Dato: ej. 0.2 mm] para un balance óptimo entre tiempo de impresión y acabado superficial.
-        \item \textbf{Densidad de relleno (Infill):} Se utilizó un \textbf{40\%} con patrón [Dato: ej. cúbico o rejilla] para las piezas de carga, como los soportes de motores y el módulo del extrusor.
-    \end{itemize}
-
-    \item \textbf{Post-procesado:} Tras la impresión, las piezas fueron inspeccionadas visualmente para asegurar la ausencia de defectos como \textit{warping} (deformación en la base) o hilos excesivos. Se realizó un proceso de limpieza manual para retirar las estructuras de soporte en los orificios de los rodamientos y tornillería.
-\end{enumerate}
-
-Las piezas críticas, especialmente aquellas en contacto con el motor del extrusor y el eje X, fueron verificadas con un calibrador vernier para asegurar que las tolerancias permitieran el ajuste de las piezas metálicas (varillas y rodamientos) sin necesidad de mecanizado adicional.
-
-
-\subsection{Ensamblaje del sistema}
-
-El proceso de ensamblaje se realizó de forma modular, siguiendo una secuencia estructurada que permitiera facilitar la alineación de los ejes y la integración progresiva de los componentes mecánicos con la estructura de aluminio y la parte electrónica.
-
-El procedimiento general de ensamblaje se describe a continuación:
-
-\begin{enumerate}
-    \item \textbf{Montaje del marco estructural:} Se utilizaron los perfiles de aluminio V-Slot de 20 x 20 mm para formar la base y el marco vertical (eje Z). 
-La unión de los perfiles se realizó mediante escuadras metálicas y tornillería M5, verificando constantemente la perpendicularidad entre la base y el marco vertical.
-
-La correcta alineación estructural resultó crítica para minimizar desviaciones geométricas durante el movimiento de los ejes y evitar defectos dimensionales en las piezas impresas.
-    
-    \item \textbf{Instalación de los sistemas de movimiento (Ejes X, Y y Z):} 
-    \begin{itemize}
-        \item Se montaron las varillas lisas y los rodamientos lineales LM8UU. 
-        \item Se instalaron los motores paso a paso NEMA 17 utilizando los soportes impresos en PLA. 
-        \item Se colocaron las bandas dentadas y poleas, aplicando una tensión manual para evitar el efecto de \textit{backlash} (juego mecánico) durante los cambios de dirección.
-    \end{itemize}
-
-    \item \textbf{Integración del módulo de extrusión:} El diseño final del extrusor, desarrollado en SolidWorks, se montó sobre el carro del eje X. Se verificó que el peso del conjunto no provocara deflexiones en las varillas y que el sistema de ventilación tuviera el espacio libre necesario para no colisionar con el marco.
-
-    \item \textbf{Subsistemas electrónicos:} Se instaló la placa de control (Arduino + RAMPS) en una zona protegida. El cableado de los motores, termistores y cartuchos calefactores se organizó mediante fundas o guías para evitar que interfirieran con el movimiento de los ejes, lo cual es vital para prevenir desconexiones accidentales o cortocircuitos durante operaciones largas.
-\end{enumerate}
-
-\subsection{Instalación de firmware y configuración de parámetros}
-
-Para el control del hardware se utilizó el firmware \textbf{Marlin}, debido a su versatilidad y soporte para la arquitectura Prusa i3. El proceso se llevó a cabo mediante el IDE de Arduino, realizando las siguientes configuraciones críticas:
-
-\begin{enumerate}
-    \item \textbf{Cálculo de pasos por milímetro (Steps per mm):} Se definieron los valores para los motores de cada eje considerando la resolución de los motores NEMA 17 y el paso de las bandas dentadas (ejes X/Y) y varillas roscadas (eje Z). Esto es fundamental para asegurar que las dimensiones de las piezas finales correspondan fielmente al modelo digital.
-    
-    \item \textbf{Configuración de seguridad térmica:} Se activaron las protecciones contra desbordamiento térmico (\textit{thermal runaway protection}), garantizando que la máquina se detenga automáticamente si se detecta una lectura anómala en los termistores.
-\end{enumerate}
-
-\subsection{Calibración del sistema}
-
-
-\subsubsection{Firmware de control numérico y algoritmo PID}
-
-El archivo G-Code generado es transferido a la tarjeta de control embebida de la impresora, la cual ejecuta el firmware Marlin \cite{marlinfw}. Marlin opera como un intérprete en tiempo real basado en interrupciones periódicas del microcontrolador. Su tarea principal es decodificar los comandos G-Code, planificar las curvas de aceleración y cambios bruscos de velocidad (\textit{jerk control}), y coordinar la generación de pulsos para los controladores de pasos (\textit{stepper drivers}).
-
-Además del control de movimiento, el firmware es responsable de mantener la estabilidad térmica del \textit{hotend} y de la cama calefactada. Debido a que las perturbaciones externas (como el flujo de aire del ventilador de capa o la velocidad de extrusión del filamento) retiran calor de forma constante del bloque de fusión, no es posible utilizar un control básico de encendido y apagado (On/Off), ya que esto produciría variaciones térmicas que alterarían la viscosidad del polímero y la estabilidad del flujo de extrusión. Para resolver esto, Marlin implementa un lazo cerrado de control \textbf{Proporcional-Integral-Derivativo (PID)} \cite{ogata2010}.
-
-El algoritmo calcula continuamente el error de temperatura $e(t)$, definido como la diferencia entre la temperatura programada de impresión ($r(t)$) y la temperatura real medida por el termistor ($y(t)$):
-
-$$e(t) = r(t) - y(t)$$
-
-A partir de este error, la señal de control $u(t)$, que determina el ciclo de trabajo de la modulación por ancho de pulsos (PWM) aplicada al cartucho calefactor, se calcula matemáticamente mediante la ecuación:
-
-$$u(t) = K_p \, e(t) + K_i \int_{0}^{t} e(\tau) \, d\tau + K_d \, \frac{d e(t)}{dt}$$
-
-Donde los parámetros de control actúan de la siguiente manera:
-\begin{itemize}
-    \item \textbf{Término Proporcional ($K_p$):} Genera una respuesta correctiva directamente proporcional a la magnitud del error actual. Si la temperatura está muy lejos del valor deseado, proporciona la mayor parte de la potencia.
-    \item \textbf{Término Integral ($K_i$):} Acumula los errores pasados a lo largo del tiempo. Su función principal es eliminar el error en estado estacionario, asegurando que la temperatura se mantenga exactamente en el punto de consigna (ej. 200°C) a pesar de las pérdidas de calor térmicas constantes.
-    \item \textbf{Término Derivativo ($K_d$):} Evalúa la velocidad de cambio del error en el tiempo para predecir su comportamiento futuro. Actúa como un freno amortiguador que disminuye la potencia de calentamiento conforme la temperatura real se aproxima al objetivo, reduciendo drásticamente el sobretiro (\textit{overshoot}) térmico.
-\end{itemize}
-
-
-
-En la arquitectura abierta modificada, la determinación precisa de estas constantes ($K_p, K_i, K_d$) requirió de un enfoque experimental iterativo. Como primera aproximación para establecer los parámetros base en el firmware, se ejecutó el algoritmo de auto-calibración (\textit{PID autotune}). Posteriormente, se realizó un proceso de sintonización fina de manera empírica mediante un proceso iterativo de ajuste experimental. Este ajuste manual consistió en modificar progresivamente las constantes de control directamente en los parámetros del firmware y evaluar de forma física el comportamiento térmico y la calidad superficial de componentes geométricos de prueba (cubos de calibración). A través de este análisis visual y geométrico de las sucesivas piezas impresas, se optimizaron las constantes hasta conseguir una respuesta térmica con un tiempo de establecimiento mínimo, sin sobretiros y capaz de mantener una temperatura estable frente a las perturbaciones térmicas del proceso de impresión.
-
-
-La calibración se dividió en dos áreas: la precisión del movimiento y la estabilidad de la temperatura.
-
-\begin{description}
-    \item[Calibración térmica (PID):] El control de temperatura del extrusor es crítico para evitar variaciones que afecten la viscosidad del PLA. Se utilizó la función de \textit{autoset} mediante el comando \textbf{M303} de Marlin para realizar un autotune del PID. Este proceso permitió que el sistema aprendiera la inercia térmica del hotend y ajustara los valores de control para mantener una temperatura estable con una variación mínima de $\pm$1°C.
-    
-    \item[Nivelación y ajuste de altura (Z-Offset):] Se realizó la nivelación manual de la cama de impresión para asegurar la adherencia de la primera capa. Mediante el ajuste físico de los topes de carrera (\textit{endstops}), se definió el punto de origen del eje Z, permitiendo que la boquilla se posicione a la distancia adecuada de la superficie de impresión.
-    
-    \item[Pruebas de extrusión:] Se calibró el motor del extrusor mediante una prueba de 100 mm de filamento, asegurando que la cantidad de material depositado fuera la exacta para evitar problemas de sobre-extrusión o sub-extrusión.
-\end{description}
-
-\subsection{Verificación y pruebas de funcionamiento}
-
-Para validar el rendimiento de la impresora y la precisión del rediseño del módulo de extrusión, se realizaron una serie de pruebas de impresión estandarizadas. El objetivo fue verificar la estabilidad mecánica y la fidelidad dimensional del sistema.
-
-\begin{enumerate}
-    \item \textbf{Impresión de cubos de calibración:} Se imprimieron múltiples cubos de prueba de $20 \times 20 \times 20$ mm. Tras la impresión, se utilizó un calibrador vernier digital para medir cada eje. Esta prueba permitió identificar desviaciones menores en los pasos por milímetro de los motores, las cuales fueron corregidas en el firmware Marlin hasta obtener un error dimensional inferior al \textbf{[Dato: ej. 2\% o 0.1 mm]}.
-
-    \item \textbf{Evaluación del enfriamiento de capa:} Utilizando piezas con voladizos (\textit{overhangs}) y puentes (\textit{bridges}), se puso a prueba el nuevo sistema de ventilación diseñado en SolidWorks. Se verificó que el flujo de aire fuera suficiente para solidificar el PLA rápidamente, evitando que el material se colgara o deformara en ángulos críticos.
-
-    \item \textbf{Pruebas de repetibilidad:} Se realizaron impresiones consecutivas de la misma pieza para asegurar que la máquina mantuviera la calibración a lo largo del tiempo y que no existieran vibraciones que aflojaran la estructura de perfiles V-Slot.
-
-    \item \textbf{Inspección de la calidad superficial:} Se analizaron las paredes de las piezas impresas en busca de defectos como el \textit{ghosting} (ecos de vibración) o el \textit{blobbing} (exceso de material). Estas observaciones sirvieron para realizar un ajuste fino final en la velocidad de impresión y la aceleración en el software laminador (Cura).
-\end{enumerate}
-
-Finalmente, una vez que los cubos de prueba cumplieron con las tolerancias deseadas, se determinó que la impresora estaba lista para la fabricación de prototipos funcionales de mayor complejidad.
-
-
-
-\end{comment}
-
-
-\section{comment 2}
-\begin{comment}
-    En este capitulo se describe la metodología, materiales y equipos implementados en el desarrollo del proyecto. Detallando el proceso de diseño del sistema de extrusión y componentes auxiliares, así como los insumos y parámetros de impresión para la manufactura de los elementos de hardware libre utilizados. Finalmente el procedimiento  de ensamblaje, configuración y evaluación se expone al detalle, con  el fin de proporcionar una metodología reproducible y capaz de obtener resultados similares.
-
-\section{Diseño del sistema}
-
-\subsection{Modelo de referencia utilizados}
-Para el desarrollo de la impresora se utilizaron como referencia diversos diseños de hardware libre disponibles públicamente. La arquitectura general del sistema se basó en el modelo Prusa i3, ampliamente utilizado dentro de la comunidad RepRap debido a su simplicidad mecánica, disponibilidad de documentación técnica y compatibilidad con firmware de código abierto.
-
-Adicionalmente, se tomó como referencia un diseño estructural basado en perfiles de aluminio publicado en la plataforma GrabCAD. Este modelo sirvió como punto de partida para el diseño del chasis, ya que ofrecía una configuración modular compatible con perfiles tipo V-Slot y facilitaba la implementación de modificaciones mecánicas posteriores.
-
-A partir de ambas referencias se desarrolló una configuración propia que conserva la arquitectura cartesiana característica de la Prusa i3, pero incorpora una estructura modular de aluminio y un sistema de extrusión rediseñado para satisfacer los requerimientos específicos del presente proyecto.
-
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\linewidth]{Modelo Open source.JPG}
-    \caption{Modelo OpenSource}
-    \label{fig:placeholder}
-\end{figure}
-
- 
-
-
-\subsection{Rediseño de módulo de extrusión}
-El sistema de extrusión constituyó el principal elemento de rediseño dentro del proyecto. Aunque la arquitectura general de la impresora se basó en modelos de código abierto previamente desarrollados, los mecanismos de extrusión originalmente utilizados no resultaban adecuados para las condiciones de disponibilidad y manufactura del presente trabajo.
-
-Por una parte, el sistema empleado en la Prusa i3 de referencia requería componentes que no se encontraban disponibles localmente. Adicionalmente, el modelo basado en perfiles de aluminio utilizado como referencia incorporaba un extrusor que ya no se encontraba disponible comercialmente al momento del desarrollo. Estas limitaciones motivaron el diseño de un módulo de extrusión propio compatible con los componentes accesibles en el mercado nacional.
-
-Como aproximación inicial se adoptó una configuración de montaje similar a la empleada en otros sistemas FDM de escritorio, donde el conjunto del \textit{hotend} se fija directamente sobre elementos estructurales impresos. Sin embargo, durante las primeras pruebas se observó que la utilización de PLA como material de fabricación introducía limitaciones térmicas asociadas a su temperatura de transición vítrea, provocando deformaciones en componentes cercanos a las fuentes de calor.
-
-A partir de estas observaciones se desarrolló un proceso iterativo de diseño orientado a garantizar compatibilidad mecánica, estabilidad térmica y facilidad de fabricación.
-
-\begin{comment}
-La principal razón para rediseñar el sistema de extrusión fue el cambio de material de impresión. El sistema original fue fabricado para trabajar con ABS, sin embargo, para este proyecto se optó por utilizar PLA debido a su facilidad de procesamiento y amplia disponibilidad comercial. Esta modificación significó revisar los componentes del sistema de extrusión, evaluando su reemplazo con el fin de garantizar compatibilidad y correcto funcionamiento con las nuevas condiciones de operación.
-\end{comment}
+\section{Resumen del Capitulo}
+El procedimiento descrito permitió pasar de una plataforma fuera de servicio a una configuración rehabilitada, diagnosticada y posteriormente modificada mediante un proceso iterativo de diseño. Las intervenciones se concentraron en el módulo de extrusión, el manejo térmico, el enfriamiento de capa y los mecanismos auxiliares de ajuste. Después de la integración se configuraron y calibraron los subsistemas mecánicos, de extrusión y térmicos, y se definió un protocolo para evaluar el desempeño del sistema. El capítulo siguiente presenta los resultados obtenidos mediante estos procedimientos
