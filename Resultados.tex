@@ -1,10 +1,14 @@
-\section{Ensamblaje final del sistema}
-Como resultado del proceso de diseño, fabricación y ensamblaje, se obtuvo el sistema de impresión 3D mostrado en la Figura \ref{fig:ensamblaje_final}. El equipo quedó conformado por la estructura de perfiles de aluminio, el sistema de movimiento cartesiano, el módulo de extrusión rediseñado y el sistema de control basado en Arduino Mega y RAMPS 1.4.
+En este capítulo se presentan los resultados obtenidos con la plataforma FDM desarrollada y se discuten en relación con los objetivos del proyecto. Se incluyen la integración final del sistema, las modificaciones del módulo de extrusión, la validación de movimiento y del comportamiento térmico, las observaciones de calidad de impresión y la evaluación económica. Cuando el manuscrito original no contiene una medición verificable, el dato se identifica expresamente como pendiente en lugar de asignar un valor no documentado.
+
+
+
+\section{Integración final de la plataforma}
+El proceso de rehabilitación, rediseño e integración produjo la plataforma mostrada en la Figura \ref{fig:ensamblaje_final}. El equipo conserva la arquitectura cartesiana de la configuración de partida y combina componentes comerciales con piezas fabricadas específicamente para el proyecto. Las dimensiones generales reportadas son 47 cm de largo, 52 cm de ancho y 57 cm de alto, con una masa total de 7.2 kg.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{Ensamblaje final.jpg}
-    \caption{Ensamblaje final}
+    \caption{Configuración final de la plataforma FDM desarrollada.}
     \label{fig:ensamblaje_final}
 \end{figure}
 
@@ -54,15 +58,14 @@ componentes auxiliares:
 \end{itemize}
 
 
-\section{Sistema de extrusión desarrollado}
+\section{Resultado del rediseño del módulo de extrusión}
 \label{sec:sistema_extrusion_desarrollado}
-Como resultado del proceso de diseño y fabricación, se obtuvo el módulo de extrusión mostrado en la Figura~\ref{fig:extrusor_final}, correspondiente a la configuración final integrada en la impresora. El módulo integró la base estructural de aluminio, el motor NEMA 17, el extrusor MK8, el hotend y los dos sistemas de enfriamiento del hotend y capa. La configuración corresponde a un sistema de accionamiento directo (\textit{direct drive}), en el que el motor y el mecanismo de alimentación se desplazan junto con el hotend sobre el carro del eje \(X\).
- 
+ La configuración final del módulo de extrusión se integró con una base de aluminio, mecanismo de alimentación directa, hotend para filamento de 1.75 mm y sistemas independientes de ventilación del disipador y de enfriamiento de capa. La Figura~\ref{fig:extrusor_final} muestra el conjunto instalado sobre el carro del eje X.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{Extrusor final.jpg}
-    \caption{Módulo de extrusión en su configuración final.}
+    \caption{Módulo de extrusión y sistemas de ventilación integrados en la plataforma.}
     \label{fig:extrusor_final}
 \end{figure}
 
@@ -90,16 +93,14 @@ Las dimensiones generales y la masa del sistema de extrusión se presentan en la
     \end{tabular}
 \end{table}
 
-El módulo rediseñado presentó una reducción de \qty{4}{\cm} en altura, 
-\qty{2}{\cm} en ancho y \qty{2}{\cm} en largo respecto a la configuración 
-original. La masa total se redujo de \qty{650}{\g} a \qty{493}{\g}, lo que 
-representa una disminución de \qty{157}{\g}, equivalente al 24.2\% de la masa 
-original.
+La reducción de masa del conjunto fue de 157 g, equivalente a 24.2 $\%$ respecto a la configuración original. La disminución de las dimensiones exteriores también permitió obtener un módulo más compacto. Desde el punto de vista dinámico, una menor masa móvil reduce la fuerza inercial asociada con las aceleraciones y cambios de dirección del carro; sin embargo, este trabajo no incluyó mediciones de aceleración o vibración, por lo que no debe afirmarse cuantitativamente que el rediseño eliminó el ghosting o incrementó una determinada velocidad máxima.
 
-\section{Validación del sistema de movimiento}
+La tabla original también reporta un incremento del recorrido Z de 180 a 250 mm, pero ese dato contradice la tabla de recorrido general, que mantiene 180 mm en Z. En consecuencia, el supuesto incremento de 70 mm no debe utilizarse como resultado hasta verificar físicamente el recorrido útil de la máquina.
+
+\section{Validación funcional}
 \label{sec:validacion_movimiento}
-
-Tras aplicar el procedimiento de calibración descrito en la subsección \ref{sec:calibracion_del_sistema_de_movimiento}, se verificó la correspondencia entre el desplazamiento programado y el desplazamiento real de cada eje. Los resultados obtenidos se presentan en la Tabla \ref{tab:precision_ejes}.
+\subsection{Precisión del posicionamiento}
+Después de la calibración de pasos por milímetro se comparó el desplazamiento programado con el desplazamiento medido. Los datos disponibles muestran errores inferiores a 0.3 % en los tres ejes evaluados.
 
 
 \begin{table}[htbp]
@@ -122,12 +123,9 @@ Tras aplicar el procedimiento de calibración descrito en la subsección \ref{se
     \end{tabularx}
 \end{table}
 
-Los tres ejes presentaron errores absolutos inferiores a \qty{0.5}{\mm}, 
-lo que corresponde a errores relativos menores al 0.5\%. El eje \(Y\) 
-presentó el error más alto (\qty{0.3}{\mm}), mientras que los ejes \(X\) y 
-\(Z\) presentaron errores de \qty{0.2}{\mm} cada uno.
+Estos resultados indican una correspondencia cercana entre el movimiento ordenado y el desplazamiento observado después de la calibración. Sin embargo, la medición se realizó con una regla graduada y no se reportan repeticiones independientes ni incertidumbre instrumental. Por ello, los porcentajes anteriores deben interpretarse como una verificación funcional del posicionamiento y no como una caracterización metrológica completa de la precisión o repetibilidad de la impresora.
 
-\subsection{Validación del sistema térmico}
+\subsection{Comportamiento térmico}
 \label{sec:validacion_termica}
 Tras aplicar el procedimiento de calibración descrito en la 
 sección~\ref{sec:calibracion_termica}, se obtuvieron las constantes de 
