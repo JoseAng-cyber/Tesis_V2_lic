@@ -125,7 +125,7 @@ Después de la calibración de pasos por milímetro se comparó el desplazamient
 
 Estos resultados indican una correspondencia cercana entre el movimiento ordenado y el desplazamiento observado después de la calibración. Sin embargo, la medición se realizó con una regla graduada y no se reportan repeticiones independientes ni incertidumbre instrumental. Por ello, los porcentajes anteriores deben interpretarse como una verificación funcional del posicionamiento y no como una caracterización metrológica completa de la precisión o repetibilidad de la impresora.
 
-\subsection{Comportamiento térmico}
+\subsection{Comportamiento térmico (agregar valores PID)}
 \label{sec:validacion_termica}
 Tras aplicar el procedimiento de calibración descrito en la 
 sección~\ref{sec:calibracion_termica}, se obtuvieron las constantes de 
@@ -161,8 +161,8 @@ firmware.
         \textbf{Componente} & \textbf{$K_p$} & 
         \textbf{$K_i$} & \textbf{$K_d$} \\
         \midrule
-        Hotend        & [dato] & [dato] & [dato] \\
-        Cama calefactada & [dato] & [dato] & [dato] \\
+        Hotend        & 23.82 & 2.29 & 61.96 \\
+        Cama calefactada & 86.90 & 7.69 & 654.92 \\
         \bottomrule
     \end{tabular}
 \end{table}
@@ -185,6 +185,7 @@ firmware.
 %
 % Toma al menos 3 lecturas por temperatura y promedia.
 % ============================================================
+
 
 La Tabla~\ref{tab:temp_hotend} presenta las temperaturas programadas y 
 alcanzadas en el hotend para tres valores de referencia, mientras que la 
@@ -315,8 +316,48 @@ referencia.
 
 \end{comment}   
 
+\subsection{Validación del sistema de enfriamiento}
+\label{sec:validacion_enfriamiento}
 
-\section{Validación del sistema de extrusión}
+El sistema de enfriamiento del hotend tiene como propósito evacuar el calor residual del disipador para evitar que se propague hacia la zona fría del hotend y provoque el ablandamiento prematuro del filamento (\textit{heat creep}). Para evaluar la efectividad del sistema desarrollado, se realizaron mediciones de temperatura en el disipador del hotend bajo distintas condiciones de disipación.
+
+Para las mediciones se utilizó un termopar tipo K colocado en la superficie 
+externa del disipador del hotend, a media altura. La Figura~\ref{fig:posicion_sensor} muestra la ubicación exacta del sensor. En todas las pruebas se mantuvo el mismo punto de medición y se esperó un tiempo de 5 minutos a que la temperatura se estabilizara antes de registrar cada lectura. La temperatura del bloque calefactor se mantuvo en \qty{200}{\celsius} como referencia en todos los casos.
+
+La Tabla~\ref{tab:disipacion} presenta las temperaturas registradas en el disipador bajo cada condición evaluada.
+
+\begin{table}[htbp]
+    \centering
+    \caption{Temperaturas registradas en el disipador del hotend bajo distintas condiciones de disipación.}
+    \label{tab:disipacion}
+    \begin{tabular}{lcc}
+        \toprule
+        \textbf{Condición} & \textbf{Temperatura en disipador} & 
+        \textbf{Temperatura en bloque calefactor} \\
+        \midrule
+        Sin disipador ni ventilador & \qty{71}{\celsius} & \qty{200}{\celsius} \\
+        Con base de aluminio, sin ventilador & \qty{41}{\celsius} & \qty{200}{\celsius} \\
+        Con base de aluminio y ventilador & \qty{47}{\celsius} & \qty{200}{\celsius} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+La incorporación de la base estructural de aluminio redujo la temperatura 
+del disipador de \qty{71}{\celsius} a \qty{41}{\celsius}, lo que representa 
+una disminución de \qty{30}{\celsius}, equivalente a una reducción del 
+42.25\% respecto a la condición sin disipación. La adición del ventilador 
+redujo la temperatura en \qty{11111}{\celsius} adicionales, alcanzando un valor final de \qty{11111}{\celsius} y una reducción total del 99\% respecto a la condición inicial.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Evidencia_posicion_sensor.jpeg}
+    \caption{Evidencia posicionamiento de sensor de pruebas}
+    \label{fig:posicion_sensor}
+\end{figure}
+
+
+\subsection{Calibracion del extrusor}
 \label{sec:validacion_extrusion}
 
 Tras aplicar el procedimiento de calibración descrito en la 
@@ -379,47 +420,8 @@ pérdida de rigidez en los componentes poliméricos. Esto confirma que la
 separación térmica proporcionada por la base de aluminio y la ventilación 
 forzada cumplen su función durante la operación normal del equipo.
 
-\section{Validación del sistema de enfriamiento}
-\label{sec:validacion_enfriamiento}
 
-El sistema de enfriamiento del hotend tiene como propósito evacuar el calor residual del disipador para evitar que se propague hacia la zona fría del hotend y provoque el ablandamiento prematuro del filamento (\textit{heat creep}). Para evaluar la efectividad del sistema desarrollado, se realizaron mediciones de temperatura en el disipador del hotend bajo distintas condiciones de disipación.
-
-Para las mediciones se utilizó un termopar tipo K colocado en la superficie 
-externa del disipador del hotend, a media altura. La Figura~\ref{fig:posicion_sensor} muestra la ubicación exacta del sensor. En todas las pruebas se mantuvo el mismo punto de medición y se esperó un tiempo de 5 minutos a que la temperatura se estabilizara antes de registrar cada lectura. La temperatura del bloque calefactor se mantuvo en \qty{200}{\celsius} como referencia en todos los casos.
-
-La Tabla~\ref{tab:disipacion} presenta las temperaturas registradas en el disipador bajo cada condición evaluada.
-
-\begin{table}[htbp]
-    \centering
-    \caption{Temperaturas registradas en el disipador del hotend bajo distintas condiciones de disipación.}
-    \label{tab:disipacion}
-    \begin{tabular}{lcc}
-        \toprule
-        \textbf{Condición} & \textbf{Temperatura en disipador} & 
-        \textbf{Temperatura en bloque calefactor} \\
-        \midrule
-        Sin disipador ni ventilador & \qty{71}{\celsius} & \qty{200}{\celsius} \\
-        Con base de aluminio, sin ventilador & \qty{41}{\celsius} & \qty{200}{\celsius} \\
-        Con base de aluminio y ventilador & \qty{47}{\celsius} & \qty{200}{\celsius} \\
-        \bottomrule
-    \end{tabular}
-\end{table}
-
-La incorporación de la base estructural de aluminio redujo la temperatura 
-del disipador de \qty{71}{\celsius} a \qty{41}{\celsius}, lo que representa 
-una disminución de \qty{30}{\celsius}, equivalente a una reducción del 
-42.25\% respecto a la condición sin disipación. La adición del ventilador 
-redujo la temperatura en \qty{11111}{\celsius} adicionales, alcanzando un valor final de \qty{11111}{\celsius} y una reducción total del 99\% respecto a la condición inicial.
-
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.5\linewidth]{Evidencia_posicion_sensor.jpeg}
-    \caption{Evidencia posicionamiento de sensor de pruebas}
-    \label{fig:posicion_sensor}
-\end{figure}
-
-\section{Evaluación de calidad de impresión}
+\section{Calidad de impresión}
 
 \subsection{Precisión dimensional}
 
