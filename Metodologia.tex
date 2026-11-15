@@ -9,6 +9,7 @@ La impresora utilizada como punto de partida corresponde a un sistema de fabrica
 En su estado original, el equipo utilizaba filamento de diámetro nominal de 3 mm y una boquilla de 0.4 mm. Los componentes del módulo de extrusión estaban sujetos mediante piezas poliméricas y el control se realizaba con una tarjeta RAMPS 1.4. Las dimensiones nominales previstas para el volumen de impresión eran 200 mm en X, 200 mm en Y y 200 mm en Z.
 
 \subsection{Rehabilitación de la impresora}
+\label{subsec:rehabilitacion_impresora}
 Debido a que el equipo se encontraba fuera de servicio, se realizó una inspección mecánica, eléctrica y térmica antes de utilizarlo. Los perfiles estructurales, motores, correas y husillos se encontraron en condiciones de operación y se conservaron. En cambio, los controladores de motor no funcionaban y uno de los termistores estaba dañado, por lo que estos componentes fueron sustituidos.
 
 También se identificaron piezas poliméricas deterioradas por envejecimiento. El tensor de la correa del eje Y se fracturó durante la manipulación y fue reemplazado junto con su rodamiento. En el sistema de extrusión se sustituyeron el hotend y la boquilla para utilizar filamento de 1.75 mm. El mecanismo de alimentación original se conservó inicialmente con el propósito de poner en operación el equipo y evaluar su comportamiento.
@@ -34,8 +35,8 @@ Una vez rehabilitado el equipo se evaluaron las condiciones que podían limitar 
         \toprule
         \textbf{Subsistema} &
         \textbf{Problema identificado} &
-        \textbf{Consecuencia observada o probable} &
-        \textbf{Necesidad de diseño} \\
+        \textbf{Efecto sobre el sistema} &
+        \textbf{Criterio de diseño} \\
         \midrule
 
         Módulo de extrusión &
@@ -47,14 +48,14 @@ Una vez rehabilitado el equipo se evaluaron las condiciones que podían limitar 
 
         Enfriamiento &
         Enfriamiento insuficiente o sin conducción dirigida &
-        Posible calentamiento de la zona fría del hotend &
-        Incorporar ventilación dirigida al disipador \\
+        Calentamiento de la zona fría del hotend &
+        Dirigir flujo de aire hacia el disipador \\
 
         \addlinespace
 
         Enfriamiento de capa &
         Ausencia de ventilación dirigida hacia la pieza &
-        Limitación para controlar el enfriamiento del material depositado &
+        Sin control independiente del enfriamiento del material depositado &
         Integrar un sistema independiente de enfriamiento de capa \\
 
         \addlinespace
@@ -74,8 +75,8 @@ Una vez rehabilitado el equipo se evaluaron las condiciones que podían limitar 
         \addlinespace
 
         Transmisión &
-        Ausencia de un mecanismo accesible para tensar la correa &
-        Dificultad para realizar y reproducir el ajuste &
+        Ajuste poco accesible de la tensión de la correa &
+        Dificultad para reproducir la calibración &
         Desarrollar un mecanismo de tensión ajustable \\
 
         \addlinespace
@@ -100,7 +101,7 @@ Durante el desarrollo se distinguieron tres iteraciones principales. En la prime
 Además de estas modificaciones estructurales se realizaron correcciones dimensionales, ajustes de relleno de las piezas impresas y cambios menores en la geometría de los conductos. Las iteraciones continuaron hasta obtener una configuración compatible con los requisitos de montaje, separación térmica, recorrido y enfriamiento.
 
 \subsection{Diseño final del módulo de extrusión}
-La configuración final se diseñó alrededor de una base estructural de aluminio, un motor NEMA 17, un mecanismo de alimentación tipo MK8, un hotend para filamento de 1.75 mm y dos sistemas de ventilación con funciones independientes.
+La configuración final se diseñó alrededor de una base estructural de aluminio, un motor NEMA 17, un mecanismo de alimentación tipo MK8, un hotend CR10 V3 para filamento de 1.75 mm y dos sistemas de ventilación con funciones independientes.
 \subsubsection{Base estructural de aluminio}
 La base estructural se fabricó a partir de un perfil angular de aluminio. Su función es proporcionar una superficie rígida para el montaje del conjunto y mantener una separación física entre el hotend, el motor y las piezas poliméricas. La geometría utilizada se muestra en la Figura~\ref{fig:perfil_angular_aluminio}.
 
@@ -117,8 +118,8 @@ Se conservó el motor NEMA 17 de la configuración original. A partir de sus dim
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{Figuras_Digitales/Soporte_Extrusor (5).png}
-    \caption{Soporte e interfaz diseñados para el extrusor MK8}
+    \includegraphics[width=0.5\linewidth]{Figuras_Digitales/Soporte_Extrusor (2).png}
+    \caption{Soporte e interfaz diseñados para el extrusor MK8.}
     \label{fig:soporte_extrusor}
 \end{figure}
  
@@ -140,7 +141,7 @@ La configuración original no disponía de ventilación dirigida hacia el materi
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{Figuras_Digitales/Enfriador de capa (2).png}
-    \caption{Diseño del sistema de enfriamiento de capa}
+    \caption{Diseño del sistema de enfriamiento de capa.}
     \label{fig:enfriador_capa}
 \end{figure}
 
@@ -151,7 +152,7 @@ configuración obtenida se muestra en la Figura~\ref{fig:ensamblaje_final_extrus
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{Figuras_Digitales/eSAMBLAJE FINAL.png}
-    \caption{Ensamble virtual del módulo de extrusión}
+    \caption{Ensamble virtual del módulo de extrusión.}
     \label{fig:ensamblaje_final_extrusor}
 \end{figure}
 
@@ -169,13 +170,13 @@ En algunas uniones de los perfiles de aluminio se observó juego mecánico. Se d
     \label{fig:estabilizador}
 \end{figure}
 
-\subsubsection{Tensor de la correa del eje X}
-El ajuste original de la correa del eje X requería modificar manualmente su posición durante el ensamblaje. Para facilitar esta operación se desarrolló un tensor ajustable que permite variar la tensión con el sistema ya montado. La geometría se adaptó a las dimensiones de la plataforma a partir de mecanismos utilizados en proyectos de hardware abierto \cite{placeholder_proyecto_open_source}. El mecanismo diseñado se muestra en la Figura~\ref{fig:tensor_eje_x}.
+\subsubsection{Tensor de la correa del eje Y}
+El ajuste original de la correa del eje Y requería modificar manualmente su posición durante el ensamblaje. Para facilitar esta operación se desarrolló un tensor ajustable que permite variar la tensión con el sistema ya montado. La geometría se adaptó a las dimensiones de la plataforma a partir de mecanismos utilizados en proyectos de hardware abierto \cite{placeholder_proyecto_open_source}. El mecanismo diseñado se muestra en la Figura~\ref{fig:tensor_eje_x}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{Figuras_Digitales/y holder.png}
-    \caption{Tensor Eje X}
+    \caption{Tensor ajustable para la correa del eje Y.}
     \label{fig:tensor_eje_x}
 \end{figure}
 
@@ -218,20 +219,49 @@ Los componentes empleados para la integración de la plataforma se presentan en 
         Cables para motor & Longitud de \qty{1}{\m} & 4 pzas. \\
         Hotend & Ender Creality CR-10, boquilla \qty{0.4}{\mm}, filamento \qty{1.75}{\mm} & 1 pza. \\
         Cama caliente & Dimensión \qty{214}{\mm} $\times$ \qty{214}{\mm}; \qty{12}{\V} / \qty{24}{\V} & 1 pza. \\
-        Fuente de poder & \qty{12}{\V} - \qty{30}{\A} (\qty{360}{\W}) & 1 pza. \\
-        Controlador de motor & A4988 con disipador térmico & 4 pzas. \\
-        Ventilador & \qty{12}{\V}, \qty{40}{\mm} & 2 pzas. \\
-        Extrusor & Ender Creality CR-10S & 1 pza. \\
+        Fuente de alimentacion & \qty{12}{\V} - \qty{30}{\A} (\qty{360}{\W}) & 1 pza. \\
+        Controladores de motor & A4988 con disipador térmico & 4 pzas. \\
+        Ventiladores & \qty{12}{\V}, \qty{40}{\mm} & 2 pzas. \\
+        Mecanismo de extrusión & Kit Extrusor MK8 & 1 pza. \\
         Resortes para cama & Acero; DE: \qty{9.8}{\mm}, DI: \qty{5.45}{\mm}, Altura: \qty{25.3}{\mm} & 4 pzas. \\
-        Tubo de teflón & PTFE translúcido ID: \qty{2}{\mm}, OD: \qty{4}{\mm}, Longitud: \qty{2}{\m} & 1 pza. \\
+        Tubo de teflón & PTFE translúcido ID: \qty{2}{\mm}, OD: \qty{4}{\mm} & Según montaje \\
         Microswitch endstop & Con cable conector, \qty{24}{\V}, \qty{1.6}{\mm} $\times$ \qty{3}{\mm} $\times$ \qty{4}{\mm} & 3 pzas. \\
-        Banda dentada & GT2 \qty{6}{\mm} (\qty{1}{\m}) & 2 pzas. \\
+        correa dentada & GT2 \qty{6}{\mm} (\qty{1}{\m}) & 2 pzas. \\
         Polea dentada & GT2 20T para banda de \qty{6}{\mm} & 2 pzas. \\
         Termistor & NTC 100K con cable & 2 pzas. \\
-        Tubo termorretráctil & Diámetros variados & 1 lote \\
         \bottomrule
     \end{tabularx}
 \end{table}
+
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{3.8cm} Y l}
+    \toprule
+    \textbf{Componente} & \textbf{Especificación} & \textbf{Cantidad} \\
+    \midrule
+    Microcontrolador & Arduino Mega & 1 pza. \\
+    Placa de potencia & RAMPS 1.4 & 1 pza. \\
+    Motores paso a paso & NEMA 17 (\qty{1.7}{\A}) & 4 pzas. \\
+    Hotend & Ender Creality CR-10, boquilla \qty{0.4}{\mm}, filamento \qty{1.75}{\mm} & 1 pza. \\
+    Cama caliente & Dimensión \qty{214}{\mm} $\times$ \qty{214}{\mm}; \qty{12}{\V} / \qty{24}{\V} & 1 pza. \\
+    Fuente de alimentación & \qty{12}{\V} - \qty{30}{\A} (\qty{360}{\W}) & 1 pza. \\
+    Controladores de motor & A4988 con disipador térmico & 4 pzas. \\
+    Ventiladores & \qty{12}{\V}, \qty{40}{\mm} & 2 pzas. \\
+    Mecanismo de extrusión & Kit Extrusor MK8 & 1 pza. \\
+    Resortes para cama & Acero; DE: \qty{9.8}{\mm}, DI: \qty{5.45}{\mm}, Altura: \qty{25.3}{\mm} & 4 pzas. \\
+    Tubo de teflón & PTFE translúcido ID: \qty{2}{\mm}, OD: \qty{4}{\mm} & 1 pza. \\
+    Sensor Final De Carrera &  5v, 40 x 16 x 0.79 cm  & 3 pzas. \\
+    Correa dentada & GT2 \qty{6}{\mm} (\qty{1}{\m}) & 2 pzas. \\
+    Polea dentada & GT2 20T para banda de \qty{6}{\mm} & 2 pzas. \\
+    Termistor & NTC 100K con cable & 2 pzas. \\
+    Perfil de aluminio extruido & Sección estructural (ej. 2020), tramos de \qty{3}{\m} & 2 piezas \\
+    Varilla lisa & Diámetro de \qty{8}{\mm} & 6 pzas. \\
+    Rodamiento lineal & Tipo LM8UU para eje de \qty{8}{\mm} & 12 pzas. \\
+    Rodamiento angular & Rodamiento de contacto angular / bolas & 4 pzas. \\
+    Varilla trapezoidal & Con 4 hilos (lead) e incluye tuerca de bronce & 2 pzas. \\
+    Lámina de acero & Acero galvanizado & 1 pza. \\
+    Tornillería y fijaciones & Tornillos, tuercas y arandelas (M3, M4, M5) & Variado \\
+    Cableado eléctrico & Cable variado (calibres surtidos para potencia y señales) & Variado \\
+    \bottomrule
+\end{tabularx}
 
 
 
@@ -239,11 +269,56 @@ Los componentes empleados para la integración de la plataforma se presentan en 
 
 \subsection{Fabricación de piezas poliméricas}
 
-Las piezas de geometría específica se fabricaron mediante FDM utilizando la impresora rehabilitada. Los modelos CAD se exportaron en formato STL y se procesaron en Ultimaker Cura 5.12. Se utilizó filamento PLA de 1.75 mm y boquilla de 0.4 mm.
+Las piezas de geometría específica se fabricaron mediante FDM utilizando la impresora rehabilitada~\ref{subsec:rehabilitacion_impresora}. Los modelos CAD se exportaron en formato STL y se procesaron en Ultimaker Cura 5.12. Se utilizó filamento PLA de 1.75 mm y boquilla de 0.4 mm. Los parámetros generales empleados se presentan en la Tabla~\ref{tab:parametros_impresion}.
+
+\begin{table}[H]
+    \centering
+    \small
+    \caption{Parámetros utilizados para la fabricación de las piezas en PLA.}
+    \label{tab:parametros_impresion}
+
+    \begin{tabular}{>{\raggedright\arraybackslash}p{6cm} >{\raggedright\arraybackslash}p{4cm}}
+        \toprule
+        \textbf{Parámetro} & \textbf{Valor} \\
+        \midrule
+
+        Diámetro del filamento
+        & \SI{1.75}{\milli\metre} \\
+
+        Diámetro de la boquilla
+        & \SI{0.4}{\milli\metre} \\
+
+        Altura de capa
+        & \SI{0.3}{\milli\metre} \\
+
+        Temperatura de impresión
+        & \SI{195}{\degreeCelsius} \\
+
+        Temperatura de la cama
+        & \SI{50}{\degreeCelsius} \\
+
+        Velocidad de impresión
+        & \SI{60}{\frac{mm}{s}} \\
+
+        Densidad de relleno
+        & \SI{10}{\percent} \\
+
+        Patrón de relleno
+        & Grid \\
+
+        Grosor de paredes
+        & \SI{1.2}{\milli\metre} \\
+
+        Material de soporte
+        & Depende la pieza \\
+
+        \bottomrule
+    \end{tabular}
+\end{table}
 
 La orientación de cada pieza se seleccionó considerando las superficies de apoyo, la geometría y la dirección principal de las cargas durante su funcionamiento. Cuando la geometría lo requirió se utilizaron estructuras de soporte. Después de la impresión se inspeccionaron las piezas para detectar deformaciones, separación entre capas o formación excesiva de hilos; posteriormente se retiraron soportes y se limpiaron las superficies y orificios destinados al montaje.
 
-Los valores definitivos de altura de capa, temperatura de extrusión, temperatura de cama y patrón de relleno deben registrarse a partir de los archivos de laminado empleados durante la fabricación. No se incorporan valores no documentados en los registros del proyecto. La densidad de relleno registrada para las piezas finales fue de 40 $\%$ y la velocidad de impresión de 50 mm/s.
+
 
 \subsection{Fabricación de la base metalica}
 
@@ -260,7 +335,7 @@ También se incorporaron el cartucho calefactor, el termistor y los conductores 
 Concluido el ensamblaje se configuró el sistema de control y se calibraron los mecanismos de movimiento, la alimentación de filamento y el control térmico. Estas actividades se realizaron antes de las pruebas de impresión con el propósito de establecer parámetros de operación reproducibles.
 
 \subsection{Configuración del firmware REVISAR}
-La electrónica utiliza un Arduino Mega con tarjeta RAMPS 1.4. Sobre esta plataforma se instaló Marlin 2.1.2.1 \cite{marlinfw} y se configuraron desde cero los parámetros correspondientes a los ejes X, Y y Z, el extrusor, los sensores de temperatura, los calentadores, los ventiladores y los interruptores de límite.
+La electrónica utiliza un Arduino Mega con tarjeta RAMPS 1.4. Sobre esta plataforma se instaló Marlin 2.1.2.1 \cite{marlin_firmware} y se configuraron desde cero los parámetros correspondientes a los ejes X, Y y Z, el extrusor, los sensores de temperatura, los calentadores, los ventiladores y los interruptores de límite.
 
 Los valores iniciales de pasos por unidad se calcularon a partir de las características de los motores y de los mecanismos de transmisión. Antes de activar los calentadores se comprobaron individualmente los movimientos de los ejes, verificando el sentido de desplazamiento, la actuación de los finales de carrera y la ausencia de interferencias mecánicas.
 
@@ -268,27 +343,15 @@ Los valores iniciales de pasos por unidad se calcularon a partir de las caracter
 \label{sec:calibracion_del_sistema_de_movimiento}
 
 Para verificar la correspondencia entre desplazamiento programado y desplazamiento real se realizaron pruebas independientes en X, Y y Z. En cada eje se ordenaron diez desplazamientos consecutivos de 10 mm en el mismo sentido, equivalentes a 100 mm programados. La distancia total recorrida se midió y se comparó con la solicitada.
-Cuando se detectó una diferencia, el parámetro de pasos por milímetro se corrigió mediante la relación:
-
-\begin{equation}
-E_{\mathrm{nuevo}} = E_{\mathrm{actual}} \cdot 
-\frac{L_{\mathrm{programada}}}{L_{\mathrm{medida}}}
-\label{eq:pasos_mm_movimiento}
-\end{equation}
+Cuando se detectó una diferencia, el parámetro de pasos por milímetro se corrigió mediante la ecuacion~\ref{eq:sistema_mecanico_pasos} de la subseccion~\ref{subsec:sistema_mecanico y posicionamiento}.
 
 
-
-donde $E_{\mathrm{nuevo}}$ corresponde al nuevo valor de pasos por milímetro 
-del eje, $E_{\mathrm{actual}}$ al valor utilizado durante la prueba, 
-$L_{\mathrm{programada}}$ a la distancia solicitada y $L_{\mathrm{medida}}$ a 
-la distancia realmente recorrida. Los valores finales y el
-error medido se presentan en el capítulo de resultados.
 
 \subsection{Calibración del extrusor}
 \label{sec:calibracion_extrusor}
-La calibración del extrusor se realizó para establecer la correspondencia entre la longitud de filamento solicitada y la longitud realmente suministrada. Para aislar la respuesta del mecanismo de alimentación se retiró el hotend durante esta prueba. Se marcó una referencia sobre el filamento y se ordenaron diez desplazamientos de 10 mm, equivalentes a una alimentación total programada de 100 mm.
+La calibración del extrusor se realizó para establecer la correspondencia entre la longitud de filamento solicitada y la longitud realmente suministrada. Para aislar la respuesta del mecanismo de alimentación se retiró el hotend durante esta prueba. Se marcó una referencia sobre el filamento y se ordenaron 5 muestras de 100 mm.
 
-La longitud desplazada se midió desde la referencia inicial y el valor de pasos por milímetro se corrigió mediante la ecuación~\ref{eq:pasos_mm_movimiento}, sustituyendo el desplazamiento del eje por la longitud de filamento. Después de incorporar el nuevo valor al firmware se realizó una prueba adicional de verificación.
+Se enlistaron las mediciones correspondientes, obteniendo un promedio y el valor de pasos por milímetro se corrigió mediante la ecuación~\ref{eq:pasos_mm_movimiento}, sustituyendo el desplazamiento del eje por la longitud de filamento. Después de incorporar el nuevo valor al firmware se realizó una prueba adicional de verificación.
 
 \subsection{Ajuste del control térmico}
 \label{sec:calibracion_termica}
@@ -302,7 +365,7 @@ Una vez configurada y calibrada la plataforma se estableció un conjunto de prue
 \subsection{Evaluación del posicionamiento y la extrusión}
 La precisión de movimiento se evaluó comparando distancias programadas con distancias medidas en cada eje. Para el extrusor se comparó una longitud programada de filamento con la longitud efectivamente suministrada. En ambos casos se calculó el error absoluto y el error relativo porcentual respecto al valor programado. 
 
-\subsection{Evacuación térmica}
+\subsection{Evacuación térmica REVISAR}
 Para el hotend y la cama se registraron la temperatura programada, la temperatura alcanzada, el tiempo necesario para alcanzar la condición de operación y la variación observada una vez alcanzado el régimen estable. Para evaluar el sistema de disipación del hotend se realizaron mediciones de temperatura en el disipador manteniendo constante la temperatura del bloque calefactor y modificando la configuración de ventilación. La posición del sensor se mantuvo fija entre pruebas para conservar condiciones comparables.
 
 \subsection{Evaluación dimensional y de calidad de impresión}
@@ -314,4 +377,6 @@ También se contemplaron pruebas geométricas destinadas a observar el comportam
 La evaluación económica se planteó a partir del costo de los componentes utilizados en la construcción e integración de la plataforma. Para la comparación con alternativas comerciales se considerarán equipos con volumen de impresión y aplicación general comparables. El costo de mano de obra no se incorpora al costo de fabricación, ya que el diseño, ensamblaje y calibración fueron realizados por el autor como parte del trabajo académico. Los precios, modelos comerciales y fecha de consulta se presentan en el capítulo de resultados.
 
 \section{Resumen del capitulo}
-El procedimiento descrito permitió pasar de una plataforma fuera de servicio a una configuración rehabilitada, diagnosticada y posteriormente modificada mediante un proceso iterativo de diseño. Las intervenciones se concentraron en el módulo de extrusión, el manejo térmico, el enfriamiento de capa y los mecanismos auxiliares de ajuste. Después de la integración se configuraron y calibraron los subsistemas mecánicos, de extrusión y térmicos, y se definió un protocolo para evaluar el desempeño del sistema. El capítulo siguiente presenta los resultados obtenidos mediante estos procedimientos
+El procedimiento descrito permitió transformar una plataforma de manufactura aditiva inicial que se encontraba fuera de servicio en un sistema plenamente funcional. El diagnóstico integral reveló múltiples fallas críticas, entre ellas componentes estructurales rotos, controladores de motor averiados, un estado de firmware desconocido y limitaciones operativas generales. Para superar estas deficiencias, se llevó a cabo una intervención correctiva y de rediseño profundo que incluyó: el diseño y fabricación de piezas personalizadas para dotar al chasis de mayor rigidez estructural, la sustitución de los interruptores de límite de carrera por dispositivos más modernos y precisos, y el desarrollo e implementación de un sistema de extrusión completamente nuevo. 
+
+Una vez superadas las limitaciones de la plataforma original y reinstalado el firmware adecuado, se procedió a la configuración y calibración rigurosa de los subsistemas mecánicos, térmicos y de control. Este esfuerzo de rehabilitación no solo recuperó la operatividad de la máquina, sino que consolidó la infraestructura técnica necesaria para los procesos posteriores de manufactura y validación. El capítulo siguiente presenta y discute los resultados obtenidos mediante estos procedimientos de integración y puesta a punto.

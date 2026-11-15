@@ -25,10 +25,10 @@ fig, ax = plt.subplots(figsize=(4.5, 3.2), dpi=300)
 ax.plot(tiempos_hotend, temperaturas_hotend, color='#1e64c8', linestyle='-', linewidth=1.4, label='Temp. Hotend', zorder=2)
 
 # 1. Línea horizontal de referencia para el umbral de 40 °C
-ax.axhline(40.0, color='#e66122', linestyle='--', linewidth=1.1, label=r'Umbral $40\ ^\circ\mathrm{C}$', zorder=3)
+ax.axhline(40.0, color='#e66122', linestyle='--', linewidth=1.1, label=r'Punto Seguro $40\ ^\circ\mathrm{C}$', zorder=3)
 
-# 2. Línea vertical de referencia para el tiempo de cruce en 272.38 s
-ax.axvline(272.38, color='#16a05d', linestyle='-.', linewidth=1.0, label=r'Tiempo ($272.38\ \mathrm{s}$)', zorder=3)
+# 2. Línea vertical de referencia para el tiempo de cruce en 234.38 s
+ax.axvline(234.38, color='#16a05d', linestyle='-.', linewidth=1.0, label=r'Tiempo ($234.38\ \mathrm{s}$)', zorder=3)
 
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
@@ -56,6 +56,6 @@ ax.legend(
 )
 
 plt.tight_layout()
-plt.savefig('enfriamiento_termica_hotend.pdf', bbox_inches='tight', pad_inches=0.05)
-plt.savefig('enfriamiento_termica_hotend.png', dpi=300, bbox_inches='tight', pad_inches=0.05)
+plt.savefig('enfriamiento_hotend.pdf', bbox_inches='tight', pad_inches=0.05)
+plt.savefig('enfriamiento_hotend.png', dpi=300, bbox_inches='tight', pad_inches=0.05)
 plt.show()

@@ -25,7 +25,9 @@ fig, ax = plt.subplots(figsize=(4.5, 3.2), dpi=300)
 ax.plot(tiempos_cama, temperaturas_cama, color='#1e64c8', linestyle='-', linewidth=1.4, label='Temp. Cama')
 
 # Línea horizontal para indicar el punto seguro a 35 °C
-ax.axhline(35.0, color='#e66122', linestyle='--', linewidth=1.1, label=r'Punto Seguro ($35\ ^\circ\mathrm{C}$)')
+ax.axhline(40.0, color='#e66122', linestyle='--', linewidth=1.1, label=r'Punto Seguro ($40\ ^\circ\mathrm{C}$)')
+
+ax.axvline(277, color='#16a05d', linestyle='-.', linewidth=1.0, label=r'Tiempo ($277\ \mathrm{s}$)', zorder=3)
 
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
@@ -37,10 +39,10 @@ ax.set_axisbelow(True)
 ax.set_xlabel(r'Tiempo ($\mathrm{s}$)', fontsize=8.5, labelpad=4)
 ax.set_ylabel(r'Temperatura ($^\circ\mathrm{C}$)', fontsize=8.5, labelpad=4)
 
-ax.set_xlim(0, 900)
+ax.set_xlim(0, 700)
 ax.set_ylim(25, 55)
-ax.set_xticks([0, 200, 400, 600, 800])
-ax.set_yticks([25, 35, 45, 55])
+ax.set_xticks([0, 200, 277, 400, 600])
+ax.set_yticks([25, 35, 40, 45, 55])
 
 ax.legend(
     loc='upper right',
